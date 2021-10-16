@@ -27,7 +27,7 @@ const Routes = () => (
             <App>
                 <ContainerSwitch>
                     {RoutesApp.map(({ path, component }, index) =>
-                        <Route key={index} authed={authenticated} path={path} component={component} />
+                        <Route key={index} path={path} component={component} />
                     )}
                 </ContainerSwitch>
             </App>
