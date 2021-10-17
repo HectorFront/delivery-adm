@@ -1,3 +1,6 @@
+/** @name Styled */
+import { ContainerLogin, ContentForm, Form, ForgotPassword } from './styled';
+/** @name Dependencies */
 import React from 'react';
 
 class Login extends React.PureComponent {
@@ -13,7 +16,23 @@ class Login extends React.PureComponent {
 
     render() {
         return (
-            <div>Login</div>
+            <ContainerLogin>
+                <ContentForm>
+                    <Form>
+                        <fieldset>
+                            <div className="mb-3">
+                                <label className="form-label">Email</label>
+                                <input type="email" className="form-control form-control-lg"/>
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Senha</label>
+                                <input type="email" className="form-control form-control-lg"/>
+                                <ForgotPassword className="form-text">Esqueci minha senha</ForgotPassword>
+                            </div>
+                        </fieldset>
+                    </Form>
+                </ContentForm>
+            </ContainerLogin>
         )
     }
 }

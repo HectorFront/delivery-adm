@@ -17,7 +17,8 @@ const ContainerSwitch = ({ children }) => (
 
 const Routes = () => (
     <Router>
-        {!authenticated ?
+        {!authenticated
+            ?
             <ContainerSwitch>
                 {RoutesAuth.map(({ path, component }, index) =>
                     <Route key={index} path={path} component={component} />
