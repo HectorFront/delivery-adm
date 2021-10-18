@@ -1,6 +1,14 @@
 import Background from 'assets/backgrounds/food_login.jfif';
 import styled from 'styled-components';
 
+const Form = styled.form`
+  width: 100%;
+`;
+
+const ForgotPassword = styled.div`
+  text-decoration: underline;
+`;
+
 const ContainerLogin = styled.div`
   width: 100%;
   height: 100%;
@@ -23,14 +31,6 @@ const ContentForm = styled.div`
   @media(max-width: 1150px) {
     width: 100%;
   }
-`;
-
-const Form = styled.form`
-  width: 100%;
-`;
-
-const ForgotPassword = styled.div`
-  text-decoration: underline;
 `;
 
 export { ContainerLogin, ContentForm, Form, ForgotPassword };
