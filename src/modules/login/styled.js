@@ -6,7 +6,12 @@ const Form = styled.form`
 `;
 
 const ForgotPassword = styled.div`
+  cursor: pointer;
   text-decoration: underline;
+  &:hover {
+    opacity: .6;
+    transition: all .2s;
+  }
 `;
 
 const ContainerLogin = styled.div`
@@ -33,4 +38,4 @@ const ContentForm = styled.div`
   }
 `;
 
-export { ContainerLogin, ContentForm, Form, ForgotPassword };
+export { Form, ContentForm, ForgotPassword, ContainerLogin };

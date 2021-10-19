@@ -1,5 +1,9 @@
 /** @name ResetCSS */
 import './normalize.css';
+/** @name Fonts */
+import './fonts.css';
+/** @name MaterialIcons */
+import 'material-icons/iconfont/material-icons.css';
 /** @name Bootstrap */
 import 'bootstrap/dist/js/bootstrap.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
