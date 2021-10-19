@@ -10,7 +10,7 @@ export const InputPassword = React.memo((props) =>
             {...props}
             className={`form-control form-control-${props.size ?? 'md'}${props.className ? ` ${props.className}` : ''}`}
         />
-        <VisibilityPassword onClick={props.changeType} className="btn" type="button">
+        <VisibilityPassword onClick={props.onChangeType} className="btn" type="button">
             {props.icon}
         </VisibilityPassword>
     </div>

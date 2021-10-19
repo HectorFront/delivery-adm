@@ -60,7 +60,7 @@ class Login extends React.PureComponent {
                                     size="lg"
                                     type={type}
                                     placeholder="Insira sua senha"
-                                    changeType={this.onChangeTypePassword}
+                                    onChangeType={this.onChangeTypePassword}
                                     icon={<MaterialIcon icon={Login.InputTypesPassword[type].icon} />}
                                 />
                                 <ForgotPassword
