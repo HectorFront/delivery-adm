@@ -10,7 +10,13 @@ const Form = styled.form`
   width: 100%;
 `;
 
-const DescriptionLogin = styled.span`
+const Title = styled.h1`
+  width: 100%;
+  font-weight: bold;
+  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'start' })}
+`;
+
+const Description = styled.span`
   width: 100%;
   font-size: 16px;
 `;
@@ -32,17 +38,11 @@ const RegisterStore = styled.span`
   text-align: center;
 `;
 
-const TextLogin = styled.div`
+const ContainerText = styled.div`
   width: 100%;
   height: auto;
   margin-bottom: 50px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
-`;
-
-const TitleLogin = styled.h1`
-  width: 100%;
-  font-weight: bold;
-  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'start' })}
 `;
 
 const ContainerLogin = styled.div`
@@ -79,10 +79,10 @@ const ContentForm = styled.div`
 export {
     Form,
     Link,
-    TextLogin,
-    TitleLogin,
+    Title,
     ContentForm,
+    Description,
+    ContainerText,
     RegisterStore,
-    ContainerLogin,
-    DescriptionLogin
+    ContainerLogin
 };

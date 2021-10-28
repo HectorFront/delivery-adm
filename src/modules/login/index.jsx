@@ -2,12 +2,12 @@
 import {
     Form,
     Link,
-    TextLogin,
-    TitleLogin,
+    Title,
     ContentForm,
+    ContainerText,
     RegisterStore,
     ContainerLogin,
-    DescriptionLogin
+    Description
 } from './styled';
 /** @name Dependencies */
 import React from 'react';
@@ -55,18 +55,16 @@ class Login extends React.PureComponent {
         return (
             <ContainerLogin>
                 <ContentForm>
-                    <TextLogin>
-                        <TitleLogin>
+                    <ContainerText>
+                        <Title>
                             <MaterialIcon
                                 icon={'store_mall_directory'}
                                 color={process.env.REACT_APP_DEFAULT_COLOR}
                             />
                             Área do chefe
-                        </TitleLogin>
-                        <DescriptionLogin>
-                            Aqui você facilita sua venda de forma ágil
-                        </DescriptionLogin>
-                    </TextLogin>
+                        </Title>
+                        <Description>Aqui você facilita sua venda de forma ágil</Description>
+                    </ContainerText>
                     <Form>
                         <fieldset>
                             <div className="mb-3">
@@ -90,9 +88,7 @@ class Login extends React.PureComponent {
                                     handleType={this.handleTypePassword}
                                     icon={<MaterialIcon icon={Login.InputTypesPassword[type].icon} />}
                                 />
-                                <Link className="form-text">
-                                    Esqueci minha senha
-                                </Link>
+                                <Link className="form-text">Esqueci minha senha</Link>
                             </div>
                             <Button size="lg">Continuar</Button>
                         </fieldset>
