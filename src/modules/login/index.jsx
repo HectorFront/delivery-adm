@@ -1,17 +1,32 @@
 /** @name Styled */
-import { ContainerLogin, ContentForm, Form, ForgotPassword } from './styled';
+import {
+    Form,
+    Link,
+    TextLogin,
+    TitleLogin,
+    ContentForm,
+    RegisterStore,
+    ContainerLogin,
+    DescriptionLogin
+} from './styled';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
-import { InputDefault, InputPassword, MaterialIcon } from "helpers";
+import { Button, InputDefault, InputPassword, MaterialIcon } from "helpers";
 
 class Login extends React.PureComponent {
 
     static IconVisibility = 'visibility';
     static IconVisibilityOff = 'visibility_off';
     static InputTypesPassword = {
-        password: { type: 'text', icon: Login.IconVisibility },
-        text: { type: 'password', icon: Login.IconVisibilityOff }
+        text: {
+            type: 'password',
+            icon: Login.IconVisibilityOff
+        },
+        password: {
+            type: 'text',
+            icon: Login.IconVisibility
+        }
     };
 
     constructor(props) {
@@ -23,14 +38,14 @@ class Login extends React.PureComponent {
     }
 
     bindFunctions() {
-        this.onChangeTypePassword = this.onChangeTypePassword.bind(this);
+        this.handleTypePassword = this.handleTypePassword.bind(this);
     }
 
     _handle(obj, atrr, value, callback = () => { }) {
         this.setState(state => ({ ...state, [obj]: {...obj, [atrr]: value } }), () => callback)
     }
 
-    onChangeTypePassword() {
+    handleTypePassword() {
         const { password: { type } } = this.state;
         this._handle('password', 'type', Login.InputTypesPassword[type].type);
     }
@@ -40,6 +55,18 @@ class Login extends React.PureComponent {
         return (
             <ContainerLogin>
                 <ContentForm>
+                    <TextLogin>
+                        <TitleLogin>
+                            <MaterialIcon
+                                icon={'store_mall_directory'}
+                                color={process.env.REACT_APP_DEFAULT_COLOR}
+                            />
+                            Área do chefe
+                        </TitleLogin>
+                        <DescriptionLogin>
+                            Aqui você facilita sua venda de forma ágil
+                        </DescriptionLogin>
+                    </TextLogin>
                     <Form>
                         <fieldset>
                             <div className="mb-3">
@@ -60,18 +87,20 @@ class Login extends React.PureComponent {
                                     size="lg"
                                     type={type}
                                     placeholder="Insira sua senha"
-                                    onChangeType={this.onChangeTypePassword}
+                                    handleType={this.handleTypePassword}
                                     icon={<MaterialIcon icon={Login.InputTypesPassword[type].icon} />}
                                 />
-                                <ForgotPassword
-                                    className="form-text"
-                                    style={{ color: process.env.REACT_APP_DEFAULT_COLOR }}
-                                >
+                                <Link className="form-text">
                                     Esqueci minha senha
-                                </ForgotPassword>
+                                </Link>
                             </div>
+                            <Button size="lg">Continuar</Button>
                         </fieldset>
                     </Form>
+                    <RegisterStore>
+                        Ainda não possui cadastro da sua loja?&nbsp;
+                        <Link>Vem com a gente!</Link>
+                    </RegisterStore>
                 </ContentForm>
             </ContainerLogin>
         )
