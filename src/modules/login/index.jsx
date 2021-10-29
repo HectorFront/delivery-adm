@@ -12,6 +12,7 @@ import {
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
+import ClientRoutes from 'constants/client/routes';
 import { Button, InputDefault, InputPassword, MaterialIcon } from "helpers";
 
 class Login extends React.PureComponent {
@@ -37,17 +38,39 @@ class Login extends React.PureComponent {
         this.bindFunctions();
     }
 
+    /**
+     *
+     */
     bindFunctions() {
+        this.goRegister = this.goRegister.bind(this);
         this.handleTypePassword = this.handleTypePassword.bind(this);
     }
 
+    /**
+     *
+     * @param obj
+     * @param atrr
+     * @param value
+     * @param callback
+     * @private
+     */
     _handle(obj, atrr, value, callback = () => { }) {
         this.setState(state => ({ ...state, [obj]: {...obj, [atrr]: value } }), () => callback)
     }
 
+    /**
+     *
+     */
     handleTypePassword() {
         const { password: { type } } = this.state;
         this._handle('password', 'type', Login.InputTypesPassword[type].type);
+    }
+
+    /**
+     *
+     */
+    goRegister() {
+        this.props.history.push(ClientRoutes.REGISTER);
     }
 
     render() {
@@ -95,7 +118,7 @@ class Login extends React.PureComponent {
                     </Form>
                     <RegisterStore>
                         Ainda não possui cadastro da sua loja?&nbsp;
-                        <Link>Vem com a gente!</Link>
+                        <Link onClick={this.goRegister}>Vem com a gente!</Link>
                     </RegisterStore>
                 </ContentForm>
             </ContainerLogin>

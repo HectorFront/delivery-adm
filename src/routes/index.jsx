@@ -1,9 +1,9 @@
 /** @name Dependendcies */
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 /** @name Internal */
 import App from './app';
-import { RoutesApp, RoutesAuth } from "./internalRoutes";
+import { RoutesApp, RoutesAuth } from 'modules';
 
 const authenticated = false;
 
