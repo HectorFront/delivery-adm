@@ -1,5 +1,5 @@
-import Login from 'modules/login/path';
-import Register from 'modules/register/path';
+import Login from 'modules/auth/login/path';
+import Register from 'modules/auth/register/path';
 import Dashboard from 'modules/dashboard/path';
 
 const

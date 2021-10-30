@@ -13,6 +13,15 @@ const Form = styled.form`
 const Title = styled.h1`
   width: 100%;
   font-weight: bold;
+`;
+
+const BackPage = styled.div`
+  width: 100%;
+  height: 80px;
+  padding: 20px;
+  position: relative;
+  background-color: white;
+  border-bottom: 5px solid #e0e0e0;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'start' })}
 `;
 
@@ -45,7 +54,7 @@ const ContainerText = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
 `;
 
-const ContainerLogin = styled.div`
+const ContainerAuth = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -53,12 +62,21 @@ const ContainerLogin = styled.div`
   background-image: url(${Background});
 `;
 
-const ContentForm = styled.div`
+const Content = styled.div`
   width: 35%;
   height: 100%;
-  padding: 90px;
   overflow-x: hidden;
   background-image: url(${SVGShapes});
+
+  @media(max-width: 1510px) {
+    width: 100%;
+  }
+`;
+
+const SelfCenterForm = styled.div`
+  width: 100%;
+  height: 90%;
+  padding: 90px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })};
 
   @media(max-width: 1720px) {
@@ -66,12 +84,10 @@ const ContentForm = styled.div`
   }
 
   @media(max-width: 1510px) {
-    width: 100%;
     padding: 90px;
   }
 
   @media(max-width: 720px) {
-    width: 100%;
     padding: 30px;
   }
 `;
@@ -80,9 +96,11 @@ export {
     Form,
     Link,
     Title,
-    ContentForm,
+    Content,
+    BackPage,
     Description,
     ContainerText,
     RegisterStore,
-    ContainerLogin
+    ContainerAuth,
+    SelfCenterForm
 };

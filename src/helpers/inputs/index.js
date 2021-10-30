@@ -1,2 +1,4 @@
 export * from './default';
-export * from './password';
+export * from './inputLabel';
+export * from './password/label';
+export * from './password/default';

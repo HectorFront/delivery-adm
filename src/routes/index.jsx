@@ -3,11 +3,13 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 /** @name Internal */
 import App from './app';
+/** @name External */
 import { RoutesApp, RoutesAuth } from 'modules';
+import ClientRoutes from 'constants/client/routes';
 
 const authenticated = false;
 
-const ContainerSwitch = ({ children }) => (
+const SwitchRoutes = ({ children }) => (
     <Suspense fallback={null}>
         <Switch>
             {children}
@@ -19,21 +21,21 @@ const Routes = () => (
     <Router>
         {!authenticated
             ?
-            <ContainerSwitch>
+            <SwitchRoutes>
                 {RoutesAuth.map(({ path, component }, index) =>
                     <Route key={index} path={path} component={component} />
                 )}
-            </ContainerSwitch>
+            </SwitchRoutes>
             :
             <App>
-                <ContainerSwitch>
+                <SwitchRoutes>
                     {RoutesApp.map(({ path, component }, index) =>
                         <Route key={index} path={path} component={component} />
                     )}
-                </ContainerSwitch>
+                </SwitchRoutes>
             </App>
         }
-        <Redirect from='*' to='/login' />
+        <Redirect from='*' to={ClientRoutes.LOGIN} />
     </Router>
 );
 
