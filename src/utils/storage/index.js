@@ -62,5 +62,3 @@ export class AsyncStorage {
     }
 
 }
-
-export default AsyncStorage;

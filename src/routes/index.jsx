@@ -1,12 +1,13 @@
-/** @name Dependendcies */
+/** @name Dependencies */
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 /** @name External */
 import { App, Auth } from 'template';
 import { RoutesApp, RoutesAuth } from 'modules';
 import ClientRoutes from 'constants/client/routes';
+import { Authentication } from 'services/user/authentication';
 
-const authenticated = false;
+const authenticated = new Authentication().hasAuthentication();
 
 const SwitchRoutes = ({ children }) => (
     <Suspense fallback={null}>
