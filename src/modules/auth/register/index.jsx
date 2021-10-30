@@ -33,6 +33,9 @@ class Register extends React.PureComponent {
         this.goBackPage = this.goBackPage.bind(this);
     }
 
+    /**
+     *
+     */
     goBackPage() {
         this.props.history.goBack();
     }
