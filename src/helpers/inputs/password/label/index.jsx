@@ -4,19 +4,17 @@ import { VisibilityPassword } from '../styled';
 import React from 'react';
 import { InputDefault } from 'helpers';
 
-export const InputPasswordLabel = React.memo(({ label, type = 'password', size = 'md', icon, className, placeholder, handleType }) =>
+export const InputPasswordLabel = React.memo((props) =>
     <>
         <label className="form-label">
-            <b>{label}</b>
+            <b>{props.label}</b>
         </label>
         <div className="input-group">
             <InputDefault
-                type={type}
-                placeholder={placeholder}
-                className={`form-control form-control-${size}${className ? ` ${className}` : ''}`}
+                {...props}
             />
-            <VisibilityPassword onClick={handleType} className="btn" type="button">
-                {icon}
+            <VisibilityPassword onClick={props.handleType} className="btn" type="button">
+                {props.icon}
             </VisibilityPassword>
         </div>
     </>

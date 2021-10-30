@@ -9,7 +9,6 @@ export const InputLabel = React.memo((props) =>
         </label>
         <InputDefault
             {...props}
-            className={`form-control form-control-${props.size ?? 'md'}${props.className ? ` ${props.className}` : ''}`}
         />
     </>
 );

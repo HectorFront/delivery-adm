@@ -17,4 +17,8 @@ const Input = styled.input`
   }
 `;
 
-export { Input };
+const Invalid = styled.div.attrs(props => ({
+    className: 'invalid-feedback',
+}))``;
+
+export { Input, Invalid };

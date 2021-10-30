@@ -1,5 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
+/** @name Dependencies */
+import React from 'react';
 /** @name External */
 import { flex } from 'mixins/global';
 
@@ -10,6 +12,12 @@ const Form = styled.form`
 const Title = styled.h1`
   width: 100%;
   font-weight: bold;
+`;
+
+const BarProgress = styled.div`
+  height: 5px;
+  width: ${props => props.width};
+  background-color: ${process.env.REACT_APP_DEFAULT_COLOR};
 `;
 
 const BackPage = styled.div`
@@ -76,6 +84,7 @@ export {
     Title,
     BackPage,
     Description,
+    BarProgress,
     ContainerText,
     RegisterStore,
     ContainerForm

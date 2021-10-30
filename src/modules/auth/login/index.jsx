@@ -20,16 +20,14 @@ import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
 
 class Login extends React.PureComponent {
 
-    static IconVisibility = 'visibility';
-    static IconVisibilityOff = 'visibility_off';
-    static InputTypesPassword = {
+    static INPUT_TYPES_PASSWORD = {
         text: {
             type: 'password',
-            icon: Login.IconVisibilityOff
+            icon: 'visibility'
         },
         password: {
             type: 'text',
-            icon: Login.IconVisibility
+            icon: 'visibility_off'
         }
     };
 
@@ -58,7 +56,7 @@ class Login extends React.PureComponent {
      * @private
      */
     _handle(obj, atrr, value, callback = () => { }) {
-        this.setState(state => ({ ...state, [obj]: {...obj, [atrr]: value } }), () => callback)
+        this.setState(state => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
     }
 
     /**
@@ -66,7 +64,7 @@ class Login extends React.PureComponent {
      */
     handleTypePassword() {
         const { password: { type } } = this.state;
-        this._handle('password', 'type', Login.InputTypesPassword[type].type);
+        this._handle('password', 'type', Login.INPUT_TYPES_PASSWORD[type].type);
     }
 
     /**
@@ -104,7 +102,7 @@ class Login extends React.PureComponent {
                                     size="lg"
                                     type="email"
                                     label="Email"
-                                    placeholder="seunome@gmail.com"
+                                    placeholder="exemplo@gmail.com"
                                 />
                             </div>
                             <div className="mb-3">
@@ -114,7 +112,7 @@ class Login extends React.PureComponent {
                                     label="Senha"
                                     placeholder="Insira sua senha"
                                     handleType={this.handleTypePassword}
-                                    icon={<MaterialIcon hover icon={Login.InputTypesPassword[type].icon} />}
+                                    icon={<MaterialIcon hover icon={Login.INPUT_TYPES_PASSWORD[type].icon} />}
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>

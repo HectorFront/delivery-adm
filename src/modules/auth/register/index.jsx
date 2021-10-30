@@ -4,6 +4,7 @@ import {
     Title,
     BackPage,
     Description,
+    BarProgress,
     ContainerText,
     ContainerForm
 } from '../styled';
@@ -13,16 +14,27 @@ import {
 } from '../keyframes';
 /** @name Dependencies */
 import React, { Fragment } from 'react';
+/** @name Internal */
+import { FirstStepFields, SecondStepFields } from './fieldsSteps';
 /** @name External */
-import { Button, InputLabel, MaterialIcon} from 'helpers';
+import { RenderComponent, Button, MaterialIcon } from 'helpers';
 
 class Register extends React.PureComponent {
+
+    static INITIAL_DATA = {
+        cnpj: null,
+        email: null,
+        fantasy_name: null,
+        social_reason: null,
+    };
 
     constructor(props) {
         super(props);
         this.state = {
-
-        }
+            stepCurrent: 1,
+            progressBar: 0,
+            dataSteps: {...Register.INITIAL_DATA},
+        };
         this.bindFunctions();
     }
 
@@ -30,17 +42,66 @@ class Register extends React.PureComponent {
      *
      */
     bindFunctions() {
+        this.nextStep = this.nextStep.bind(this);
         this.goBackPage = this.goBackPage.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);
+    }
+
+    /**
+     *
+     * @param obj
+     * @param atrr
+     * @param value
+     * @param callback
+     * @private
+     */
+    _handle(obj, atrr, value, callback = () => { }) {
+        this.setState(state => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
+    }
+
+    /**
+     *
+     * @param stepSpecified
+     * @returns {boolean}
+     */
+    isVisibleStep(stepSpecified) {
+        const { stepCurrent } = this.state;
+        return stepSpecified === stepCurrent;
+    }
+
+    /**
+     *
+     * @param id
+     * @param value
+     */
+    onChangeInput({ target: { id, value }}) {
+        this._handle('dataSteps', id, value);
+    }
+
+    /**
+     *
+     */
+    nextStep() {
+        let { stepCurrent, progressBar } = this.state;
+        stepCurrent+=1; progressBar+=20;
+        this.setState({ stepCurrent, progressBar });
     }
 
     /**
      *
      */
     goBackPage() {
-        this.props.history.goBack();
+        let { stepCurrent, progressBar }= this.state;
+        if(stepCurrent <= 1) {
+            return this.props.history.goBack()
+        } else {
+            stepCurrent-=1; progressBar-=20;
+            this.setState({ stepCurrent, progressBar });
+        }
     }
 
     render() {
+        const { progressBar, dataSteps } = this.state;
         return (
             <Fragment>
                 <BackPage>
@@ -52,11 +113,12 @@ class Register extends React.PureComponent {
                         color={process.env.REACT_APP_DEFAULT_COLOR}
                     />
                 </BackPage>
+                <BarProgress width={`${progressBar}%`}/>
                 <ContainerForm>
                     <ContainerText>
                         <Title>
                             <MaterialIcon
-                                icon={'verified'}
+                                icon={'add_business'}
                                 color={process.env.REACT_APP_DEFAULT_COLOR}
                             />
                             <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>
@@ -71,23 +133,19 @@ class Register extends React.PureComponent {
                     </ContainerText>
                     <Form>
                         <fieldset>
-                            <div className="mb-3">
-                                <InputLabel
-                                    size="lg"
-                                    type="text"
-                                    label="Nome da loja"
-                                    placeholder="Razão social"
+                            <RenderComponent has={this.isVisibleStep(1)}>
+                                <FirstStepFields
+                                    data={dataSteps}
+                                    onChange={this.onChangeInput}
                                 />
-                            </div>
-                            <div className="mb-3">
-                                <InputLabel
-                                    size="lg"
-                                    type="text"
-                                    placeholder="Exemplo.: Renatão Lanches"
-                                    label="Como as pessoas costumam chamar sua loja?"
+                            </RenderComponent>
+                            <RenderComponent has={this.isVisibleStep(2)}>
+                                <SecondStepFields
+                                    data={dataSteps}
+                                    onChange={this.onChangeInput}
                                 />
-                            </div>
-                            <Button size="lg">Continuar</Button>
+                            </RenderComponent>
+                            <Button size="lg" onClick={this.nextStep}>Continuar</Button>
                         </fieldset>
                     </Form>
                 </ContainerForm>

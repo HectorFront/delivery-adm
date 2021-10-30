@@ -3,8 +3,8 @@ import styled, { keyframes } from 'styled-components';
 
 const fade = keyframes`
   from {
-      margin-left: -50px;
-      opacity: 0;
+    opacity: 0;
+    margin-left: -50px;
   }
   to {
     opacity: 1;
@@ -13,8 +13,8 @@ const fade = keyframes`
 `;
 
 const TextAnimation = styled.span`
-  animation: ${fade} ${props => props.seconds}s both;
   color: ${props => props.color};
+  animation: ${fade} ${props => props.seconds}s both;
 `;
 
 export { TextAnimation };
