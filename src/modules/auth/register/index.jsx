@@ -121,13 +121,8 @@ class Register extends React.PureComponent {
                                 icon={'add_business'}
                                 color={process.env.REACT_APP_DEFAULT_COLOR}
                             />
-                            <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>
-                                Registre
-                            </TextAnimation>
-                            &nbsp;sua&nbsp;
-                            <TextAnimation seconds="3" color={process.env.REACT_APP_SECONDARY_COLOR}>
-                                loja
-                            </TextAnimation>
+                            <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation>sua&nbsp;
+                            <TextAnimation seconds="3" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
                         </Title>
                         <Description>Preencha estas informações abaixo para começar</Description>
                     </ContainerText>

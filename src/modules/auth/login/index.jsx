@@ -85,13 +85,8 @@ class Login extends React.PureComponent {
                                 icon={'store_mall_directory'}
                                 color={process.env.REACT_APP_DEFAULT_COLOR}
                             />
-                            <TextAnimation seconds="1">
-                                Área
-                            </TextAnimation>
-                            &nbsp;do&nbsp;
-                            <TextAnimation seconds="3" color={process.env.REACT_APP_DEFAULT_COLOR}>
-                                chefe
-                            </TextAnimation>
+                            <TextAnimation seconds="1">Área</TextAnimation> do&nbsp;
+                            <TextAnimation seconds="3" color={process.env.REACT_APP_DEFAULT_COLOR}>chefe</TextAnimation>
                         </Title>
                         <Description>Aqui você facilita sua venda de forma ágil</Description>
                     </ContainerText>
