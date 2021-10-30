@@ -1,9 +1,8 @@
 /** @name Dependendcies */
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-/** @name Internal */
-import App from './app';
 /** @name External */
+import { App, Auth } from 'template';
 import { RoutesApp, RoutesAuth } from 'modules';
 import ClientRoutes from 'constants/client/routes';
 
@@ -21,11 +20,13 @@ const Routes = () => (
     <Router>
         {!authenticated
             ?
-            <SwitchRoutes>
-                {RoutesAuth.map(({ path, component }, index) =>
-                    <Route key={index} path={path} component={component} />
-                )}
-            </SwitchRoutes>
+            <Auth>
+                <SwitchRoutes>
+                    {RoutesAuth.map(({ path, component }, index) =>
+                        <Route key={index} path={path} component={component} />
+                    )}
+                </SwitchRoutes>
+            </Auth>
             :
             <App>
                 <SwitchRoutes>

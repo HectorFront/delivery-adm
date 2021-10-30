@@ -1,8 +1,5 @@
 /** @name Styled */
 import styled from 'styled-components';
-/** @name Images */
-import SVGShapes from 'assets/svg/shapes.svg';
-import Background from 'assets/backgrounds/food_login.jpg';
 /** @name External */
 import { flex } from 'mixins/global';
 
@@ -54,26 +51,7 @@ const ContainerText = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
 `;
 
-const ContainerAuth = styled.div`
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: 100%;
-  background-image: url(${Background});
-`;
-
-const Content = styled.div`
-  width: 35%;
-  height: 100%;
-  overflow-x: hidden;
-  background-image: url(${SVGShapes});
-
-  @media(max-width: 1510px) {
-    width: 100%;
-  }
-`;
-
-const SelfCenterForm = styled.div`
+const ContainerForm = styled.div`
   width: 100%;
   height: 90%;
   padding: 90px;
@@ -96,11 +74,9 @@ export {
     Form,
     Link,
     Title,
-    Content,
     BackPage,
     Description,
     ContainerText,
     RegisterStore,
-    ContainerAuth,
-    SelfCenterForm
+    ContainerForm
 };

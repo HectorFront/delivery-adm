@@ -3,19 +3,17 @@ import {
     Form,
     Link,
     Title,
-    Content,
     Description,
     ContainerText,
-    ContainerAuth,
     RegisterStore,
-    SelfCenterForm
+    ContainerForm
 } from '../styled';
 /** @name StyledKeyFrames */
 import {
     TextAnimation
 } from '../keyframes';
 /** @name Dependencies */
-import React from 'react';
+import React, { Fragment } from 'react';
 /** @name External */
 import ClientRoutes from 'constants/client/routes';
 import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
@@ -81,56 +79,54 @@ class Login extends React.PureComponent {
     render() {
         const { password: { type } } = this.state;
         return (
-            <ContainerAuth>
-                <Content>
-                    <SelfCenterForm>
-                        <ContainerText>
-                            <Title>
-                                <MaterialIcon
-                                    icon={'store_mall_directory'}
-                                    color={process.env.REACT_APP_DEFAULT_COLOR}
+            <Fragment>
+                <ContainerForm>
+                    <ContainerText>
+                        <Title>
+                            <MaterialIcon
+                                icon={'store_mall_directory'}
+                                color={process.env.REACT_APP_DEFAULT_COLOR}
+                            />
+                            <TextAnimation seconds="1">
+                                Área
+                            </TextAnimation>
+                            &nbsp;do&nbsp;
+                            <TextAnimation seconds="3" color={process.env.REACT_APP_DEFAULT_COLOR}>
+                                chefe
+                            </TextAnimation>
+                        </Title>
+                        <Description>Aqui você facilita sua venda de forma ágil</Description>
+                    </ContainerText>
+                    <Form>
+                        <fieldset>
+                            <div className="mb-3">
+                                <InputLabel
+                                    size="lg"
+                                    type="email"
+                                    label="Email"
+                                    placeholder="seunome@gmail.com"
                                 />
-                                <TextAnimation seconds="1">
-                                    Área
-                                </TextAnimation>
-                                &nbsp;do&nbsp;
-                                <TextAnimation seconds="3" color={process.env.REACT_APP_DEFAULT_COLOR}>
-                                    chefe
-                                </TextAnimation>
-                            </Title>
-                            <Description>Aqui você facilita sua venda de forma ágil</Description>
-                        </ContainerText>
-                        <Form>
-                            <fieldset>
-                                <div className="mb-3">
-                                    <InputLabel
-                                        size="lg"
-                                        type="email"
-                                        label="Email"
-                                        placeholder="seunome@gmail.com"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <InputPasswordLabel
-                                        size="lg"
-                                        type={type}
-                                        label="Senha"
-                                        placeholder="Insira sua senha"
-                                        handleType={this.handleTypePassword}
-                                        icon={<MaterialIcon hover icon={Login.InputTypesPassword[type].icon} />}
-                                    />
-                                    <Link className="form-text">Esqueci minha senha</Link>
-                                </div>
-                                <Button size="lg">Continuar</Button>
-                            </fieldset>
-                        </Form>
-                        <RegisterStore>
-                            Ainda não possui cadastro da sua loja?&nbsp;
-                            <Link onClick={this.goRegister}>Vem com a gente!</Link>
-                        </RegisterStore>
-                    </SelfCenterForm>
-                </Content>
-            </ContainerAuth>
+                            </div>
+                            <div className="mb-3">
+                                <InputPasswordLabel
+                                    size="lg"
+                                    type={type}
+                                    label="Senha"
+                                    placeholder="Insira sua senha"
+                                    handleType={this.handleTypePassword}
+                                    icon={<MaterialIcon hover icon={Login.InputTypesPassword[type].icon} />}
+                                />
+                                <Link className="form-text">Esqueci minha senha</Link>
+                            </div>
+                            <Button size="lg">Continuar</Button>
+                        </fieldset>
+                    </Form>
+                    <RegisterStore>
+                        Ainda não possui cadastro da sua loja?&nbsp;
+                        <Link onClick={this.goRegister}>Vem com a gente!</Link>
+                    </RegisterStore>
+                </ContainerForm>
+            </Fragment>
         )
     }
 }
