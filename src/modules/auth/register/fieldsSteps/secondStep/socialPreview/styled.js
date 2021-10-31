@@ -5,8 +5,8 @@ import { flex } from 'mixins/global';
 const Box = styled.div`
   width: 100%;
   height: 50px;
+  margin-top: 2px;
   border-radius: 3px;
-  background-color: white;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'space-between' })}
 `;
 
