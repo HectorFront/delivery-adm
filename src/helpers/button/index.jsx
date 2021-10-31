@@ -2,12 +2,14 @@ import React from 'react';
 /** @name Internal */
 import { ButtonCustom } from "./styled";
 
-export const Button = React.memo(({ outline = false, size = 'sm', onClick = () => {}, disabled = false, children }) =>
+export const Button = React.memo(({ outline = false, secondary = false, size = 'sm', onClick = () => {}, disabled = false, children }) =>
     <ButtonCustom
         type="button"
-        onClick={onClick}
+        outline={outline}
         disabled={disabled}
-        className={`btn btn-${outline ? 'outline' : 'dark'} btn-${size}`}
+        secondary={secondary}
+        className={`btn btn-dark btn-${size}`}
+        onClick={e => { onClick(e); e.target.blur(); }}
     >
         {children}
     </ButtonCustom>

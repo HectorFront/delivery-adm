@@ -121,7 +121,7 @@ class Register extends React.PureComponent {
                                 icon={'add_business'}
                                 color={process.env.REACT_APP_DEFAULT_COLOR}
                             />
-                            <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation>sua&nbsp;
+                            <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation> sua&nbsp;
                             <TextAnimation seconds="3" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
                         </Title>
                         <Description>Preencha estas informações abaixo para começar</Description>
@@ -140,7 +140,7 @@ class Register extends React.PureComponent {
                                     onChange={this.onChangeInput}
                                 />
                             </RenderComponent>
-                            <Button size="lg" onClick={this.nextStep}>Continuar</Button>
+                            <Button size="lg" secondary onClick={this.nextStep}>Continuar</Button>
                         </fieldset>
                     </Form>
                 </ContainerForm>
