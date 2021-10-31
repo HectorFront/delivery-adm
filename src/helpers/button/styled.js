@@ -1,3 +1,4 @@
+/** @name Styled */
 import styled from 'styled-components';
 
 const ButtonCustom = styled.button`
@@ -13,8 +14,7 @@ const ButtonCustom = styled.button`
       : 'border: 0;'
   };
   background-color: ${props => props.outline 
-      ? 
-      'white' 
+      ? 'white' 
       : props.secondary 
           ? process.env.REACT_APP_SECONDARY_COLOR 
           :  process.env.REACT_APP_DEFAULT_COLOR

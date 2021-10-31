@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   color: #5e5e5e;
-  border: 2px solid ${process.env.REACT_APP_DEFAULT_COLOR};
+  border: 1px solid ${process.env.REACT_APP_DEFAULT_COLOR};
 
   &:focus {
     color: #5e5e5e;

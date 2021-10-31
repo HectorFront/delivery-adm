@@ -5,7 +5,7 @@ const VisibilityPassword = styled.button`
   align-items: center;
   justify-content: center;
   color: ${process.env.REACT_APP_DARK_COLOR};
-  border: 2px solid ${process.env.REACT_APP_DEFAULT_COLOR};
+  border: 1px solid ${process.env.REACT_APP_DEFAULT_COLOR};
   border-left: 0;
   &:hover {
     opacity: .7;

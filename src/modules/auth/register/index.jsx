@@ -15,24 +15,31 @@ import {
 /** @name Dependencies */
 import React, { Fragment } from 'react';
 /** @name Internal */
-import { FirstStepFields, SecondStepFields } from './fieldsSteps';
+import { FirstStepFields, SecondStepFields, ThirdStepFields } from './fieldsSteps';
 /** @name External */
 import { RenderComponent, Button, MaterialIcon } from 'helpers';
 
 class Register extends React.PureComponent {
 
     static INITIAL_DATA = {
+        cep: null,
         cnpj: null,
+        city: null,
         email: null,
+        address: null,
+        facebook: null,
+        telephone: null,
+        instagram: null,
+        cellphone: null,
         fantasy_name: null,
-        social_reason: null,
+        social_reason: null
     };
 
     constructor(props) {
         super(props);
         this.state = {
             stepCurrent: 1,
-            progressBar: 0,
+            progressBar: 33.33,
             dataSteps: {...Register.INITIAL_DATA},
         };
         this.bindFunctions();
@@ -83,7 +90,7 @@ class Register extends React.PureComponent {
      */
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1; progressBar+=20;
+        stepCurrent+=1; progressBar+=33.33;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -95,7 +102,7 @@ class Register extends React.PureComponent {
         if(stepCurrent <= 1) {
             return this.props.history.goBack()
         } else {
-            stepCurrent-=1; progressBar-=20;
+            stepCurrent-=1; progressBar-=33.33;
             this.setState({ stepCurrent, progressBar });
         }
     }
@@ -136,6 +143,12 @@ class Register extends React.PureComponent {
                             </RenderComponent>
                             <RenderComponent has={this.isVisibleStep(2)}>
                                 <SecondStepFields
+                                    data={dataSteps}
+                                    onChange={this.onChangeInput}
+                                />
+                            </RenderComponent>
+                            <RenderComponent has={this.isVisibleStep(3)}>
+                                <ThirdStepFields
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
