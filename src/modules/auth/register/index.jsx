@@ -124,16 +124,39 @@ class Register extends React.PureComponent {
                 </BackPage>
                 <BarProgress width={`${progressBar}%`}/>
                 <ContainerForm>
+
                     <ContainerText>
-                        <Title>
-                            <MaterialIcon
-                                icon={'add_business'}
-                                color={process.env.REACT_APP_DEFAULT_COLOR}
-                            />
-                            <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation> sua&nbsp;
-                            <TextAnimation seconds="3" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
-                        </Title>
-                        <Description>Preencha estas informações abaixo para começar</Description>
+                        <RenderComponent has={this.isVisibleStep(1)}>
+                            <Title>
+                                <MaterialIcon
+                                    icon={'add_business'}
+                                    color={process.env.REACT_APP_DEFAULT_COLOR}
+                                />
+                                <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation> sua&nbsp;
+                                <TextAnimation seconds="2" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
+                            </Title>
+                            <Description>Preencha estas informações abaixo para começar</Description>
+                        </RenderComponent>
+                        <RenderComponent has={this.isVisibleStep(2)}>
+                            <Title>
+                                <MaterialIcon
+                                    icon={'contact_support'}
+                                    color={process.env.REACT_APP_SECONDARY_COLOR}
+                                />
+                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Responsável</TextAnimation> da loja
+                            </Title>
+                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social da loja, seja como dona, sócia ou sócia administrativa.</Description>
+                        </RenderComponent>
+                        <RenderComponent has={this.isVisibleStep(3)}>
+                            <Title>
+                                <MaterialIcon
+                                    icon={'receipt_long'}
+                                    color={process.env.REACT_APP_SECONDARY_COLOR}
+                                />
+                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Dados</TextAnimation> da loja
+                            </Title>
+                            <Description>Preencha os dados de localização de sua loja e as redes socias.</Description>
+                        </RenderComponent>
                     </ContainerText>
                     <Form>
                         <fieldset>

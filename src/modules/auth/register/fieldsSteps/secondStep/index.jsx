@@ -1,15 +1,9 @@
-/** @name Images */
-import IconFacebook from 'assets/icons/facebook.png';
-import IconInstagram from 'assets/icons/instagram.png';
 /** @name Dependencies */
 import React, { Fragment } from 'react';
-/** @name Internal */
-import { PreviewFacebook } from './socialPreview/facebook';
-import { PreviewInstagram } from './socialPreview/instagram';
 /** @name External */
-import { Card, Row, Col, InputLabel } from 'helpers';
+import { Row, Col, InputLabel } from 'helpers';
 
-export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email, instagram, facebook }, onChange }) =>
+export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }) =>
     <Fragment>
         <div className="mb-3">
             <InputLabel
@@ -24,7 +18,7 @@ export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email
             />
         </div>
         <Row>
-            <Col cols="12 12 6 6 6">
+            <Col>
                 <div className="mb-4">
                     <InputLabel
                         size="lg"
@@ -38,7 +32,7 @@ export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email
                     />
                 </div>
             </Col>
-            <Col cols="12 12 6 6 6">
+            <Col>
                 <div className="mb-4">
                     <InputLabel
                         size="lg"
@@ -52,35 +46,33 @@ export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email
                     />
                 </div>
             </Col>
-            <Col>
-                <Card className="mb-3 p-3">
+            <Col cols="12 12 6 6 6">
+                <div className="mb-3">
                     <InputLabel
                         size="lg"
                         type="text"
-                        id="instagram"
-                        label="Instagram"
+                        id="telephone"
                         onChange={onChange}
-                        placeholder="@sualoja"
-                        value={instagram ?? ''}
-                        iconLabelImg={IconInstagram}
+                        value={telephone ?? ''}
+                        label="Telefone da loja"
+                        error={telephone === ''}
+                        placeholder="(DDD) 9999-9999"
                     />
-                    <PreviewInstagram instagram={instagram}/>
-                </Card>
+                </div>
             </Col>
-            <Col>
-                <Card className="mb-5 p-3">
+            <Col cols="12 12 6 6 6">
+                <div className="mb-3">
                     <InputLabel
                         size="lg"
                         type="text"
-                        id="facebook"
-                        label="Facebook"
+                        id="cellphone"
                         onChange={onChange}
-                        placeholder="/sualoja"
-                        value={facebook ?? ''}
-                        iconLabelImg={IconFacebook}
+                        value={cellphone ?? ''}
+                        error={cellphone === ''}
+                        placeholder="(DDD) 99999-9999"
+                        label="Telefone celular"
                     />
-                    <PreviewFacebook facebook={facebook}/>
-                </Card>
+                </div>
             </Col>
         </Row>
     </Fragment>

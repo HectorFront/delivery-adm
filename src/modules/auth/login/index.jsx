@@ -112,7 +112,7 @@ class Login extends React.PureComponent {
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>
-                            <Button size="lg">Continuar</Button>
+                            <Button size="lg">Entrar</Button>
                         </fieldset>
                     </Form>
                     <RegisterStore>
