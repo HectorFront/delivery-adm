@@ -17,7 +17,7 @@ const Content = styled.div`
   height: 100%;
   overflow-x: hidden;
   background-image: url(${SVGShapes});
-
+  
   @media(max-width: 1510px) {
     width: 100%;
   }

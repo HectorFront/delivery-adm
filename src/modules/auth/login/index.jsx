@@ -3,6 +3,7 @@ import {
     Form,
     Link,
     Title,
+    Center,
     Description,
     ContainerText,
     RegisterStore,
@@ -13,7 +14,7 @@ import {
     TextAnimation
 } from '../keyframes';
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 /** @name External */
 import ClientRoutes from 'constants/client/routes';
 import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
@@ -77,7 +78,7 @@ class Login extends React.PureComponent {
     render() {
         const { password: { type } } = this.state;
         return (
-            <Fragment>
+            <Center>
                 <ContainerForm>
                     <ContainerText>
                         <Title>
@@ -119,7 +120,7 @@ class Login extends React.PureComponent {
                         <Link onClick={this.goRegister}>Vem com a gente!</Link>
                     </RegisterStore>
                 </ContainerForm>
-            </Fragment>
+            </Center>
         )
     }
 }

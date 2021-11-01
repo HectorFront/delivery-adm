@@ -1,6 +1,6 @@
 /** @name Styled */
 import styled from 'styled-components';
-/** @name External */
+/** @name Mixins */
 import { flex } from 'mixins/global';
 
 const Label = styled.label`

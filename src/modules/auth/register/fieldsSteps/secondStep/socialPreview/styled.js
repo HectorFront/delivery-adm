@@ -1,5 +1,6 @@
 /** @name Styled */
 import styled from 'styled-components';
+/** @name Mixins */
 import { flex } from 'mixins/global';
 
 const Box = styled.div`
@@ -53,6 +54,9 @@ const ViewPage = styled.button`
           ? process.env.REACT_APP_FACEBOOK_BACKGROUND_COLOR 
           : process.env.REACT_APP_INSTAGRAM_BACKGROUND_COLOR
   };
+  &:hover {
+    opacity: .8;
+  }
 `;
 
 export {

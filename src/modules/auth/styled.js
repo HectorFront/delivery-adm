@@ -2,8 +2,13 @@
 import styled from 'styled-components';
 /** @name Dependencies */
 import React from 'react';
-/** @name External */
+/** @name Mixins */
 import { flex } from 'mixins/global';
+
+const Center = styled.div`
+  height: 100%;
+  ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
+`;
 
 const Form = styled.form`
   width: 100%;
@@ -22,7 +27,7 @@ const BarProgress = styled.div`
 
 const BackPage = styled.div`
   width: 100%;
-  height: 80px;
+  height: 65px;
   padding: 20px;
   position: relative;
   background-color: white;
@@ -61,7 +66,7 @@ const ContainerText = styled.div`
 
 const ContainerForm = styled.div`
   width: 100%;
-  height: 90%;
+  height: auto;
   padding: 90px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })};
 
@@ -82,6 +87,7 @@ export {
     Form,
     Link,
     Title,
+    Center,
     BackPage,
     Description,
     BarProgress,

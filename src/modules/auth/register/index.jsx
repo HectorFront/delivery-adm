@@ -37,9 +37,11 @@ class Register extends React.PureComponent {
 
     constructor(props) {
         super(props);
+        this.steps = 3;
+        this.progressByStage = 100 / this.steps;
         this.state = {
             stepCurrent: 1,
-            progressBar: 33.33,
+            progressBar: this.progressByStage,
             dataSteps: {...Register.INITIAL_DATA},
         };
         this.bindFunctions();
@@ -90,7 +92,7 @@ class Register extends React.PureComponent {
      */
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1; progressBar+=33.33;
+        stepCurrent+=1; progressBar+=this.progressByStage;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -102,7 +104,7 @@ class Register extends React.PureComponent {
         if(stepCurrent <= 1) {
             return this.props.history.goBack()
         } else {
-            stepCurrent-=1; progressBar-=33.33;
+            stepCurrent-=1; progressBar-=this.progressByStage;
             this.setState({ stepCurrent, progressBar });
         }
     }

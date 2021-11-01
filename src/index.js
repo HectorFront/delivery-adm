@@ -1,5 +1,7 @@
 /** @name ResetCSS */
 import './normalize.css';
+/** @name ScrollBarCSS */
+import './scrollbar.css';
 /** @name Fonts */
 import './fonts.css';
 /** @name MaterialIcons */

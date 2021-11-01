@@ -17,7 +17,14 @@ export const PreviewInstagram = React.memo(({ instagram }) =>
             </Avatar>
             <InfoProfile>
                 <User instagram>{!instagram?.length ? 'sualoja' : instagram}</User>
-                <Description>Perfil do Instagram</Description>
+                <Description>
+                    Perfil do Instagram&nbsp;
+                    <MaterialIcon
+                        size="10px"
+                        color="gray"
+                        icon="public"
+                    />
+                </Description>
             </InfoProfile>
         </Profile>
         <ViewPage instagram>Ver perfil</ViewPage>
