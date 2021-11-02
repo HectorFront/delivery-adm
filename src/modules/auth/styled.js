@@ -12,7 +12,6 @@ const Center = styled.div`
 
 const Logo = styled.img`
   width: auto;
-  height: 100px;
 `;
 
 const Form = styled.form`
@@ -44,7 +43,7 @@ const BackPage = styled.div`
   padding: 20px;
   position: relative;
   background-color: white;
-  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'start' })}
+  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center' })}
 `;
 
 const Description = styled.span`

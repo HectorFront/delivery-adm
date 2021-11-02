@@ -85,6 +85,7 @@ class StoreLogin extends React.PureComponent {
                 <ContainerForm>
                     <Logo
                         alt="Logo"
+                        height="100px"
                         className="mb-5"
                         src={LogoDefault}
                     />

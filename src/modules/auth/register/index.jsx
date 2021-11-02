@@ -7,18 +7,20 @@ import {
     BarProgress,
     ContainerText,
     ContainerForm,
-    ContainerBarProgress
+    ContainerBarProgress, Logo
 } from '../styled';
 /** @name StyledKeyFrames */
 import {
     TextAnimation
 } from '../keyframes';
+/** @name Images */
+import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React, { Fragment } from 'react';
 /** @name Internal */
 import { FirstStepFields, SecondStepFields, ThirdStepFields } from './fieldsSteps';
 /** @name External */
-import { Render, Button, MaterialIcon } from 'helpers';
+import { Row, Col, Render, Button, MaterialIcon } from 'helpers';
 
 class StoreRegister extends React.PureComponent {
 
@@ -38,7 +40,7 @@ class StoreRegister extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.steps = 3;
+        this.steps = 4;
         this.progressByStage = 100 / this.steps;
         this.state = {
             stepCurrent: 1,
@@ -122,6 +124,12 @@ class StoreRegister extends React.PureComponent {
                         onClick={this.goBackPage}
                         color={process.env.REACT_APP_DEFAULT_COLOR}
                     />
+                    <Logo
+                        alt="Logo"
+                        height="100%"
+                        src={LogoDefault}
+                        style={{ marginLeft: 'calc(100% / 2 - 65px)' }}
+                    />
                 </BackPage>
                 <ContainerBarProgress>
                     <BarProgress width={`${progressBar}%`}/>
@@ -159,6 +167,16 @@ class StoreRegister extends React.PureComponent {
                             </Title>
                             <Description>Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja.</Description>
                         </Render>
+                        <Render has={this.isVisibleStep(4)}>
+                            <Title>
+                                <MaterialIcon
+                                    icon={'sell'}
+                                    color={process.env.REACT_APP_SECONDARY_COLOR}
+                                />
+                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Nossos</TextAnimation> planos
+                            </Title>
+                            <Description>Escolha o plano que seria ideal para você.</Description>
+                        </Render>
                     </ContainerText>
                     <Form>
                         <fieldset>
@@ -179,6 +197,27 @@ class StoreRegister extends React.PureComponent {
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
+                            </Render>
+                            <Render has={this.isVisibleStep(4)}>
+                                <Row className="card-deck mb-3 text-center">
+                                    <Col cols="12 12 6 6 6">
+                                        <div className="card mb-4 shadow-sm">
+                                            <div className="card-header bg-dark bg-gradient text-white">
+                                                <h4 className="my-0 font-weight-normal">Free</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <Title>
+                                                    <b>R$ 100</b>
+                                                </Title>
+                                                <ul className="list-unstyled mt-3 mb-4 text-start">
+                                                    <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;Benefício 1.</li>
+                                                    <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;Benefício 2.</li>
+                                                </ul>
+                                                <Button size="lg">Selecionar</Button>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
                             </Render>
                             <Button size="lg" secondary onClick={this.nextStep}>Continuar</Button>
                         </fieldset>
