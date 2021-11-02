@@ -2,6 +2,7 @@
 import {
     Form,
     Link,
+    Logo,
     Title,
     Center,
     Description,
@@ -13,6 +14,8 @@ import {
 import {
     TextAnimation
 } from '../keyframes';
+/** @name Images */
+import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
@@ -80,6 +83,11 @@ class StoreLogin extends React.PureComponent {
         return (
             <Center>
                 <ContainerForm>
+                    <Logo
+                        alt="Logo"
+                        className="mb-5"
+                        src={LogoDefault}
+                    />
                     <ContainerText>
                         <Title>
                             <MaterialIcon

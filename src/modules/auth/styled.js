@@ -10,6 +10,11 @@ const Center = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
 `;
 
+const Logo = styled.img`
+  width: auto;
+  height: 100px;
+`;
+
 const Form = styled.form`
   width: 100%;
 `;
@@ -85,6 +90,7 @@ const ContainerForm = styled.div`
 export {
     Form,
     Link,
+    Logo,
     Title,
     Center,
     BackPage,
