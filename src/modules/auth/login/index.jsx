@@ -19,7 +19,7 @@ import React from 'react';
 import ClientRoutes from 'constants/client/routes';
 import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
 
-class Login extends React.PureComponent {
+class StoreLogin extends React.PureComponent {
 
     static INPUT_TYPES_PASSWORD = {
         text: {
@@ -65,7 +65,7 @@ class Login extends React.PureComponent {
      */
     handleTypePassword() {
         const { password: { type } } = this.state;
-        this._handle('password', 'type', Login.INPUT_TYPES_PASSWORD[type].type);
+        this._handle('password', 'type', StoreLogin.INPUT_TYPES_PASSWORD[type].type);
     }
 
     /**
@@ -108,7 +108,7 @@ class Login extends React.PureComponent {
                                     label="Senha"
                                     placeholder="Insira sua senha"
                                     handleType={this.handleTypePassword}
-                                    icon={<MaterialIcon hover icon={Login.INPUT_TYPES_PASSWORD[type].icon} />}
+                                    icon={<MaterialIcon hover icon={StoreLogin.INPUT_TYPES_PASSWORD[type].icon} />}
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>
@@ -125,4 +125,4 @@ class Login extends React.PureComponent {
     }
 }
 
-export default Login;
+export default StoreLogin;

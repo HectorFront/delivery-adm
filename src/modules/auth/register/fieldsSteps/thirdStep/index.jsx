@@ -4,8 +4,7 @@ import IconInstagram from 'assets/icons/instagram.png';
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
-import { PreviewFacebook } from './socialPreview/facebook';
-import { PreviewInstagram } from './socialPreview/instagram';
+import { PreviewFacebook, PreviewInstagram } from './socialNetworkPreview';
 /** @name External */
 import { Card, Row, Col, InputLabel } from 'helpers';
 
@@ -62,10 +61,10 @@ export const ThirdStepFields = React.memo(({ data: { instagram, facebook, cep, c
                     label="Instagram"
                     onChange={onChange}
                     placeholder="@sualoja"
-                    value={instagram ?? ''}
                     iconLabelImg={IconInstagram}
+                    value={instagram?.toLowerCase() ?? ''}
                 />
-                <PreviewInstagram instagram={instagram}/>
+                <PreviewInstagram instagram={instagram?.toLowerCase()}/>
             </Card>
         </Col>
         <Col>
@@ -77,10 +76,10 @@ export const ThirdStepFields = React.memo(({ data: { instagram, facebook, cep, c
                     label="Facebook"
                     onChange={onChange}
                     placeholder="/sualoja"
-                    value={facebook ?? ''}
                     iconLabelImg={IconFacebook}
+                    value={facebook?.toLowerCase() ?? ''}
                 />
-                <PreviewFacebook facebook={facebook}/>
+                <PreviewFacebook facebook={facebook?.toLowerCase()}/>
             </Card>
         </Col>
     </Row>

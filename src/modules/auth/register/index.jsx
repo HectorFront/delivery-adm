@@ -6,7 +6,8 @@ import {
     Description,
     BarProgress,
     ContainerText,
-    ContainerForm
+    ContainerForm,
+    ContainerBarProgress
 } from '../styled';
 /** @name StyledKeyFrames */
 import {
@@ -17,9 +18,9 @@ import React, { Fragment } from 'react';
 /** @name Internal */
 import { FirstStepFields, SecondStepFields, ThirdStepFields } from './fieldsSteps';
 /** @name External */
-import { RenderComponent, Button, MaterialIcon } from 'helpers';
+import { Render, Button, MaterialIcon } from 'helpers';
 
-class Register extends React.PureComponent {
+class StoreRegister extends React.PureComponent {
 
     static INITIAL_DATA = {
         cep: null,
@@ -42,7 +43,7 @@ class Register extends React.PureComponent {
         this.state = {
             stepCurrent: 1,
             progressBar: this.progressByStage,
-            dataSteps: {...Register.INITIAL_DATA},
+            dataSteps: {...StoreRegister.INITIAL_DATA},
         };
         this.bindFunctions();
     }
@@ -122,11 +123,12 @@ class Register extends React.PureComponent {
                         color={process.env.REACT_APP_DEFAULT_COLOR}
                     />
                 </BackPage>
-                <BarProgress width={`${progressBar}%`}/>
+                <ContainerBarProgress>
+                    <BarProgress width={`${progressBar}%`}/>
+                </ContainerBarProgress>
                 <ContainerForm>
-
                     <ContainerText>
-                        <RenderComponent has={this.isVisibleStep(1)}>
+                        <Render has={this.isVisibleStep(1)}>
                             <Title>
                                 <MaterialIcon
                                     icon={'add_business'}
@@ -136,48 +138,48 @@ class Register extends React.PureComponent {
                                 <TextAnimation seconds="2" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
                             </Title>
                             <Description>Preencha estas informações abaixo para começar</Description>
-                        </RenderComponent>
-                        <RenderComponent has={this.isVisibleStep(2)}>
+                        </Render>
+                        <Render has={this.isVisibleStep(2)}>
                             <Title>
                                 <MaterialIcon
-                                    icon={'contact_support'}
+                                    icon={'person_pin'}
                                     color={process.env.REACT_APP_SECONDARY_COLOR}
                                 />
                                 <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Responsável</TextAnimation> da loja
                             </Title>
-                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social da loja, seja como dona, sócia ou sócia administrativa.</Description>
-                        </RenderComponent>
-                        <RenderComponent has={this.isVisibleStep(3)}>
+                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social, seja sócio(a) administrativo ou dono(a) da loja.</Description>
+                        </Render>
+                        <Render has={this.isVisibleStep(3)}>
                             <Title>
                                 <MaterialIcon
-                                    icon={'receipt_long'}
+                                    icon={'travel_explore'}
                                     color={process.env.REACT_APP_SECONDARY_COLOR}
                                 />
                                 <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Dados</TextAnimation> da loja
                             </Title>
-                            <Description>Preencha os dados de localização de sua loja e as redes socias.</Description>
-                        </RenderComponent>
+                            <Description>Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja.</Description>
+                        </Render>
                     </ContainerText>
                     <Form>
                         <fieldset>
-                            <RenderComponent has={this.isVisibleStep(1)}>
+                            <Render has={this.isVisibleStep(1)}>
                                 <FirstStepFields
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
-                            </RenderComponent>
-                            <RenderComponent has={this.isVisibleStep(2)}>
+                            </Render>
+                            <Render has={this.isVisibleStep(2)}>
                                 <SecondStepFields
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
-                            </RenderComponent>
-                            <RenderComponent has={this.isVisibleStep(3)}>
+                            </Render>
+                            <Render has={this.isVisibleStep(3)}>
                                 <ThirdStepFields
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
-                            </RenderComponent>
+                            </Render>
                             <Button size="lg" secondary onClick={this.nextStep}>Continuar</Button>
                         </fieldset>
                     </Form>
@@ -187,4 +189,4 @@ class Register extends React.PureComponent {
     }
 }
 
-export default Register;
+export default StoreRegister;

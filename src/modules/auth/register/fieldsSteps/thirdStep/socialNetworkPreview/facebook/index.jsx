@@ -1,14 +1,16 @@
 /** @name Styled */
-import {Box, Avatar, Profile, User, Description, ViewPage, InfoProfile } from '../styled';
+import { Box, Avatar, Profile, User, Description, ViewPage, InfoProfile } from '../styled';
 /** @name Dependencies */
 import React from 'react';
+/** @name Internal */
+import { StorageStoreRegister } from 'modules/auth/register/storage';
 /** @name External */
 import { MaterialIcon } from 'helpers';
 
-export const PreviewInstagram = React.memo(({ instagram }) =>
+export const PreviewFacebook = React.memo(({ facebook }) =>
     <Box>
         <Profile>
-            <Avatar instagram>
+            <Avatar facebook>
                 <MaterialIcon
                     size="18px"
                     color="white"
@@ -16,9 +18,9 @@ export const PreviewInstagram = React.memo(({ instagram }) =>
                 />
             </Avatar>
             <InfoProfile>
-                <User instagram>{!instagram?.length ? 'sualoja' : instagram}</User>
+                <User facebook>{!facebook?.length ? 'sualoja' : facebook}</User>
                 <Description>
-                    Perfil do Instagram&nbsp;
+                    Página do facebook&nbsp;
                     <MaterialIcon
                         size="10px"
                         color="gray"
@@ -27,6 +29,12 @@ export const PreviewInstagram = React.memo(({ instagram }) =>
                 </Description>
             </InfoProfile>
         </Profile>
-        <ViewPage instagram>Ver perfil</ViewPage>
+        <ViewPage
+            facebook
+            type="button"
+            onClick={() => StorageStoreRegister.visitSocialNetwork('facebook', facebook ?? '')}
+        >
+            Ver página
+        </ViewPage>
     </Box>
 );

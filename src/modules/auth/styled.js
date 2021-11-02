@@ -20,19 +20,25 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const BarProgress = styled.div`
+const ContainerBarProgress = styled.div`
+  width: 100%;
   height: 5px;
+  background-color: #e0e0e0;
+`;
+
+const BarProgress = styled.div`
+  height: 100%;
+  position: relative;
   width: ${props => props.width};
   background-color: ${process.env.REACT_APP_DEFAULT_COLOR};
 `;
 
 const BackPage = styled.div`
   width: 100%;
-  height: 65px;
+  height: 70px;
   padding: 20px;
   position: relative;
   background-color: white;
-  border-bottom: 5px solid #e0e0e0;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'start' })}
 `;
 
@@ -68,16 +74,8 @@ const ContainerText = styled.div`
 const ContainerForm = styled.div`
   width: 100%;
   height: auto;
-  padding: 90px;
+  padding: 38px 50px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })};
-
-  @media(max-width: 1720px) {
-    padding: 30px;
-  }
-
-  @media(max-width: 1510px) {
-    padding: 90px;
-  }
 
   @media(max-width: 720px) {
     padding: 30px;
@@ -94,5 +92,6 @@ export {
     BarProgress,
     ContainerText,
     RegisterStore,
-    ContainerForm
+    ContainerForm,
+    ContainerBarProgress
 };

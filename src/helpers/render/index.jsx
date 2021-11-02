@@ -1,4 +1,4 @@
 import React from 'react';
 
-export const RenderComponent = ({ has, children }) =>
+export const Render = ({ has, children }) =>
     has ? children : false;
