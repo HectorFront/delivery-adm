@@ -43,7 +43,7 @@ const BackPage = styled.div`
   padding: 20px;
   position: relative;
   background-color: white;
-  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center' })}
+  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
 `;
 
 const Description = styled.span`

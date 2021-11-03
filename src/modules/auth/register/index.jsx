@@ -122,13 +122,13 @@ class StoreRegister extends React.PureComponent {
                         size="45px"
                         icon={'arrow_back'}
                         onClick={this.goBackPage}
+                        style={{ position: 'absolute', left: 25 }}
                         color={process.env.REACT_APP_DEFAULT_COLOR}
                     />
                     <Logo
                         alt="Logo"
                         height="100%"
                         src={LogoDefault}
-                        style={{ marginLeft: 'calc(100% / 2 - 65px)' }}
                     />
                 </BackPage>
                 <ContainerBarProgress>
@@ -155,7 +155,7 @@ class StoreRegister extends React.PureComponent {
                                 />
                                 <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Responsável</TextAnimation> da loja
                             </Title>
-                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social, seja sócio(a) administrativo ou dono(a) da loja.</Description>
+                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social, seja você um sócio administrativo ou dono(a) da loja.</Description>
                         </Render>
                         <Render has={this.isVisibleStep(3)}>
                             <Title>
@@ -203,7 +203,7 @@ class StoreRegister extends React.PureComponent {
                                     <Col cols="12 12 6 6 6">
                                         <div className="card mb-4 shadow-sm">
                                             <div className="card-header bg-dark bg-gradient text-white">
-                                                <h4 className="my-0 font-weight-normal">Free</h4>
+                                                <h4 className="my-0 font-weight-normal">Essencial</h4>
                                             </div>
                                             <div className="card-body">
                                                 <Title>
@@ -211,7 +211,6 @@ class StoreRegister extends React.PureComponent {
                                                 </Title>
                                                 <ul className="list-unstyled mt-3 mb-4 text-start">
                                                     <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;Benefício 1.</li>
-                                                    <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;Benefício 2.</li>
                                                 </ul>
                                                 <Button size="lg">Selecionar</Button>
                                             </div>
