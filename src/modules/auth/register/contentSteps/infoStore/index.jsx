@@ -8,7 +8,7 @@ import { PreviewFacebook, PreviewInstagram } from './socialNetworkPreview';
 /** @name External */
 import { Card, Row, Col, InputLabel } from 'helpers';
 
-export const ThirdStepFields = React.memo(({ data: { instagram, facebook, cep, city, address }, onChange }) =>
+export const InfoStore = React.memo(({ data: { instagram, facebook, cep, city, address }, onChange }) =>
     <Row>
         <Col cols="12 12 4 4 4">
             <div className="mb-3">

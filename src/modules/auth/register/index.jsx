@@ -1,26 +1,21 @@
 /** @name Styled */
 import {
     Form,
-    Title,
     BackPage,
-    Description,
     BarProgress,
     ContainerText,
     ContainerForm,
     ContainerBarProgress, Logo
 } from '../styled';
-/** @name StyledKeyFrames */
-import {
-    TextAnimation
-} from '../keyframes';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React, { Fragment } from 'react';
 /** @name Internal */
-import { FirstStepFields, SecondStepFields, ThirdStepFields } from './fieldsSteps';
+import { TabStep } from './helpers';
+import { RegisterStore, ManagerStore, InfoStore } from './contentSteps';
 /** @name External */
-import { Row, Col, Render, Button, MaterialIcon } from 'helpers';
+import { Row, Col, Render, Price, Button, MaterialIcon } from 'helpers';
 
 class StoreRegister extends React.PureComponent {
 
@@ -137,63 +132,54 @@ class StoreRegister extends React.PureComponent {
                 <ContainerForm>
                     <ContainerText>
                         <Render has={this.isVisibleStep(1)}>
-                            <Title>
-                                <MaterialIcon
-                                    icon={'add_business'}
-                                    color={process.env.REACT_APP_DEFAULT_COLOR}
-                                />
-                                <TextAnimation seconds="1" color={process.env.REACT_APP_DEFAULT_COLOR}>Registre</TextAnimation> sua&nbsp;
-                                <TextAnimation seconds="2" color={process.env.REACT_APP_SECONDARY_COLOR}>loja</TextAnimation>
-                            </Title>
-                            <Description>Preencha estas informações abaixo para começar</Description>
+                            <TabStep
+                                icon="add_business"
+                                paintedText="Registre"
+                                normalText="sua loja"
+                                description="Preencha estas informações abaixo para começar."
+                            />
                         </Render>
                         <Render has={this.isVisibleStep(2)}>
-                            <Title>
-                                <MaterialIcon
-                                    icon={'person_pin'}
-                                    color={process.env.REACT_APP_SECONDARY_COLOR}
-                                />
-                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Responsável</TextAnimation> da loja
-                            </Title>
-                            <Description>Preencha estes dados como pessoa que tenha o nome no contrato social, seja você um sócio administrativo ou dono(a) da loja.</Description>
+                            <TabStep
+                                icon="person_pin"
+                                paintedText="Responsável"
+                                normalText="da loja"
+                                description="Preencha estes dados como pessoa que tenha o nome no contrato social, seja você um sócio administrativo ou dono(a) da loja."
+                            />
                         </Render>
                         <Render has={this.isVisibleStep(3)}>
-                            <Title>
-                                <MaterialIcon
-                                    icon={'travel_explore'}
-                                    color={process.env.REACT_APP_SECONDARY_COLOR}
-                                />
-                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Dados</TextAnimation> da loja
-                            </Title>
-                            <Description>Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja.</Description>
+                            <TabStep
+                                icon="travel_explore"
+                                paintedText="Dados"
+                                normalText="da loja"
+                                description="Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja."
+                            />
                         </Render>
                         <Render has={this.isVisibleStep(4)}>
-                            <Title>
-                                <MaterialIcon
-                                    icon={'sell'}
-                                    color={process.env.REACT_APP_SECONDARY_COLOR}
-                                />
-                                <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>Nossos</TextAnimation> planos
-                            </Title>
-                            <Description>Escolha o plano que seria ideal para você.</Description>
+                            <TabStep
+                                icon="request_quote"
+                                paintedText="Nossos"
+                                normalText="planos"
+                                description="Escolha o plano que seria ideal para você."
+                            />
                         </Render>
                     </ContainerText>
                     <Form>
                         <fieldset>
                             <Render has={this.isVisibleStep(1)}>
-                                <FirstStepFields
+                                <RegisterStore
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(2)}>
-                                <SecondStepFields
+                                <ManagerStore
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(3)}>
-                                <ThirdStepFields
+                                <InfoStore
                                     data={dataSteps}
                                     onChange={this.onChangeInput}
                                 />
@@ -201,20 +187,32 @@ class StoreRegister extends React.PureComponent {
                             <Render has={this.isVisibleStep(4)}>
                                 <Row className="card-deck mb-3 text-center">
                                     <Col cols="12 12 6 6 6">
-                                        <div className="card mb-4 shadow-sm">
-                                            <div className="card-header bg-dark bg-gradient text-white">
-                                                <h4 className="my-0 font-weight-normal">Essencial</h4>
-                                            </div>
-                                            <div className="card-body">
-                                                <Title>
-                                                    <b>R$ 100</b>
-                                                </Title>
-                                                <ul className="list-unstyled mt-3 mb-4 text-start">
-                                                    <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;Benefício 1.</li>
-                                                </ul>
-                                                <Button size="lg">Selecionar</Button>
-                                            </div>
-                                        </div>
+                                        <Price
+                                            price={110}
+                                            title="Básico"
+                                            benefits={['item 1']}
+                                        />
+                                    </Col>
+                                    <Col cols="12 12 6 6 6">
+                                        <Price
+                                            price={150}
+                                            title="Padrão"
+                                            benefits={['item 1']}
+                                        />
+                                    </Col>
+                                    <Col cols="12 12 6 6 6">
+                                        <Price
+                                            price={150}
+                                            title="Pro"
+                                            benefits={['item 1']}
+                                        />
+                                    </Col>
+                                    <Col cols="12 12 6 6 6">
+                                        <Price
+                                            price={150}
+                                            title="Empresarial"
+                                            benefits={['item 1']}
+                                        />
                                     </Col>
                                 </Row>
                             </Render>

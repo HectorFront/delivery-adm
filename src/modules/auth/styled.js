@@ -1,7 +1,5 @@
 /** @name Styled */
 import styled from 'styled-components';
-/** @name Dependencies */
-import React from 'react';
 /** @name Mixins */
 import { flex } from 'mixins/global';
 

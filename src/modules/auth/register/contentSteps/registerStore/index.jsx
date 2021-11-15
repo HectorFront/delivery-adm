@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 /** @name External */
 import { InputLabel } from 'helpers';
 
-export const FirstStepFields = React.memo(({ data: { social_reason, fantasy_name }, onChange }) =>
+export const RegisterStore = React.memo(({ data: { social_reason, fantasy_name }, onChange }) =>
     <Fragment>
         <div className="mb-3">
             <InputLabel

@@ -1,3 +1,4 @@
+/** @name Styled */
 import styled from 'styled-components';
 
 const VisibilityPassword = styled.button`

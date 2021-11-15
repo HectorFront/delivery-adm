@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 /** @name External */
 import { Row, Col, InputLabel } from 'helpers';
 
-export const SecondStepFields = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }) =>
+export const ManagerStore = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }) =>
     <Fragment>
         <div className="mb-3">
             <InputLabel
