@@ -13,9 +13,9 @@ import LogoDefault from 'assets/logos/default.svg';
 import React, { Fragment } from 'react';
 /** @name Internal */
 import { TabStep } from './helpers';
-import { RegisterStore, ManagerStore, InfoStore } from './contentSteps';
+import { RegisterStore, ManagerStore, InfoStore, PricePlan } from './contentSteps';
 /** @name External */
-import { Row, Col, Render, Price, Button, MaterialIcon } from 'helpers';
+import { Render, Button, MaterialIcon } from 'helpers';
 
 class StoreRegister extends React.PureComponent {
 
@@ -185,36 +185,9 @@ class StoreRegister extends React.PureComponent {
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(4)}>
-                                <Row className="card-deck mb-3 text-center">
-                                    <Col cols="12 12 6 6 6">
-                                        <Price
-                                            price={110}
-                                            title="Básico"
-                                            benefits={['item 1']}
-                                        />
-                                    </Col>
-                                    <Col cols="12 12 6 6 6">
-                                        <Price
-                                            price={150}
-                                            title="Padrão"
-                                            benefits={['item 1']}
-                                        />
-                                    </Col>
-                                    <Col cols="12 12 6 6 6">
-                                        <Price
-                                            price={150}
-                                            title="Pro"
-                                            benefits={['item 1']}
-                                        />
-                                    </Col>
-                                    <Col cols="12 12 6 6 6">
-                                        <Price
-                                            price={150}
-                                            title="Empresarial"
-                                            benefits={['item 1']}
-                                        />
-                                    </Col>
-                                </Row>
+                                <PricePlan
+
+                                />
                             </Render>
                             <Button size="lg" secondary onClick={this.nextStep}>Continuar</Button>
                         </fieldset>

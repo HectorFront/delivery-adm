@@ -4,7 +4,7 @@ import IconInstagram from 'assets/icons/instagram.png';
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
-import { PreviewFacebook, PreviewInstagram } from './socialNetworkPreview';
+import { PreviewProfile } from './socialNetworkPreview';
 /** @name External */
 import { Card, Row, Col, InputLabel } from 'helpers';
 
@@ -64,7 +64,10 @@ export const InfoStore = React.memo(({ data: { instagram, facebook, cep, city, a
                     iconLabelImg={IconInstagram}
                     value={instagram?.toLowerCase() ?? ''}
                 />
-                <PreviewInstagram instagram={instagram?.toLowerCase()}/>
+                <PreviewProfile
+                    typeSocial="instagram"
+                    profile={instagram?.toLowerCase()}
+                />
             </Card>
         </Col>
         <Col>
@@ -79,7 +82,10 @@ export const InfoStore = React.memo(({ data: { instagram, facebook, cep, city, a
                     iconLabelImg={IconFacebook}
                     value={facebook?.toLowerCase() ?? ''}
                 />
-                <PreviewFacebook facebook={facebook?.toLowerCase()}/>
+                <PreviewProfile
+                    typeSocial="facebook"
+                    profile={facebook?.toLowerCase()}
+                />
             </Card>
         </Col>
     </Row>
