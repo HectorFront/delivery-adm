@@ -17,9 +17,7 @@ export const InputDefault = React.memo((props) => {
                 type={detailsInput.type}
                 className={`form-control form-control-${detailsInput.size}${detailsInput.className}${detailsInput.error}`}
             />
-            <Invalid>
-                Preencha o campo corretamente.
-            </Invalid>
+            <Invalid>Preencha o campo corretamente.</Invalid>
         </Fragment>
     );
 });

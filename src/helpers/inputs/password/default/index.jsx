@@ -9,8 +9,6 @@ export const InputPassword = React.memo((props) =>
         <InputDefault
             {...props}
         />
-        <VisibilityPassword onClick={props.handleType} className="btn" type="button">
-            {props.icon}
-        </VisibilityPassword>
+        <VisibilityPassword onClick={props.handleType} className="btn" type="button">{props.icon}</VisibilityPassword>
     </div>
 );
