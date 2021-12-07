@@ -111,7 +111,9 @@ class StoreRegister extends React.PureComponent {
     }
 
     render() {
+        const concluded = this.isVisibleStep(this.steps);
         const { stepCurrent, progressBar, dataSteps } = this.state;
+
         return (
             <Fragment>
                 <BackPage>
@@ -209,7 +211,7 @@ class StoreRegister extends React.PureComponent {
                                 />
                             </Render>
                             <Button size="lg" secondary onClick={this.nextStep}>
-                                {stepCurrent === this.steps ? 'Concluir' : 'Continuar'}
+                                {concluded ? 'Concluir' : 'Continuar'}
                             </Button>
                         </fieldset>
                     </Form>
