@@ -14,7 +14,7 @@ import LogoDefault from 'assets/logos/default.svg';
 import React, { Fragment } from 'react';
 /** @name Internal */
 import { TabStep } from './helpers';
-import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './contentSteps';
+import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './steps';
 /** @name External */
 import { Render, Button, MaterialIcon } from 'helpers';
 
