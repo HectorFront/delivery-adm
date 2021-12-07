@@ -13,11 +13,11 @@ export const Price = React.memo(({ title, price, benefits }) =>
         <div className="card-body">
             <h2><span style={{ fontSize: 22 }}>R$&nbsp;</span><b>{price}</b></h2>
             <ul className="list-unstyled mt-3 mb-4 text-start">
-                {benefits.map(text =>
-                    <li className="fs-6"><MaterialIcon icon={'check'}/>&nbsp;{text}.</li>
+                {benefits.map((text, i) =>
+                    <li className="fs-6" key={i}><MaterialIcon icon={'check'}/>&nbsp;{text}.</li>
                 )}
             </ul>
-            <Button size="lg">Selecionar</Button>
+            <Button>Começar</Button>
         </div>
     </CardPrice>
 );

@@ -2,6 +2,7 @@
 import {
     Form,
     BackPage,
+    CountSteps,
     BarProgress,
     ContainerText,
     ContainerForm,
@@ -13,7 +14,7 @@ import LogoDefault from 'assets/logos/default.svg';
 import React, { Fragment } from 'react';
 /** @name Internal */
 import { TabStep } from './helpers';
-import { RegisterStore, ManagerStore, InfoStore, PricePlan } from './contentSteps';
+import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './contentSteps';
 /** @name External */
 import { Render, Button, MaterialIcon } from 'helpers';
 
@@ -24,8 +25,10 @@ class StoreRegister extends React.PureComponent {
         cnpj: null,
         city: null,
         email: null,
+        login: null,
         address: null,
         facebook: null,
+        password: null,
         telephone: null,
         instagram: null,
         cellphone: null,
@@ -35,7 +38,7 @@ class StoreRegister extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        this.steps = 4;
+        this.steps = 5;
         this.progressByStage = 100 / this.steps;
         this.state = {
             stepCurrent: 1,
@@ -108,7 +111,7 @@ class StoreRegister extends React.PureComponent {
     }
 
     render() {
-        const { progressBar, dataSteps } = this.state;
+        const { stepCurrent, progressBar, dataSteps } = this.state;
         return (
             <Fragment>
                 <BackPage>
@@ -130,6 +133,7 @@ class StoreRegister extends React.PureComponent {
                     <BarProgress width={`${progressBar}%`}/>
                 </ContainerBarProgress>
                 <ContainerForm>
+                    <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
                     <ContainerText>
                         <Render has={this.isVisibleStep(1)}>
                             <TabStep
@@ -149,7 +153,7 @@ class StoreRegister extends React.PureComponent {
                         </Render>
                         <Render has={this.isVisibleStep(3)}>
                             <TabStep
-                                icon="travel_explore"
+                                icon="receipt_long"
                                 paintedText="Dados"
                                 normalText="da loja"
                                 description="Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja."
@@ -160,7 +164,15 @@ class StoreRegister extends React.PureComponent {
                                 icon="request_quote"
                                 paintedText="Nossos"
                                 normalText="planos"
-                                description="Escolha o plano que seria ideal para você."
+                                description="Escolha o plano que seria ideal para você e seu negócio."
+                            />
+                        </Render>
+                        <Render has={this.isVisibleStep(5)}>
+                            <TabStep
+                                icon="badge"
+                                paintedText="Ta quase!"
+                                normalText="Agora crie seu usuário"
+                                description="Este usuário e senha será para você acessar nossa plataforma e aplicativo."
                             />
                         </Render>
                     </ContainerText>
@@ -185,11 +197,20 @@ class StoreRegister extends React.PureComponent {
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(4)}>
-                                <PricePlan
-
+                                <PlanPrices
+                                    data={dataSteps}
+                                    onChange={this.onChangeInput}
                                 />
                             </Render>
-                            <Button size="lg" secondary onClick={this.nextStep}>Continuar</Button>
+                            <Render has={this.isVisibleStep(5)}>
+                                <CreateLogin
+                                    data={dataSteps}
+                                    onChange={this.onChangeInput}
+                                />
+                            </Render>
+                            <Button size="lg" secondary onClick={this.nextStep}>
+                                {stepCurrent === this.steps ? 'Concluir' : 'Continuar'}
+                            </Button>
                         </fieldset>
                     </Form>
                 </ContainerForm>

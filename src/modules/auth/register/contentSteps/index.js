@@ -1,4 +1,5 @@
 export * from './infoStore';
-export * from './priceStep';
+export * from './planPrices';
+export * from './createLogin';
 export * from './managerStore';
 export * from './registerStore';

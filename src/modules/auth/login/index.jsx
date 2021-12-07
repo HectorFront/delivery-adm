@@ -38,7 +38,7 @@ class StoreLogin extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            password: { type: 'password' }
+            typeInputPass: 'password'
         }
         this.bindFunctions();
     }
@@ -53,22 +53,21 @@ class StoreLogin extends React.PureComponent {
 
     /**
      *
-     * @param obj
      * @param atrr
      * @param value
      * @param callback
      * @private
      */
-    _handle(obj, atrr, value, callback = () => { }) {
-        this.setState(state => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
+    _handle(atrr, value, callback = () => { }) {
+        this.setState(state => ({ ...state, [atrr]: value }), () => callback())
     }
 
     /**
      *
      */
     handleTypePassword() {
-        const { password: { type } } = this.state;
-        this._handle('password', 'type', StoreLogin.INPUT_TYPES_PASSWORD[type].type);
+        const { typeInputPass } = this.state;
+        this._handle('typeInputPass', StoreLogin.INPUT_TYPES_PASSWORD[typeInputPass].type);
     }
 
     /**
@@ -79,7 +78,7 @@ class StoreLogin extends React.PureComponent {
     }
 
     render() {
-        const { password: { type } } = this.state;
+        const { typeInputPass } = this.state;
         return (
             <Center>
                 <ContainerForm>
@@ -113,11 +112,11 @@ class StoreLogin extends React.PureComponent {
                             <div className="mb-3">
                                 <InputPasswordLabel
                                     size="lg"
-                                    type={type}
+                                    type={typeInputPass}
                                     label="Senha"
                                     placeholder="Insira sua senha"
                                     handleType={this.handleTypePassword}
-                                    icon={<MaterialIcon hover icon={StoreLogin.INPUT_TYPES_PASSWORD[type].icon} />}
+                                    icon={<MaterialIcon hover icon={StoreLogin.INPUT_TYPES_PASSWORD[typeInputPass].icon} />}
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>

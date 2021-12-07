@@ -7,7 +7,7 @@ import { RoutesApp, RoutesAuth } from 'modules';
 import ClientRoutes from 'constants/client/routes';
 import { Authentication } from 'services/user/authentication';
 
-const authenticated = new Authentication().hasAuthentication();
+const authenticated = new Authentication();
 
 const SwitchRoutes = ({ children }) => (
     <Suspense fallback={null}>
@@ -19,7 +19,7 @@ const SwitchRoutes = ({ children }) => (
 
 const Routes = () => (
     <Router>
-        {!authenticated
+        {!authenticated.hasAuthentication()
             ?
             <Auth>
                 <SwitchRoutes>

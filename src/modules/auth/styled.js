@@ -44,6 +44,12 @@ const BackPage = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
 `;
 
+const CountSteps = styled.span`
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
 const Description = styled.span`
   width: 100%;
   font-size: 16px;
@@ -91,6 +97,7 @@ export {
     Title,
     Center,
     BackPage,
+    CountSteps,
     Description,
     BarProgress,
     ContainerText,

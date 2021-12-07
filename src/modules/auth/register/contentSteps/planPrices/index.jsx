@@ -3,7 +3,7 @@ import React from 'react';
 /** @name External */
 import { Col, Price, Row } from "helpers";
 
-export const PricePlan = React.memo(() =>
+export const PlanPrices = React.memo(() =>
     <Row className="card-deck mb-3 text-center">
         <Col cols="12 12 6 6 6">
             <Price
@@ -21,15 +21,15 @@ export const PricePlan = React.memo(() =>
         </Col>
         <Col cols="12 12 6 6 6">
             <Price
-                price={150}
+                price={180}
                 title="Pro"
                 benefits={['item 1']}
             />
         </Col>
         <Col cols="12 12 6 6 6">
             <Price
-                price={150}
-                title="Empresarial"
+                price={220}
+                title="Empresarial (Franquia)"
                 benefits={['item 1']}
             />
         </Col>
