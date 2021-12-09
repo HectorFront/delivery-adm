@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SVGShapes from 'assets/svg/shapes.svg';
 import Background from 'assets/backgrounds/food_login.jpg';
 
-const ContainerAuth = styled.div`
+export const ContainerAuth = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -12,7 +12,7 @@ const ContainerAuth = styled.div`
   background-image: url(${Background});
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
   width: 35%;
   height: 100%;
   overflow-x: hidden;
@@ -22,8 +22,3 @@ const Content = styled.div`
     width: 100%;
   }
 `;
-
-export {
-    Content,
-    ContainerAuth
-};

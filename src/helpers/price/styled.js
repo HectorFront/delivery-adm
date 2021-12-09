@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 
-const CardPrice = styled.div.attrs(_ => ({
+export const CardPrice = styled.div.attrs(_ => ({
     className: 'card mb-4 shadow-sm'
 }))`
   transition: all .2s;
@@ -10,5 +10,3 @@ const CardPrice = styled.div.attrs(_ => ({
     transform: scale(1.1);
   }
 `;
-
-export { CardPrice };

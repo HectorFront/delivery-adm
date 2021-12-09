@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const Card = styled.div`
+export const Card = styled.div`
   width: 100%;
 `;
-
-export { Card };

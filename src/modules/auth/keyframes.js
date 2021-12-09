@@ -12,9 +12,7 @@ const fade = keyframes`
   }
 `;
 
-const TextAnimation = styled.span`
+export const TextAnimation = styled.span`
   color: ${props => props.color};
   animation: ${fade} ${props => props.seconds}s both;
 `;
-
-export { TextAnimation };

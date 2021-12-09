@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
+export const Input = styled.input`
   color: #5e5e5e;
   border: 1px solid ${process.env.REACT_APP_DEFAULT_COLOR};
 
@@ -17,8 +17,6 @@ const Input = styled.input`
   }
 `;
 
-const Invalid = styled.div.attrs(_ => ({
+export const Invalid = styled.div.attrs(_ => ({
     className: 'invalid-feedback',
 }))``;
-
-export { Input, Invalid };

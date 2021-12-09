@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 
-const VisibilityPassword = styled.button`
+export const VisibilityPassword = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,5 +17,3 @@ const VisibilityPassword = styled.button`
     box-shadow:  0 0 5px 0 ${process.env.REACT_APP_DEFAULT_COLOR};
   }
 `;
-
-export { VisibilityPassword };

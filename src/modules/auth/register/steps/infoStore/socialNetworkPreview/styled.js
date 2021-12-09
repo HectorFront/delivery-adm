@@ -3,7 +3,7 @@ import styled from 'styled-components';
 /** @name Mixins */
 import { flex } from 'mixins/global';
 
-const Box = styled.div`
+export const Box = styled.div`
   width: 100%;
   height: 50px;
   margin-top: 2px;
@@ -11,11 +11,11 @@ const Box = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'space-between' })}
 `;
 
-const Profile = styled.div`
+export const Profile = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'space-between' })}
 `;
 
-const Avatar = styled.div`
+export const Avatar = styled.div`
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -26,24 +26,24 @@ const Avatar = styled.div`
   };
 `;
 
-const InfoProfile = styled.div`
+export const InfoProfile = styled.div`
   margin-left: 8px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'start' })}
 `;
 
-const User = styled.span`
+export const User = styled.span`
   width: 100%;
   font-size: 14px;
   ${props => props.facebook ? `font-weight: bold; letter-spacing: 1px;` : ''};
 `;
 
-const Description = styled.span`
+export const Description = styled.span`
   color: gray;
   width: 100%;
   font-size: 11px;
 `;
 
-const ViewPage = styled.button`
+export const ViewPage = styled.button`
   border: 0;
   color: white;
   width: 100px;
@@ -58,13 +58,3 @@ const ViewPage = styled.button`
     opacity: .8;
   }
 `;
-
-export {
-    Box,
-    User,
-    Avatar,
-    Profile,
-    ViewPage,
-    InfoProfile,
-    Description
-};

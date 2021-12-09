@@ -17,6 +17,8 @@ import { TabStep } from './helpers';
 import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './steps';
 /** @name External */
 import { Render, Button, MaterialIcon } from 'helpers';
+/** @name Constants */
+import { registerTabs } from './constants';
 
 class StoreRegister extends React.PureComponent {
 
@@ -135,48 +137,18 @@ class StoreRegister extends React.PureComponent {
                     <BarProgress width={`${progressBar}%`}/>
                 </ContainerBarProgress>
                 <ContainerForm>
-                    <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
                     <ContainerText>
-                        <Render has={this.isVisibleStep(1)}>
-                            <TabStep
-                                icon="add_business"
-                                paintedText="Registre"
-                                normalText="sua loja"
-                                description="Preencha estas informações abaixo para começar."
-                            />
-                        </Render>
-                        <Render has={this.isVisibleStep(2)}>
-                            <TabStep
-                                icon="person_pin"
-                                paintedText="Responsável"
-                                normalText="da loja"
-                                description="Preencha estes dados como pessoa que tenha o nome no contrato social, seja você um sócio administrativo ou dono(a) da loja."
-                            />
-                        </Render>
-                        <Render has={this.isVisibleStep(3)}>
-                            <TabStep
-                                icon="receipt_long"
-                                paintedText="Dados"
-                                normalText="da loja"
-                                description="Preencha os dados de onde o seu negócio está localizado e as redes sociais que você usa para divulgação da loja."
-                            />
-                        </Render>
-                        <Render has={this.isVisibleStep(4)}>
-                            <TabStep
-                                icon="request_quote"
-                                paintedText="Nossos"
-                                normalText="planos"
-                                description="Escolha o plano que seria ideal para você e seu negócio."
-                            />
-                        </Render>
-                        <Render has={this.isVisibleStep(5)}>
-                            <TabStep
-                                icon="badge"
-                                paintedText="Ta quase!"
-                                normalText="Agora crie seu usuário"
-                                description="Este usuário e senha será para você acessar nossa plataforma e aplicativo."
-                            />
-                        </Render>
+                        <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
+                        {registerTabs.map(tab =>
+                            <Render has={this.isVisibleStep(tab.step)}>
+                                <TabStep
+                                    icon={tab.icon}
+                                    paintedText={tab.painted_text}
+                                    normalText={tab.normal_text}
+                                    description={tab.description}
+                                />
+                            </Render>
+                        )}
                     </ContainerText>
                     <Form>
                         <fieldset>
