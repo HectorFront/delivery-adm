@@ -139,8 +139,8 @@ class StoreRegister extends React.PureComponent {
                 <ContainerForm>
                     <ContainerText>
                         <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
-                        {registerTabs.map(tab =>
-                            <Render has={this.isVisibleStep(tab.step)}>
+                        {registerTabs.map((tab, i) =>
+                            <Render key={i} has={this.isVisibleStep(tab.step)}>
                                 <TabStep
                                     icon={tab.icon}
                                     paintedText={tab.painted_text}
@@ -182,7 +182,7 @@ class StoreRegister extends React.PureComponent {
                                     onChange={this.onChangeInput}
                                 />
                             </Render>
-                            <Button size="lg" secondary onClick={this.nextStep}>
+                            <Button secondary onClick={this.nextStep}>
                                 {concluded ? 'Concluir' : 'Continuar'}
                             </Button>
                         </fieldset>

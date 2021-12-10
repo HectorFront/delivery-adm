@@ -3,6 +3,11 @@
     src: url(assets/fonts/SulSans-Regular.otf);
 }
 
+::selection {
+    color: white;
+    background: #7A2DFD;
+}
+
 #root {
     font-family: SulSans-Regular, Arial, Helvetica, sans-serif;
 }

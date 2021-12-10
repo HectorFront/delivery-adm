@@ -8,34 +8,37 @@ import { StorageStoreRegister } from 'modules/auth/register/storage';
 import { String } from 'utils';
 import { MaterialIcon } from 'helpers';
 
-export const PreviewProfile = React.memo(({ typeSocial, profile }) =>
-    <Box>
-        <Profile>
-            <Avatar instagram>
-                <MaterialIcon
-                    size="18px"
-                    color="white"
-                    icon="restaurant"
-                />
-            </Avatar>
-            <InfoProfile>
-                <User instagram>{!profile?.length ? 'sualoja' : profile}</User>
-                <Description>
-                    Perfil do {String.capitalize(typeSocial)}&nbsp;
+export const PreviewProfile = React.memo(({ typeSocial, profile }) => {
+    const hasTypeFacebook = typeSocial === 'facebook';
+    return (
+        <Box>
+            <Profile>
+                <Avatar facebook={hasTypeFacebook}>
                     <MaterialIcon
-                        size="10px"
-                        color="gray"
-                        icon="public"
+                        size="18px"
+                        color="white"
+                        icon="restaurant"
                     />
-                </Description>
-            </InfoProfile>
-        </Profile>
-        <ViewPage
-            instagram
-            type="button"
-            onClick={() => StorageStoreRegister.visitSocialNetwork(typeSocial, profile ?? '')}
-        >
-            Ver perfil
-        </ViewPage>
-    </Box>
-);
+                </Avatar>
+                <InfoProfile>
+                    <User facebook={hasTypeFacebook}>{!profile?.length ? 'sualoja' : profile}</User>
+                    <Description>
+                        Perfil do {String.capitalize(typeSocial)}&nbsp;
+                        <MaterialIcon
+                            size="10px"
+                            color="gray"
+                            icon="public"
+                        />
+                    </Description>
+                </InfoProfile>
+            </Profile>
+            <ViewPage
+                type="button"
+                facebook={hasTypeFacebook}
+                onClick={() => StorageStoreRegister.visitSocialNetwork(typeSocial, profile ?? '')}
+            >
+                Ver perfil
+            </ViewPage>
+        </Box>
+    )
+});
