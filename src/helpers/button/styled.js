@@ -1,5 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const ButtonCustom = styled.button`
   height: 50px;
@@ -10,13 +12,13 @@ export const ButtonCustom = styled.button`
       : ''
   };
   ${props => props.outline 
-      ? `border: 3px solid ${process.env.REACT_APP_SECONDARY_COLOR};` 
+      ? `border: 3px solid ${Colors.SECONDARY};` 
       : 'border: 0;'
   };
   background-color: ${props => props.outline 
       ? 'white' 
       : props.secondary 
-          ? process.env.REACT_APP_SECONDARY_COLOR 
-          :  process.env.REACT_APP_DEFAULT_COLOR
+          ? Colors.SECONDARY
+          :  Colors.DEFAULT
   };
 `;

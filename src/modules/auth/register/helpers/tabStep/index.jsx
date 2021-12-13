@@ -3,19 +3,21 @@ import { Title, Description } from "../../../styled";
 /** @name StyledKeyFrames */
 import { TextAnimation } from "../../../keyframes";
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 /** @name External */
 import { MaterialIcon } from "helpers";
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const TabStep = React.memo(({ icon, paintedText, normalText, description }) =>
-    <Fragment>
+    <>
         <Title>
             <MaterialIcon
                 icon={icon}
-                color={process.env.REACT_APP_SECONDARY_COLOR}
+                color={Colors.SECONDARY}
             />
-            <TextAnimation seconds="1" color={process.env.REACT_APP_SECONDARY_COLOR}>{paintedText}</TextAnimation>&nbsp;{normalText}
+            <TextAnimation seconds="1" color={Colors.SECONDARY}>{paintedText}</TextAnimation>&nbsp;{normalText}
         </Title>
         <Description>{description}</Description>
-    </Fragment>
+    </>
 )

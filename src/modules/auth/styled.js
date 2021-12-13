@@ -2,6 +2,8 @@
 import styled from 'styled-components';
 /** @name Mixins */
 import { flex } from 'mixins/global';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const Center = styled.div`
   height: 100%;
@@ -32,7 +34,7 @@ export const BarProgress = styled.div`
   height: 100%;
   position: relative;
   width: ${props => props.width};
-  background-color: ${process.env.REACT_APP_DEFAULT_COLOR};
+  background-color: ${Colors.DEFAULT};
 `;
 
 export const BackPage = styled.div`
@@ -58,7 +60,7 @@ export const Description = styled.span`
 export const Link = styled.span`
   cursor: pointer;
   text-decoration: underline;
-  color: ${process.env.REACT_APP_DEFAULT_COLOR};
+  color: ${Colors.DEFAULT};
   &:hover {
     opacity: .7;
     transition: .2s;

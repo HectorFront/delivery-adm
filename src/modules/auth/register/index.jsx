@@ -11,14 +11,15 @@ import {
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 /** @name Internal */
 import { TabStep } from './helpers';
+import { registerTabs } from './constants';
 import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './steps';
 /** @name External */
 import { Render, Button, MaterialIcon } from 'helpers';
 /** @name Constants */
-import { registerTabs } from './constants';
+import Colors from 'constants/client/colors';
 
 class StoreRegister extends React.PureComponent {
 
@@ -117,7 +118,7 @@ class StoreRegister extends React.PureComponent {
         const { stepCurrent, progressBar, dataSteps } = this.state;
 
         return (
-            <Fragment>
+            <>
                 <BackPage>
                     <MaterialIcon
                         hover
@@ -125,7 +126,7 @@ class StoreRegister extends React.PureComponent {
                         icon={'arrow_back'}
                         onClick={this.goBackPage}
                         style={{ position: 'absolute', left: 25 }}
-                        color={process.env.REACT_APP_DEFAULT_COLOR}
+                        color={Colors.DEFAULT}
                     />
                     <Logo
                         alt="Logo"
@@ -188,7 +189,7 @@ class StoreRegister extends React.PureComponent {
                         </fieldset>
                     </Form>
                 </ContainerForm>
-            </Fragment>
+            </>
         )
     }
 }

@@ -31,3 +31,27 @@ export const registerTabs = [
         description: 'Este usuário e senha será para você acessar nossa plataforma e aplicativo.'
     }
 ];
+
+export const planPrices = [
+    {
+        id: 1,
+        price: 85,
+        title: 'Básico',
+        benefits: ['item 1']
+    }, {
+        id: 2,
+        price: 150,
+        title: 'Padrão',
+        benefits: ['item 1']
+    }, {
+        id: 3,
+        price: 180,
+        title: 'Pro',
+        benefits: ['item 1']
+    }, {
+        id: 4,
+        price: 220,
+        title: 'Empresarial (Franquia)',
+        benefits: ['item 1']
+    }
+];

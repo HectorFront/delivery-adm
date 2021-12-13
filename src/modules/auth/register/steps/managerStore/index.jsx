@@ -29,7 +29,7 @@ export const ManagerStore = React.memo(({ data: { cnpj, email, contact_email, te
                     value={email ?? ''}
                     error={email === ''}
                     label="Email pessoal"
-                    placeholder="seunome@gmail.com"
+                    placeholder="exemplo@gmail.com"
                 />
             </div>
         </Col>

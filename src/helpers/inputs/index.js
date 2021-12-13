@@ -1,3 +1,4 @@
+export * from './radio';
 export * from './default';
 export * from './inputLabel';
 export * from './password/label';

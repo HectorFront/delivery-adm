@@ -1,10 +1,10 @@
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 /** @name External */
 import { InputLabel } from 'helpers';
 
 export const RegisterStore = React.memo(({ data: { social_reason, fantasy_name }, onChange }) =>
-    <Fragment>
+    <>
         <div className="mb-3">
             <InputLabel
                 size="lg"
@@ -29,5 +29,5 @@ export const RegisterStore = React.memo(({ data: { social_reason, fantasy_name }
                 label="Como as pessoas costumam chamar sua loja?"
             />
         </div>
-    </Fragment>
+    </>
 );

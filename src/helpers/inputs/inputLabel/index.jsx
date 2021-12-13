@@ -1,8 +1,11 @@
 /** @name Styled */
 import { Label } from './styled';
+/** @name Dependencies */
 import React from 'react';
 /** @name External */
 import { Render, MaterialIcon, InputDefault } from 'helpers';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const InputLabel = React.memo((props) =>
     <>
@@ -11,7 +14,7 @@ export const InputLabel = React.memo((props) =>
                 <MaterialIcon
                     size="15px"
                     icon={props.iconLabel}
-                    color={process.env.REACT_APP_SECONDARY_COLOR}
+                    color={Colors.SECONDARY}
                 />&nbsp;
             </Render>
             <Render has={props.iconLabelImg}>

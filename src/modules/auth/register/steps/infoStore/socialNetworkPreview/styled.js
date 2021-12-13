@@ -2,6 +2,8 @@
 import styled from 'styled-components';
 /** @name Mixins */
 import { flex } from 'mixins/global';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const Box = styled.div`
   width: 100%;
@@ -21,8 +23,8 @@ export const Avatar = styled.div`
   border-radius: 50px;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
   background-color: ${props => props.facebook 
-          ? process.env.REACT_APP_FACEBOOK_BACKGROUND_COLOR 
-          : process.env.REACT_APP_INSTAGRAM_MAIN_COLOR
+          ? Colors.BG_FACEBOOK
+          : Colors.MAIN_INSTAGRAM
   };
 `;
 
@@ -51,8 +53,8 @@ export const ViewPage = styled.button`
   font-size: 13px;
   border-radius: 5px;
   background-color: ${props => props.facebook 
-          ? process.env.REACT_APP_FACEBOOK_BACKGROUND_COLOR 
-          : process.env.REACT_APP_INSTAGRAM_BACKGROUND_COLOR
+          ? Colors.BG_FACEBOOK
+          : Colors.BG_INSTAGRAM
   };
   &:hover {
     opacity: .8;

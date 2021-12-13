@@ -23,16 +23,16 @@ const Routes = () => (
             ?
             <Auth>
                 <SwitchRoutes>
-                    {RoutesAuth.map(({ path, component }, index) =>
-                        <Route key={index} path={path} component={component} />
+                    {RoutesAuth.map(({ path, component }, i) =>
+                        <Route key={i} path={path} component={component} />
                     )}
                 </SwitchRoutes>
             </Auth>
             :
             <App>
                 <SwitchRoutes>
-                    {RoutesApp.map(({ path, component }, index) =>
-                        <Route key={index} path={path} component={component} />
+                    {RoutesApp.map(({ path, component }, i) =>
+                        <Route key={i} path={path} component={component} />
                     )}
                 </SwitchRoutes>
             </App>

@@ -1,19 +1,21 @@
 /** @name Styled */
 import styled from 'styled-components';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 export const VisibilityPassword = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${process.env.REACT_APP_DARK_COLOR};
-  border: 1px solid ${process.env.REACT_APP_DEFAULT_COLOR};
+  color: ${Colors.DARK};
+  border: 1px solid ${Colors.DEFAULT};
   border-left: 0;
   &:hover {
     opacity: .7;
-    color: ${process.env.REACT_APP_DEFAULT_COLOR};
+    color: ${Colors.DEFAULT};
   }
   &:focus {
-    border-color: ${process.env.REACT_APP_DARK_COLOR};
-    box-shadow:  0 0 5px 0 ${process.env.REACT_APP_DEFAULT_COLOR};
+    border-color: ${Colors.DARK};
+    box-shadow:  0 0 5px 0 ${Colors.DEFAULT};
   }
 `;

@@ -21,6 +21,8 @@ import React from 'react';
 /** @name External */
 import ClientRoutes from 'constants/client/routes';
 import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
+/** @name Constants */
+import Colors from 'constants/client/colors';
 
 class StoreLogin extends React.PureComponent {
 
@@ -92,10 +94,10 @@ class StoreLogin extends React.PureComponent {
                         <Title>
                             <MaterialIcon
                                 icon={'store_mall_directory'}
-                                color={process.env.REACT_APP_DEFAULT_COLOR}
+                                color={Colors.DEFAULT}
                             />
                             <TextAnimation seconds="1">Área</TextAnimation> do&nbsp;
-                            <TextAnimation seconds="3" color={process.env.REACT_APP_DEFAULT_COLOR}>chefe</TextAnimation>
+                            <TextAnimation seconds="3" color={Colors.DEFAULT}>chefe</TextAnimation>
                         </Title>
                         <Description>Aqui você facilita sua venda de forma ágil</Description>
                     </ContainerText>

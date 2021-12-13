@@ -1,23 +1,23 @@
 /** @name Styled */
-import { Input, Invalid } from "./styled";
+import { Default, Invalid } from "./styled";
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React from 'react';
 
 export const InputDefault = React.memo((props) => {
-    const detailsInput = {
+    const ATTRDetailsInput = {
         size: props.size ?? 'md',
         type: props.type ?? 'text',
         error: props.error ? ` is-invalid` : '',
         className: props.className ? ` ${props.className}` : ''
     };
     return (
-        <Fragment>
-            <Input
+        <>
+            <Default
                 {...props}
-                type={detailsInput.type}
-                className={`form-control form-control-${detailsInput.size}${detailsInput.className}${detailsInput.error}`}
+                type={ATTRDetailsInput.type}
+                className={`form-control form-control-${ATTRDetailsInput.size}${ATTRDetailsInput.className}${ATTRDetailsInput.error}`}
             />
             <Invalid>Preencha o campo corretamente.</Invalid>
-        </Fragment>
+        </>
     );
 });

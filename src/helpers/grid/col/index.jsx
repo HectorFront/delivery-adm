@@ -1,8 +1,7 @@
 import React from 'react';
 
 export const Col = React.memo(({ cols, children }) => {
-    const
-        columns = cols?.split(' ') ?? [],
+    const columns = cols?.split(' ') ?? [],
         colXS = 'col-12',
         colSM = `col-sm-${columns[0] ?? '12'}`,
         colMD = `col-md-${columns[1] ?? '12'}`,
