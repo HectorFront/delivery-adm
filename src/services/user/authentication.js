@@ -15,6 +15,6 @@ export class Authentication {
      * @returns {boolean}
      */
     hasAuthentication() {
-        return false;
+        return true;
     }
 }

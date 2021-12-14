@@ -51,7 +51,7 @@ export const planPrices = [
     }, {
         id: 4,
         price: 220,
-        title: 'Empresarial (Franquia)',
+        title: 'Franquia',
         benefits: ['item 1']
     }
 ];
