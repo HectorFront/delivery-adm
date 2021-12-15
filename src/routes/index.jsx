@@ -7,7 +7,7 @@ import { RoutesApp, RoutesAuth } from 'modules';
 import ClientRoutes from 'constants/client/routes';
 import { Authentication } from 'services/user/authentication';
 
-const authenticated = new Authentication();
+const userAuth = new Authentication();
 
 const SwitchRoutes = ({ children }) => (
     <Suspense fallback={null}>
@@ -15,30 +15,31 @@ const SwitchRoutes = ({ children }) => (
             {children}
         </Switch>
     </Suspense>
-);
+)
 
-const Routes = () => (
-    <Router>
-        {!authenticated.hasAuthentication()
-            ?
-            <Auth>
-                <SwitchRoutes>
-                    {RoutesAuth.map(({ path, component }, i) =>
-                        <Route key={i} path={path} component={component} />
-                    )}
-                </SwitchRoutes>
-            </Auth>
-            :
-            <App>
-                <SwitchRoutes>
-                    {RoutesApp.map(({ path, component }, i) =>
-                        <Route key={i} path={path} component={component} />
-                    )}
-                </SwitchRoutes>
-            </App>
-        }
-        <Redirect from='*' to={ClientRoutes.LOGIN} />
-    </Router>
-);
+const Routes = () => {
+    const isLogged = userAuth.hasAuthentication();
+    return (
+        <Router>
+            <SwitchRoutes>
+                {!isLogged
+                    ?
+                    <Auth>
+                        {RoutesAuth.map(({ path, component }, i) =>
+                            <Route key={i} path={path} component={component} />
+                        )}
+                    </Auth>
+                    :
+                    <App>
+                        {RoutesApp.map(({ path, component }, i) =>
+                            <Route key={i} path={path} component={component} />
+                        )}
+                    </App>
+                }
+            </SwitchRoutes>
+            <Redirect from='*' to={ClientRoutes[!isLogged ? "LOGIN" : "HOME"]} />
+        </Router>
+    )
+}
 
 export default Routes;
