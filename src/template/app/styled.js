@@ -3,6 +3,8 @@ import styled from 'styled-components';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
+const WIDTH_ASIDE = 270;
+
 export const AppContainer = styled.div`
   height: auto;
   min-height: 100%;
@@ -17,11 +19,11 @@ export const Aside = styled.aside.attrs({
 })`
   top: 0;
   left: 0;
-  width: 270px;
+  width: ${WIDTH_ASIDE}px;
   z-index: 810;
   min-height: 100%;
   position: absolute;
-  background-color: #eaeaea;
+  background-color: #f2f2f2;
 `;
 
 export const Header = styled.div.attrs({
@@ -33,6 +35,7 @@ export const NameCompany = styled.div.attrs({
 })`
   width: 100%;
   overflow: hidden;
+  font-weight: bold;
   text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -95,4 +98,10 @@ export const Version = styled.div.attrs({
     className: 'd-flex justify-content-center p-3'
 })`
   color: #c5c5c5;
+`;
+
+export const ContentWrapper = styled.div`
+  padding: 50px;
+  min-height: 100%;
+  margin-left: ${WIDTH_ASIDE}px;
 `;

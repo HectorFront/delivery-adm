@@ -1,5 +1,5 @@
 /** @name Styled */
-import { AppContainer } from './styled';
+import { AppContainer, ContentWrapper } from './styled';
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
@@ -10,6 +10,8 @@ export const App = React.memo((props) =>
         <AsideMenu
             pathCurrent={props.location.pathname}
         />
-        {props.children}
+        <ContentWrapper>
+            {props.children}
+        </ContentWrapper>
     </AppContainer>
 );

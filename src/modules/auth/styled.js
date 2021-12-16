@@ -84,7 +84,7 @@ export const ContainerText = styled.div`
 export const ContainerForm = styled.div`
   width: 100%;
   height: auto;
-  padding: 38px 50px;
+  padding: 38px 100px;
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })};
 
   @media(max-width: 720px) {

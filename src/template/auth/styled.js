@@ -13,7 +13,7 @@ export const ContainerAuth = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 35%;
+  width: 45%;
   height: 100%;
   overflow-x: hidden;
   background-image: url(${SVGShapes});
