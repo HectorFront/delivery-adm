@@ -10,7 +10,7 @@ export class AsyncStorage {
      * @param {*} value
      */
     static set(key, value) {
-        localStorage.setItem(btoa(String(key)), btoa(String(value)));
+        localStorage.setItem(window.btoa(String(key)), window.btoa(String(value)));
     }
 
     /**
@@ -20,8 +20,8 @@ export class AsyncStorage {
      * @returns {*} Value
      */
     static get(key) {
-        const values = localStorage.getItem(btoa(String(key)));
-        return values ? atob(values) : values;
+        const values = localStorage.getItem(window.btoa(String(key)));
+        return values ? window.atob(values) : values;
     }
 
     /**
@@ -31,7 +31,7 @@ export class AsyncStorage {
      * @param {Object} value
      */
     static setObject(key, value) {
-        localStorage.setItem(btoa(String(key)), btoa(JSON.stringify(value)));
+        localStorage.setItem(window.btoa(String(key)), window.btoa(JSON.stringify(value)));
     }
 
     /**
@@ -41,8 +41,8 @@ export class AsyncStorage {
      * @returns {Object} value
      */
     static getObject(key) {
-        const values = localStorage.getItem(btoa(String(key)));
-        return JSON.parse(values ? atob(values) : values);
+        const values = localStorage.getItem(window.btoa(String(key)));
+        return JSON.parse(values ? window.atob(values) : values);
     }
 
     /**
@@ -51,7 +51,7 @@ export class AsyncStorage {
      * @param {String} key
      */
     static removeItem(key) {
-        localStorage.removeItem(btoa(String(key)));
+        localStorage.removeItem(window.btoa(String(key)));
     }
 
     /**
