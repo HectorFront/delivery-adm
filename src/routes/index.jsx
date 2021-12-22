@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 /** @name External */
 import { App, Auth } from 'template';
-import { RoutesApp, RoutesAuth } from 'modules';
+import { RoutesApp, RoutesAuth } from 'modules/paths';
 import ClientRoutes from 'constants/client/routes';
 import { Authentication } from 'services/user/authentication';
 
