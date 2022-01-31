@@ -24,24 +24,15 @@ import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-class StoreLogin extends React.PureComponent {
 
-    static INPUT_TYPES_PASSWORD = {
-        text: {
-            type: 'password',
-            icon: 'visibility'
-        },
-        password: {
-            type: 'text',
-            icon: 'visibility_off'
-        }
-    };
+interface IState {
+}
 
-    constructor(props) {
+class StoreLogin extends React.PureComponent<any, IState> {
+
+    constructor(props: any) {
         super(props);
-        this.state = {
-            typeInputPass: 'password'
-        }
+        this.state = { }
         this.bindFunctions();
     }
 
@@ -50,7 +41,6 @@ class StoreLogin extends React.PureComponent {
      */
     bindFunctions() {
         this.goRegister = this.goRegister.bind(this);
-        this.handleTypePassword = this.handleTypePassword.bind(this);
     }
 
     /**
@@ -60,16 +50,8 @@ class StoreLogin extends React.PureComponent {
      * @param callback
      * @private
      */
-    _handle(atrr, value, callback = () => { }) {
+    _handle(atrr: string, value: any, callback: Function = () => { }) {
         this.setState(state => ({ ...state, [atrr]: value }), () => callback())
-    }
-
-    /**
-     *
-     */
-    handleTypePassword() {
-        const { typeInputPass } = this.state;
-        this._handle('typeInputPass', StoreLogin.INPUT_TYPES_PASSWORD[typeInputPass].type);
     }
 
     /**
@@ -80,7 +62,6 @@ class StoreLogin extends React.PureComponent {
     }
 
     render() {
-        const { typeInputPass } = this.state;
         return (
             <Center>
                 <ContainerForm>
@@ -114,11 +95,8 @@ class StoreLogin extends React.PureComponent {
                             <div className="mb-3">
                                 <InputPasswordLabel
                                     size="lg"
-                                    type={typeInputPass}
                                     label="Senha"
                                     placeholder="Insira sua senha"
-                                    handleType={this.handleTypePassword}
-                                    icon={<MaterialIcon hover icon={StoreLogin.INPUT_TYPES_PASSWORD[typeInputPass].icon} />}
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>

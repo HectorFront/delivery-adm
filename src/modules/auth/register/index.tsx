@@ -21,9 +21,36 @@ import { Render, Button, MaterialIcon } from 'helpers';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-class StoreRegister extends React.PureComponent {
 
-    static INITIAL_DATA = {
+interface IState {
+    stepCurrent: number,
+    progressBar: number,
+    dataSteps: object
+}
+
+interface DefinedDataRegister {
+    cep?: string | null,
+    cnpj?: string | null,
+    city?: string | null,
+    email?: string | null,
+    login?: string | null,
+    address?: string | null,
+    facebook?: string | null,
+    password?: string | null,
+    telephone?: string | null,
+    instagram?: string | null,
+    cellphone?: string | null,
+    fantasy_name?: string | null,
+    social_reason?: string | null
+}
+
+class StoreRegister extends React.PureComponent<any, IState> {
+
+    Steps: number = 5;
+
+    ProgressByStage: number = 100 / this.Steps;
+
+    DataRegister: DefinedDataRegister = {
         cep: null,
         cnpj: null,
         city: null,
@@ -39,14 +66,12 @@ class StoreRegister extends React.PureComponent {
         social_reason: null
     };
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
-        this.steps = 5;
-        this.progressByStage = 100 / this.steps;
         this.state = {
             stepCurrent: 1,
-            progressBar: this.progressByStage,
-            dataSteps: {...StoreRegister.INITIAL_DATA},
+            progressBar: this.ProgressByStage,
+            dataSteps: { ...this.DataRegister },
         };
         this.bindFunctions();
     }
@@ -68,8 +93,8 @@ class StoreRegister extends React.PureComponent {
      * @param callback
      * @private
      */
-    _handle(obj, atrr, value, callback = () => { }) {
-        this.setState(state => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
+    _handle(obj: any, atrr: string, value: string, callback: Function = () => { }) {
+        this.setState((state: any) => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
     }
 
     /**
@@ -77,7 +102,7 @@ class StoreRegister extends React.PureComponent {
      * @param stepSpecified
      * @returns {boolean}
      */
-    isVisibleStep(stepSpecified) {
+    isVisibleStep(stepSpecified: number) {
         const { stepCurrent } = this.state;
         return stepSpecified === stepCurrent;
     }
@@ -87,7 +112,7 @@ class StoreRegister extends React.PureComponent {
      * @param id
      * @param value
      */
-    onChangeInput({ target: { id, value }}) {
+    onChangeInput({ target: { id, value }}: any) {
         this._handle('dataSteps', id, value);
     }
 
@@ -96,7 +121,7 @@ class StoreRegister extends React.PureComponent {
      */
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1; progressBar+=this.progressByStage;
+        stepCurrent+=1; progressBar += this.ProgressByStage;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -108,13 +133,13 @@ class StoreRegister extends React.PureComponent {
         if(stepCurrent <= 1) {
             return this.props.history.goBack()
         } else {
-            stepCurrent-=1; progressBar-=this.progressByStage;
+            stepCurrent-=1; progressBar -= this.ProgressByStage;
             this.setState({ stepCurrent, progressBar });
         }
     }
 
     render() {
-        const concluded = this.isVisibleStep(this.steps);
+        const concluded = this.isVisibleStep(this.Steps);
         const { stepCurrent, progressBar, dataSteps } = this.state;
 
         return (
@@ -139,7 +164,7 @@ class StoreRegister extends React.PureComponent {
                 </ContainerBarProgress>
                 <ContainerForm>
                     <ContainerText>
-                        <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
+                        <CountSteps>{stepCurrent} de {this.Steps} etapas.</CountSteps>
                         {registerTabs.map((tab, i) =>
                             <Render key={i} has={this.isVisibleStep(tab.step)}>
                                 <TabStep

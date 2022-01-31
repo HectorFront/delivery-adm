@@ -7,14 +7,25 @@ import { Render, MaterialIcon, InputDefault } from 'helpers';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-export const InputLabel = React.memo((props) =>
+interface InputLabelProps {
+    label: string,
+    size?: string,
+    type?: string,
+    error?: boolean,
+    className?: string,
+    iconLabel?: string,
+    placeholder?: string,
+    iconLabelImg?: string
+}
+
+export const InputLabel = React.memo((props: InputLabelProps) =>
     <>
         <Label className="form-label">
             <Render has={props.iconLabel}>
                 <MaterialIcon
                     size="15px"
-                    icon={props.iconLabel}
                     color={Colors.SECONDARY}
+                    icon={props.iconLabel ?? ''}
                 />&nbsp;
             </Render>
             <Render has={props.iconLabelImg}>
@@ -28,7 +39,11 @@ export const InputLabel = React.memo((props) =>
             <b>{props.label}</b>
         </Label>
         <InputDefault
-            {...props}
+            size={props.size}
+            type={props.type}
+            error={props.error}
+            className={props.className}
+            placeholder={props.placeholder}
         />
     </>
 );

@@ -7,7 +7,16 @@ import { InputRadio, MaterialIcon } from "helpers";
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-export const Price = React.memo(({ id, title, price, benefits, priceSelected, selectPrice = () => {} }) => {
+interface PriceProps {
+    id: number,
+    benefits: [],
+    price: number,
+    title: string,
+    priceSelected: number,
+    selectPrice: Function
+}
+
+export const Price = React.memo(({ id, title, price, benefits, priceSelected, selectPrice = () => {} }: PriceProps) => {
     const CSSHeaderWhenSelected = id === priceSelected
         ? { backgroundColor: Colors.DARK, color: 'white' }
         : { backgroundColor: 'white', color: 'black' };
