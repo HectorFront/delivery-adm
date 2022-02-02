@@ -1,24 +1,27 @@
 /** @name Styled */
-import { Label } from './styled';
+import { Label } from './styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
-import { Render, MaterialIcon, InputDefault } from 'helpers';
+import { Render, MaterialIcon, InputDefault } from 'helpers/index';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
 interface InputLabelProps {
+    id?: string,
     label: string,
     size?: string,
     type?: string,
+    value?: string,
     error?: boolean,
     className?: string,
     iconLabel?: string,
     placeholder?: string,
-    iconLabelImg?: string
+    iconLabelImg?: string,
+    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InputLabel = React.memo((props: InputLabelProps) =>
+export const InputLabel: Function = React.memo((props: InputLabelProps): JSX.Element =>
     <>
         <Label className="form-label">
             <Render has={props.iconLabel}>
@@ -39,9 +42,12 @@ export const InputLabel = React.memo((props: InputLabelProps) =>
             <b>{props.label}</b>
         </Label>
         <InputDefault
+            id={props.id}
             size={props.size}
             type={props.type}
             error={props.error}
+            value={props.value}
+            onChange={props.onChange}
             className={props.className}
             placeholder={props.placeholder}
         />

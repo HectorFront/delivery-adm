@@ -1,25 +1,28 @@
 /** @name Styled */
-import { VisibilityPassword } from '../styled';
+import { VisibilityPassword } from '../styles';
 /** @name Dependencies */
 import React, { useState } from 'react';
 /** @name External */
-import { InputDefault, MaterialIcon } from 'helpers';
+import { InputDefault, MaterialIcon } from 'helpers/index';
 /** @name Constants */
-import { AttrTypePassword } from '../typesInput';
+import { AttrTypePassword } from '../constants';
 
 interface InputPasswordLabelProps {
+    id?: string,
     label: string,
     size?: string,
+    value?: string,
     error?: boolean,
     className?: string,
     placeholder?: string,
+    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InputPasswordLabel = React.memo((props: InputPasswordLabelProps) => {
-    const [icon, setIcon] = useState(AttrTypePassword.password.icon);
-    const [typeCurrent, setTypeAttr] = useState(AttrTypePassword.password.typeAttr);
+export const InputPasswordLabel: Function = React.memo((props: InputPasswordLabelProps): JSX.Element => {
+    const [icon, setIcon] = useState<string>(AttrTypePassword.password.icon);
+    const [typeCurrent, setTypeAttr] = useState<string>(AttrTypePassword.password.typeAttr);
 
-    const handleTypePassword = () => {
+    const handleTypePassword: React.MouseEventHandler<HTMLButtonElement> = () => {
         setIcon(AttrTypePassword[typeCurrent].icon);
         setTypeAttr(AttrTypePassword[typeCurrent].typeAttr);
     }
@@ -31,9 +34,12 @@ export const InputPasswordLabel = React.memo((props: InputPasswordLabelProps) =>
             </label>
             <div className="input-group">
                 <InputDefault
+                    id={props.id}
                     size={props.size}
                     type={typeCurrent}
                     error={props.error}
+                    value={props.value}
+                    onChange={props.onChange}
                     className={props.className}
                     placeholder={props.placeholder}
                 />

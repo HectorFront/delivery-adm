@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Icon } from './styled';
+import { Icon } from './styles';
 /** @name Dependencies */
 import React from 'react';
 
@@ -10,10 +10,10 @@ interface MaterialIconProps {
     color?: string,
     style?: object,
     hover?: boolean,
-    onClick?: Function
+    onClick?: React.MouseEventHandler<HTMLSpanElement>
 }
 
-export const MaterialIcon = React.memo((props: MaterialIconProps) =>
+export const MaterialIcon: Function = React.memo((props: MaterialIconProps): JSX.Element =>
     <Icon
         onClick={props.onClick}
         hasHover={props.hover}

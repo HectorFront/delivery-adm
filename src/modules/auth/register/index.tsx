@@ -7,7 +7,7 @@ import {
     ContainerText,
     ContainerForm,
     ContainerBarProgress, Logo
-} from '../styled';
+} from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
@@ -22,35 +22,34 @@ import { Render, Button, MaterialIcon } from 'helpers';
 import Colors from 'constants/client/colors';
 
 
+interface DefinedDataRegister {
+    cep: string | null,
+    cnpj: string | null,
+    city: string | null,
+    email: string | null,
+    login: string | null,
+    address: string | null,
+    facebook: string | null,
+    password: string | null,
+    telephone: string | null,
+    instagram: string | null,
+    cellphone: string | null,
+    contact_email: string | null,
+    fantasy_name: string | null,
+    social_reason: string | null
+}
+
 interface IState {
     stepCurrent: number,
     progressBar: number,
-    dataSteps: object
-}
-
-interface DefinedDataRegister {
-    cep?: string | null,
-    cnpj?: string | null,
-    city?: string | null,
-    email?: string | null,
-    login?: string | null,
-    address?: string | null,
-    facebook?: string | null,
-    password?: string | null,
-    telephone?: string | null,
-    instagram?: string | null,
-    cellphone?: string | null,
-    fantasy_name?: string | null,
-    social_reason?: string | null
+    dataSteps: DefinedDataRegister
 }
 
 class StoreRegister extends React.PureComponent<any, IState> {
 
-    Steps: number = 5;
-
-    ProgressByStage: number = 100 / this.Steps;
-
-    DataRegister: DefinedDataRegister = {
+    private steps: number = 5;
+    private progressByStage: number = 100 / this.steps;
+    private dataRegister: DefinedDataRegister = {
         cep: null,
         cnpj: null,
         city: null,
@@ -62,6 +61,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
         telephone: null,
         instagram: null,
         cellphone: null,
+        contact_email: null,
         fantasy_name: null,
         social_reason: null
     };
@@ -70,8 +70,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
         super(props);
         this.state = {
             stepCurrent: 1,
-            progressBar: this.ProgressByStage,
-            dataSteps: { ...this.DataRegister },
+            progressBar: this.progressByStage,
+            dataSteps: { ...this.dataRegister },
         };
         this.bindFunctions();
     }
@@ -82,7 +82,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
     bindFunctions() {
         this.nextStep = this.nextStep.bind(this);
         this.goBackPage = this.goBackPage.bind(this);
-        this.onChangeInput = this.onChangeInput.bind(this);
+        this.onChangeInputRegister = this.onChangeInputRegister.bind(this);
     }
 
     /**
@@ -93,7 +93,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
      * @param callback
      * @private
      */
-    _handle(obj: any, atrr: string, value: string, callback: Function = () => { }) {
+    _handleObject(obj: string, atrr: string, value: string, callback: Function = () => { }) {
         this.setState((state: any) => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
     }
 
@@ -112,8 +112,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
      * @param id
      * @param value
      */
-    onChangeInput({ target: { id, value }}: any) {
-        this._handle('dataSteps', id, value);
+    onChangeInputRegister({ target: { id, value }}: { target: HTMLInputElement }) {
+        this._handleObject('dataSteps', id, value);
     }
 
     /**
@@ -121,7 +121,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
      */
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1; progressBar += this.ProgressByStage;
+        stepCurrent+=1; progressBar += this.progressByStage;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -133,14 +133,21 @@ class StoreRegister extends React.PureComponent<any, IState> {
         if(stepCurrent <= 1) {
             return this.props.history.goBack()
         } else {
-            stepCurrent-=1; progressBar -= this.ProgressByStage;
+            stepCurrent-=1; progressBar -= this.progressByStage;
             this.setState({ stepCurrent, progressBar });
         }
     }
 
     render() {
-        const concluded = this.isVisibleStep(this.Steps);
-        const { stepCurrent, progressBar, dataSteps } = this.state;
+        const concluded: Boolean = this.isVisibleStep(this.steps);
+        const { stepCurrent, progressBar, dataSteps }: IState  = this.state;
+
+        const {
+            social_reason, fantasy_name,
+            cnpj, email, contact_email, telephone, cellphone,
+            instagram, facebook, cep, city, address,
+            login, password
+        }: DefinedDataRegister = dataSteps;
 
         return (
             <>
@@ -149,9 +156,9 @@ class StoreRegister extends React.PureComponent<any, IState> {
                         hover
                         size="45px"
                         icon={'arrow_back'}
+                        color={Colors.DEFAULT}
                         onClick={this.goBackPage}
                         style={{ position: 'absolute', left: 25 }}
-                        color={Colors.DEFAULT}
                     />
                     <Logo
                         alt="Logo"
@@ -164,7 +171,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
                 </ContainerBarProgress>
                 <ContainerForm>
                     <ContainerText>
-                        <CountSteps>{stepCurrent} de {this.Steps} etapas.</CountSteps>
+                        <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
                         {registerTabs.map((tab, i) =>
                             <Render key={i} has={this.isVisibleStep(tab.step)}>
                                 <TabStep
@@ -180,32 +187,29 @@ class StoreRegister extends React.PureComponent<any, IState> {
                         <fieldset>
                             <Render has={this.isVisibleStep(1)}>
                                 <RegisterStore
-                                    data={dataSteps}
-                                    onChange={this.onChangeInput}
+                                    onChange={this.onChangeInputRegister}
+                                    data={{ social_reason, fantasy_name }}
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(2)}>
                                 <ManagerStore
-                                    data={dataSteps}
-                                    onChange={this.onChangeInput}
+                                    onChange={this.onChangeInputRegister}
+                                    data={{ cnpj, email, contact_email, telephone, cellphone }}
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(3)}>
                                 <InfoStore
-                                    data={dataSteps}
-                                    onChange={this.onChangeInput}
+                                    onChange={this.onChangeInputRegister}
+                                    data={{ instagram, facebook, cep, city, address }}
                                 />
                             </Render>
                             <Render has={this.isVisibleStep(4)}>
-                                <PlanPrices
-                                    data={dataSteps}
-                                    onChange={this.onChangeInput}
-                                />
+                                <PlanPrices/>
                             </Render>
                             <Render has={this.isVisibleStep(5)}>
                                 <CreateLogin
-                                    data={dataSteps}
-                                    onChange={this.onChangeInput}
+                                    onChange={this.onChangeInputRegister}
+                                    data={{ login, password }}
                                 />
                             </Render>
                             <Button secondary onClick={this.nextStep}>

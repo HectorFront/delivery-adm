@@ -1,6 +1,5 @@
-import React from 'react';
+export const Render: Function = ({ has, children }: any): JSX.Element | null =>
+    has ? children : null;
 
-export const Render = ({ has, children }: any) =>
-    has ? children : false;
 
 

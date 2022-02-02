@@ -1,22 +1,22 @@
 /** @name Styled */
-import { CardPrice } from './styled';
+import { CardPrice } from './styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
-import { InputRadio, MaterialIcon } from "helpers";
+import { InputRadio, MaterialIcon } from "helpers/index";
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
 interface PriceProps {
     id: number,
-    benefits: [],
+    benefits: string[],
     price: number,
     title: string,
     priceSelected: number,
-    selectPrice: Function
+    selectPrice: React.MouseEventHandler<HTMLDivElement> | undefined
 }
 
-export const Price = React.memo(({ id, title, price, benefits, priceSelected, selectPrice = () => {} }: PriceProps) => {
+export const Price: Function = React.memo(({ id, title, price, benefits, priceSelected, selectPrice = () => {} }: PriceProps): JSX.Element => {
     const CSSHeaderWhenSelected = id === priceSelected
         ? { backgroundColor: Colors.DARK, color: 'white' }
         : { backgroundColor: 'white', color: 'black' };

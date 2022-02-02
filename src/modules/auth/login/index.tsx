@@ -9,7 +9,7 @@ import {
     ContainerText,
     RegisterStore,
     ContainerForm
-} from '../styled';
+} from '../styles';
 /** @name StyledKeyFrames */
 import {
     TextAnimation
@@ -25,14 +25,25 @@ import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
 import Colors from 'constants/client/colors';
 
 
+interface DefinedDataLogin {
+    login: string | null,
+    password: string | null
+}
+
 interface IState {
+    dataLogin: DefinedDataLogin
 }
 
 class StoreLogin extends React.PureComponent<any, IState> {
-
+    private dataLogin: DefinedDataLogin = {
+        login: null,
+        password: null
+    };
     constructor(props: any) {
         super(props);
-        this.state = { }
+        this.state = {
+            dataLogin: { ...this.dataLogin }
+        }
         this.bindFunctions();
     }
 
@@ -41,6 +52,7 @@ class StoreLogin extends React.PureComponent<any, IState> {
      */
     bindFunctions() {
         this.goRegister = this.goRegister.bind(this);
+        this.onChangeInputLogin = this.onChangeInputLogin.bind(this);
     }
 
     /**
@@ -50,8 +62,29 @@ class StoreLogin extends React.PureComponent<any, IState> {
      * @param callback
      * @private
      */
-    _handle(atrr: string, value: any, callback: Function = () => { }) {
+    _handle(atrr: string, value: string, callback: Function = () => { }) {
         this.setState(state => ({ ...state, [atrr]: value }), () => callback())
+    }
+
+    /**
+     *
+     * @param obj
+     * @param atrr
+     * @param value
+     * @param callback
+     * @private
+     */
+    _handleObject(obj: string, atrr: string, value: string, callback: Function = () => { }) {
+        this.setState((state: any) => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
+    }
+
+    /**
+     *
+     * @param id
+     * @param value
+     */
+    onChangeInputLogin({ target: { id, value }}: { target: HTMLInputElement }) {
+        this._handleObject('dataLogin', id, value);
     }
 
     /**
@@ -62,6 +95,7 @@ class StoreLogin extends React.PureComponent<any, IState> {
     }
 
     render() {
+        const { dataLogin: { login, password } }: IState = this.state;
         return (
             <Center>
                 <ContainerForm>
@@ -87,16 +121,24 @@ class StoreLogin extends React.PureComponent<any, IState> {
                             <div className="mb-3">
                                 <InputLabel
                                     size="lg"
+                                    id="login"
                                     type="email"
                                     label="Email"
+                                    value={login ?? ''}
+                                    error={login === ''}
                                     placeholder="exemplo@gmail.com"
+                                    onChange={this.onChangeInputLogin}
                                 />
                             </div>
                             <div className="mb-3">
                                 <InputPasswordLabel
                                     size="lg"
+                                    id="password"
                                     label="Senha"
+                                    value={password ?? ''}
+                                    error={password === ''}
                                     placeholder="Insira sua senha"
+                                    onChange={this.onChangeInputLogin}
                                 />
                                 <Link className="form-text">Esqueci minha senha</Link>
                             </div>
