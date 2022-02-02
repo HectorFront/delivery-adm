@@ -18,8 +18,8 @@ interface InputPasswordProps {
 }
 
 export const InputPassword: Function = React.memo((props: InputPasswordProps): JSX.Element => {
-    const [icon, setIcon] = useState<string>(AttrTypePassword.password.icon);
-    const [typeCurrent, setTypeAttr] = useState<string>(AttrTypePassword.password.typeAttr);
+    const [icon, setIcon] = useState<string>(AttrTypePassword.text.icon);
+    const [typeCurrent, setTypeAttr] = useState<string>(AttrTypePassword.text.typeAttr);
 
     const handleTypePassword: React.MouseEventHandler<HTMLButtonElement> = () => {
         setIcon(AttrTypePassword[typeCurrent].icon);

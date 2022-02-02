@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled, { keyframes } from 'styled-components';
 /** @name Interface */
-import { TextAnimationProps } from "./interfaces";
+import { TextAnimationProps } from "./stylesInterfaces";
 
 const fade = keyframes`
   from {

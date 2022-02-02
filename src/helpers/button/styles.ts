@@ -3,7 +3,7 @@ import styled from 'styled-components';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { ButtonCustomProps } from "./interfaces";
+import { ButtonCustomProps } from "./stylesInterfaces";
 
 export const ButtonCustom = styled.button<ButtonCustomProps>`
   height: 50px;

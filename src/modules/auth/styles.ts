@@ -5,7 +5,7 @@ import { flex } from 'mixins/global';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { BarProgressProps } from "./interfaces";
+import { BarProgressProps } from "./stylesInterfaces";
 
 export const Center = styled.div`
   height: 100%;

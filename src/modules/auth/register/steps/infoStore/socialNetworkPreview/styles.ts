@@ -5,7 +5,7 @@ import { flex } from 'mixins/global';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { AvatarProps, UserProps, ViewPageProps } from "./interfaces";
+import { AvatarProps, UserProps, ViewPageProps } from "./stylesInterfaces";
 
 export const Box = styled.div`
   width: 100%;
