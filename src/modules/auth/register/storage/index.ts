@@ -15,4 +15,9 @@ export class StorageStoreRegister {
         }
         profile && window.open(networks[type]);
     }
+
+
+    static registerUserStore() {
+
+    }
 }

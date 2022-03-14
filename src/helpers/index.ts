@@ -1,3 +1,4 @@
+export * from './box';
 export * from './icon';
 export * from './grid';
 export * from './card';
