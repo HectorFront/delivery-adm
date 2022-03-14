@@ -9,7 +9,7 @@ import { BarProgressProps } from "./stylesInterfaces";
 
 export const Center = styled.div`
   height: 100%;
-  ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })}
+  ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'center' })};
 `;
 
 export const Logo = styled.img`

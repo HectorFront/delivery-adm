@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Card as CardComponent } from './styles';
+import * as S from './styles';
 /** @name Dependencies */
 import React, { ReactNode } from 'react';
 
@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 export const Card: Function = React.memo(({ className, children }: CardProps): JSX.Element =>
-    <CardComponent className={`card${className ? ` ${className}` : ''}`}>
+    <S.Card className={`card${className ? ` ${className}` : ''}`}>
         {children}
-    </CardComponent>
+    </S.Card>
 );

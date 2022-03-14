@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Box, Avatar, Profile, User, Description, ViewPage, InfoProfile } from '../styles';
+import * as S from '../styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
@@ -16,34 +16,34 @@ interface PreviewProfileProps {
 export const PreviewProfile: Function = React.memo(({ typeSocial, profile }: PreviewProfileProps): JSX.Element => {
     const hasTypeFacebook = typeSocial === 'facebook';
     return (
-        <Box>
-            <Profile>
-                <Avatar facebook={hasTypeFacebook}>
+        <S.Box>
+            <S.Profile>
+                <S.Avatar facebook={hasTypeFacebook}>
                     <MaterialIcon
                         size="18px"
                         color="white"
                         icon="restaurant"
                     />
-                </Avatar>
-                <InfoProfile>
-                    <User facebook={hasTypeFacebook}>{!profile?.length ? 'sualoja' : profile}</User>
-                    <Description>
+                </S.Avatar>
+                <S.InfoProfile>
+                    <S.User facebook={hasTypeFacebook}>{!profile?.length ? 'sualoja' : profile}</S.User>
+                    <S.Description>
                         Perfil do {String.capitalize(typeSocial ?? '')}&nbsp;
                         <MaterialIcon
                             size="10px"
                             color="gray"
                             icon="public"
                         />
-                    </Description>
-                </InfoProfile>
-            </Profile>
-            <ViewPage
+                    </S.Description>
+                </S.InfoProfile>
+            </S.Profile>
+            <S.ViewPage
                 type="button"
                 facebook={hasTypeFacebook}
                 onClick={() => StorageStoreRegister.visitSocialNetwork(typeSocial ?? '', profile ?? '')}
             >
                 Ver perfil
-            </ViewPage>
-        </Box>
+            </S.ViewPage>
+        </S.Box>
     )
 });

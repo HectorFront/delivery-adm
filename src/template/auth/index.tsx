@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Content, ContainerAuth } from './styles';
+import * as S from './styles';
 /** @name Dependencies */
 import React, { ReactNode } from 'react';
 
@@ -8,9 +8,9 @@ interface AuthProps {
 }
 
 export const Auth: Function = React.memo(({ children }: AuthProps): JSX.Element =>
-    <ContainerAuth>
-        <Content>
+    <S.ContainerAuth>
+        <S.Content>
             {children}
-        </Content>
-    </ContainerAuth>
+        </S.Content>
+    </S.ContainerAuth>
 );

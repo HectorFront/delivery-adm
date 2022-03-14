@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Title, Description } from "../../../styles";
+import * as S from "../../../styles";
 /** @name StyledKeyFrames */
 import { TextAnimation } from "../../../keyframes";
 /** @name Dependencies */
@@ -18,13 +18,13 @@ interface TabStepProps {
 
 export const TabStep: Function = React.memo(({ icon, paintedText, normalText, description }: TabStepProps): JSX.Element =>
     <>
-        <Title>
+        <S.Title>
             <MaterialIcon
                 icon={icon}
                 color={Colors.SECONDARY}
             />
             <TextAnimation seconds="1" color={Colors.SECONDARY}>{paintedText}</TextAnimation>&nbsp;{normalText}
-        </Title>
-        <Description>{description}</Description>
+        </S.Title>
+        <S.Description>{description}</S.Description>
     </>
 )

@@ -1,5 +1,5 @@
 /** @name Styled */
-import { CardPrice } from './styles';
+import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
@@ -21,7 +21,7 @@ export const Price: Function = React.memo(({ id, title, price, benefits, priceSe
         ? { backgroundColor: Colors.DARK, color: 'white' }
         : { backgroundColor: 'white', color: 'black' };
     return (
-        <CardPrice onClick={selectPrice}>
+        <S.CardPrice onClick={selectPrice}>
             <div className="card-header" style={CSSHeaderWhenSelected}>
                 <h5 className="my-0 font-weight-normal">{title}</h5>
             </div>
@@ -41,6 +41,6 @@ export const Price: Function = React.memo(({ id, title, price, benefits, priceSe
                     )}
                 </ul>
             </div>
-        </CardPrice>
+        </S.CardPrice>
     );
 });

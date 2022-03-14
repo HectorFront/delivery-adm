@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Label } from './styles';
+import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
@@ -23,7 +23,7 @@ interface InputLabelProps {
 
 export const InputLabel: Function = React.memo((props: InputLabelProps): JSX.Element =>
     <>
-        <Label className="form-label">
+        <S.Label className="form-label">
             <Render has={props.iconLabel}>
                 <MaterialIcon
                     size="15px"
@@ -40,7 +40,7 @@ export const InputLabel: Function = React.memo((props: InputLabelProps): JSX.Ele
                 />&nbsp;
             </Render>
             <b>{props.label}</b>
-        </Label>
+        </S.Label>
         <InputDefault
             id={props.id}
             size={props.size}

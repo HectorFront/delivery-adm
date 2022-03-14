@@ -1,5 +1,5 @@
 /** @name Styled */
-import { VisibilityPassword } from '../styles';
+import * as S from '../styles';
 /** @name Dependencies */
 import React, { useState } from 'react';
 /** @name External */
@@ -38,13 +38,13 @@ export const InputPassword: Function = React.memo((props: InputPasswordProps): J
                 className={props.className}
                 placeholder={props.placeholder}
             />
-            <VisibilityPassword
+            <S.VisibilityPassword
                 type="button"
                 className="btn"
                 onClick={handleTypePassword}
             >
                 <MaterialIcon hover icon={icon} />
-            </VisibilityPassword>
+            </S.VisibilityPassword>
         </div>
     );
 });

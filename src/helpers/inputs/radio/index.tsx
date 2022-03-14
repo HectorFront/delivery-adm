@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Radio } from './styles';
+import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 
@@ -12,7 +12,7 @@ interface InputRadioProps {
 }
 
 export const InputRadio: Function = React.memo((props: InputRadioProps): JSX.Element =>
-    <Radio
+    <S.Radio
         id={props.id}
         type="radio"
         value={props.value}

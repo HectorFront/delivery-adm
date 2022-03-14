@@ -1,15 +1,5 @@
 /** @name Styled */
-import {
-    Form,
-    Link,
-    Logo,
-    Title,
-    Center,
-    Description,
-    ContainerText,
-    RegisterStore,
-    ContainerForm
-} from '../styles';
+import * as S from '../styles';
 /** @name StyledKeyFrames */
 import {
     TextAnimation
@@ -97,26 +87,26 @@ class StoreLogin extends React.PureComponent<any, IState> {
     render() {
         const { dataLogin: { login, password } }: IState = this.state;
         return (
-            <Center>
-                <ContainerForm>
-                    <Logo
+            <S.Center>
+                <S.ContainerForm>
+                    <S.Logo
                         alt="Logo"
                         height="100px"
                         className="mb-5"
                         src={LogoDefault}
                     />
-                    <ContainerText>
-                        <Title>
+                    <S.ContainerText>
+                        <S.Title>
                             <MaterialIcon
                                 icon={'store_mall_directory'}
                                 color={Colors.DEFAULT}
                             />
                             <TextAnimation seconds="1">Área</TextAnimation> do&nbsp;
                             <TextAnimation seconds="3" color={Colors.DEFAULT}>chefe</TextAnimation>
-                        </Title>
-                        <Description>Aqui você facilita sua venda de forma ágil</Description>
-                    </ContainerText>
-                    <Form>
+                        </S.Title>
+                        <S.Description>Aqui você facilita sua venda de forma ágil</S.Description>
+                    </S.ContainerText>
+                    <S.Form>
                         <fieldset>
                             <div className="mb-3">
                                 <InputLabel
@@ -140,17 +130,17 @@ class StoreLogin extends React.PureComponent<any, IState> {
                                     placeholder="Insira sua senha"
                                     onChange={this.onChangeInputLogin}
                                 />
-                                <Link className="form-text">Esqueci minha senha</Link>
+                                <S.Link className="form-text">Esqueci minha senha</S.Link>
                             </div>
                             <Button size="lg">Entrar</Button>
                         </fieldset>
-                    </Form>
-                    <RegisterStore>
+                    </S.Form>
+                    <S.RegisterStore>
                         Ainda não possui cadastro da sua loja?&nbsp;
-                        <Link onClick={this.goRegister}>Vem com a gente!</Link>
-                    </RegisterStore>
-                </ContainerForm>
-            </Center>
+                        <S.Link onClick={this.goRegister}>Vem com a gente!</S.Link>
+                    </S.RegisterStore>
+                </S.ContainerForm>
+            </S.Center>
         )
     }
 }

@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Default, Invalid } from "./styles";
+import * as S from "./styles";
 /** @name Dependencies */
 import React from 'react';
 
@@ -36,7 +36,7 @@ export const InputDefault: Function = React.memo((props: InputDefaultProps): JSX
     };
     return (
         <>
-            <Default
+            <S.Default
                 id={props.id}
                 type={AttrInput.type}
                 value={AttrInput.value}
@@ -44,7 +44,7 @@ export const InputDefault: Function = React.memo((props: InputDefaultProps): JSX
                 placeholder={AttrInput.placeholder}
                 className={`form-control form-control-${AttrInput.size}${AttrInput.className}${AttrInput.error}`}
             />
-            <Invalid>Preencha o campo corretamente.</Invalid>
+            <S.Invalid>Preencha o campo corretamente.</S.Invalid>
         </>
     );
 });

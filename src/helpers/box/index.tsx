@@ -1,14 +1,14 @@
 /** @name Dependencies */
 import React, { ReactNode } from 'react';
 /** @name Internal */
-import { ElBox } from './styles';
+import * as S from './styles';
 
 interface BoxProps {
     children: ReactNode
 }
 
 export const Box: Function = React.memo(({ children }: BoxProps): JSX.Element =>
-   <ElBox>
+   <S.ElBox>
        {children}
-   </ElBox>
+   </S.ElBox>
 )

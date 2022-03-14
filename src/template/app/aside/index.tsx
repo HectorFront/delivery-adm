@@ -1,5 +1,5 @@
 /** @name Styled */
-import { Logo, Aside, Header, NameCompany, MenuNav, NavItem, BadgeNew, BadgeCounter, Version } from '../styles';
+import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
@@ -22,17 +22,17 @@ interface NavItemsProps {
 export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Element => {
     const activeNav: Function = (pathNav: string) => pathNav === props.pathCurrent;
     return (
-        <Aside>
-            <Header>
-                <Logo
+        <S.Aside>
+            <S.Header>
+                <S.Logo
                     alt="Logo"
                     height="50px"
                     src={LogoDefault}
                 />
-                <NameCompany>Santa Fome Burger</NameCompany>
-            </Header>
+                <S.NameCompany>Santa Fome Burger</S.NameCompany>
+            </S.Header>
             <hr/>
-            <MenuNav>
+            <S.MenuNav>
                 {navItems.map((item: NavItemsProps, i: number) => {
                     const active = activeNav(item.path);
                     return (
@@ -40,7 +40,7 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
                             {item.dividerNavs
                                 ? <br/>
                                 :
-                                <NavItem>
+                                <S.NavItem>
                                     <span
                                         className={`nav-link d-flex align-items-center ${active && 'nav__active__item'} position-relative`}
                                     >
@@ -52,18 +52,18 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
                                         {item.name}&nbsp;
                                         {(i === 2 || i === 4 || i === navItems.length-1) &&
                                             <>
-                                                <BadgeNew>novo</BadgeNew>
-                                                <BadgeCounter>1</BadgeCounter>
+                                                <S.BadgeNew>novo</S.BadgeNew>
+                                                <S.BadgeCounter>1</S.BadgeCounter>
                                             </>
                                         }
                                     </span>
-                                </NavItem>
+                                </S.NavItem>
                             }
                         </Fragment>
                     )
                 })}
-            </MenuNav>
-            <Version>v1.0.0</Version>
-        </Aside>
+            </S.MenuNav>
+            <S.Version>v1.0.0</S.Version>
+        </S.Aside>
     );
 });

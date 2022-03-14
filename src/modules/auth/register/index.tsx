@@ -1,13 +1,5 @@
 /** @name Styled */
-import {
-    Form,
-    BackPage,
-    CountSteps,
-    BarProgress,
-    ContainerText,
-    ContainerForm,
-    ContainerBarProgress, Logo
-} from '../styles';
+import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
@@ -20,7 +12,6 @@ import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from 
 import { Render, Button, MaterialIcon } from 'helpers';
 /** @name Constants */
 import Colors from 'constants/client/colors';
-
 
 interface DefinedDataRegister {
     cep: string | null,
@@ -151,7 +142,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
 
         return (
             <>
-                <BackPage>
+                <S.BackPage>
                     <MaterialIcon
                         hover
                         size="45px"
@@ -160,18 +151,18 @@ class StoreRegister extends React.PureComponent<any, IState> {
                         onClick={this.goBackPage}
                         style={{ position: 'absolute', left: 25 }}
                     />
-                    <Logo
+                    <S.Logo
                         alt="Logo"
                         height="100%"
                         src={LogoDefault}
                     />
-                </BackPage>
-                <ContainerBarProgress>
-                    <BarProgress width={`${progressBar}%`}/>
-                </ContainerBarProgress>
-                <ContainerForm>
-                    <ContainerText>
-                        <CountSteps>{stepCurrent} de {this.steps} etapas.</CountSteps>
+                </S.BackPage>
+                <S.ContainerBarProgress>
+                    <S.BarProgress width={`${progressBar}%`}/>
+                </S.ContainerBarProgress>
+                <S.ContainerForm>
+                    <S.ContainerText>
+                        <S.CountSteps>{stepCurrent} de {this.steps} etapas.</S.CountSteps>
                         {registerTabs.map((tab, i) =>
                             <Render key={i} has={this.isVisibleStep(tab.step)}>
                                 <TabStep
@@ -182,8 +173,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
                                 />
                             </Render>
                         )}
-                    </ContainerText>
-                    <Form>
+                    </S.ContainerText>
+                    <S.Form>
                         <fieldset>
                             <Render has={this.isVisibleStep(1)}>
                                 <RegisterStore
@@ -216,8 +207,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
                                 {concluded ? 'Concluir' : 'Continuar'}
                             </Button>
                         </fieldset>
-                    </Form>
-                </ContainerForm>
+                    </S.Form>
+                </S.ContainerForm>
             </>
         )
     }

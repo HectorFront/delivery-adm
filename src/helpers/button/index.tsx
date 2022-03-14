@@ -1,6 +1,6 @@
 import React from 'react';
 /** @name Internal */
-import { ButtonCustom } from "./styles";
+import * as S from "./styles";
 
 interface ButtonProps {
     size?: string,
@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 export const Button: Function = React.memo((props: ButtonProps): JSX.Element =>
-    <ButtonCustom
+    <S.ButtonCustom
         type="button"
         outline={props.outline}
         disabled={props.disabled}
@@ -21,5 +21,5 @@ export const Button: Function = React.memo((props: ButtonProps): JSX.Element =>
         onClick={(e: any) => { props.onClick && props.onClick(e); e.target.blur(); }}
     >
         {props.children}
-    </ButtonCustom>
+    </S.ButtonCustom>
 );
