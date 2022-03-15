@@ -8,22 +8,27 @@ No diretório raiz do projeto:
 
 ### `npm i ou yarn`
 
+
+## Executar
+
+### `npm start ou yarn start`
+
 Executa o aplicativo no modo de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
 ## Prévias de desenvolvimento
 
-### Login
+### /login
 
 <img src="src/assets/readme/login.png" height="300px" width="auto" alt="Login">\
 Login de usuário do administrador da loja.
 
-### Registro
+### /register
 
 <img src="src/assets/readme/registro.png" height="300px" width="auto" alt="Login">\
 Local onde o dono ou responsável irá cadastrar sua loja.
 
-### Dashboard
+### /home
 
 <img src="src/assets/readme/dashboard.png" height="300px" width="auto" alt="Login">\
 Local onde o dono ou responsável irá gerenciar sua loja.
