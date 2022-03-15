@@ -12,8 +12,8 @@ export const Container = styled.div`
   transition: all .2s;
   border-radius: 14px;
   background-color: white;
-  box-shadow: 0 0 5px 0 gray;
-  ${flex({ wrap: 'wrap', direction: 'row', alignX: 'space-between', alignY: 'center' })};
+  box-shadow: 0 0 5px 0 #bbbbbb;
+  ${flex({wrap: 'wrap', direction: 'row', alignX: 'space-between', alignY: 'center'})};
   @media screen and (max-width: 1000px) {
     padding: 10px;
   }

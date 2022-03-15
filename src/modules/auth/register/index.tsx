@@ -112,7 +112,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
      */
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1; progressBar += this.progressByStage;
+        stepCurrent+=1;
+        progressBar += this.progressByStage;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -124,7 +125,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
         if(stepCurrent <= 1) {
             return this.props.history.goBack()
         } else {
-            stepCurrent-=1; progressBar -= this.progressByStage;
+            stepCurrent-=1;
+            progressBar -= this.progressByStage;
             this.setState({ stepCurrent, progressBar });
         }
     }
@@ -199,8 +201,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
                             </Render>
                             <Render has={this.isVisibleStep(5)}>
                                 <CreateLogin
-                                    onChange={this.onChangeInputRegister}
                                     data={{ login, password }}
+                                    onChange={this.onChangeInputRegister}
                                 />
                             </Render>
                             <Button secondary onClick={this.nextStep}>

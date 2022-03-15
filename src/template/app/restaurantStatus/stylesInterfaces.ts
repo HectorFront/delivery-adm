@@ -1,4 +1,4 @@
-export interface DropdownProps {
+export interface TextDropdownProps {
     open: boolean | null
 }
 

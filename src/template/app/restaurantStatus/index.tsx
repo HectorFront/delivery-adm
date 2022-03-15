@@ -47,12 +47,14 @@ export const RestaurantStatus: Function = React.memo(({ isRestaurantOpen }: Rest
     const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[collectToggle];
     return (
         <S.Container>
-            <S.Dropdown open={isRestaurantOpen}>
-                {status}&nbsp;<MaterialIcon icon={iconStatus} pointer/>
+            <S.Dropdown>
+                <S.TextDropdown open={isRestaurantOpen}>
+                    {status}&nbsp;<MaterialIcon icon={iconStatus} pointer size={15} />&nbsp;&nbsp;
+                </S.TextDropdown>
             </S.Dropdown>
             <S.List>
                 <S.Item>
-                    <MaterialIcon icon={iconAction} color={color} />&nbsp;
+                    <MaterialIcon icon={iconAction} color={color}/>&nbsp;
                     <S.Text>{text} restaurante</S.Text>
                 </S.Item>
             </S.List>

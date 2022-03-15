@@ -2,7 +2,7 @@ import styled from "styled-components";
 /** @name Mixins */
 import { flex } from "mixins/global";
 /** @name Interface */
-import { DropdownProps, TextProps } from "./stylesInterfaces";
+import { TextDropdownProps, TextProps} from "./stylesInterfaces";
 
 export const Container = styled.div.attrs({
     className: 'dropdown mb-5'
@@ -13,13 +13,19 @@ export const Dropdown = styled.button.attrs({
     className: 'btn dropdown-toggle',
     'data-bs-toggle': 'dropdown',
     'aria-expanded': 'false'
-})<DropdownProps>`
+})`
   color: white;
-  padding: 8px 20px;
+  font-weight: bold;
+  padding: 0 15px 0 0;
   border-radius: 50px;
   transition: all .2s;
-  background-color: ${props => props.open ? '#3CB339' : '#bb2d3b'};
-  ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })};
+  border: 1px solid #C4C4C4;
+  ${flex({wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center'})};
+  &:after {
+    color: #949494;
+    font-size: 18px;
+    margin-left: 10px;
+  }
   &:hover {
     opacity: .9;
     color: white;
@@ -28,6 +34,15 @@ export const Dropdown = styled.button.attrs({
   &:focus {
     box-shadow: none;
   }
+`;
+
+export const TextDropdown = styled.div<TextDropdownProps>`
+  height: 100%;
+  font-size: 18px;
+  border-radius: 50px;
+  padding: 6px 20px 6px 30px;
+  background-color: ${props => props.open ? '#63CD61' : '#bb2d3b'};
+  ${flex({wrap: 'nowrap', direction: 'row', alignX: 'center', alignY: 'center'})};
 `;
 
 export const List = styled.ul.attrs({
