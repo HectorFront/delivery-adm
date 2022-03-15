@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IconProps } from "./stylesInterfaces";
 
 export const Icon = styled.span<IconProps>`
-  cursor: ${props => props.hasHover ? 'pointer' : 'default' };
+  cursor: ${props => props.hasHover || props.pointer ? 'pointer' : 'default' } !important;
   &:hover {
       opacity: ${props => props.hasHover ? '.6' : '1' };
   }

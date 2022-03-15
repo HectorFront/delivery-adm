@@ -24,10 +24,7 @@ export const Avatar = styled.div<AvatarProps>`
   height: 35px;
   border-radius: 50px;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
-  background-color: ${props => props.facebook 
-          ? Colors.BG_FACEBOOK
-          : Colors.MAIN_INSTAGRAM
-  };
+  background-color: ${props => props.facebook ? Colors.BG_FACEBOOK : Colors.MAIN_INSTAGRAM};
 `;
 
 export const InfoProfile = styled.div`
@@ -54,10 +51,7 @@ export const ViewPage = styled.button<ViewPageProps>`
   height: 30px;
   font-size: 13px;
   border-radius: 5px;
-  background-color: ${props => props.facebook 
-          ? Colors.BG_FACEBOOK
-          : Colors.BG_INSTAGRAM
-  };
+  background-color: ${props => props.facebook ? Colors.BG_FACEBOOK : Colors.BG_INSTAGRAM};
   &:hover {
     opacity: .8;
   }

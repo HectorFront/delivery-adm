@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 /** @name Internal */
 import * as S from "./styles";
 
 interface ButtonProps {
     size?: string,
-    children: any,
+    children: ReactNode,
     outline?: boolean,
     disabled?: boolean,
     secondary?: boolean,

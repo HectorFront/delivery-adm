@@ -136,10 +136,8 @@ class StoreRegister extends React.PureComponent<any, IState> {
         const { stepCurrent, progressBar, dataSteps }: IState  = this.state;
 
         const {
-            social_reason, fantasy_name,
-            cnpj, email, contact_email, telephone, cellphone,
-            instagram, facebook, cep, city, address,
-            login, password
+            social_reason, fantasy_name, cnpj, email, contact_email, telephone, cellphone,
+            instagram, facebook, cep, city, address, login, password
         }: DefinedDataRegister = dataSteps;
 
         return (
