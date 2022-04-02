@@ -27,4 +27,6 @@ export const MaterialIcon: Function = React.memo(({ type, size, color, hover, po
     >
         {props.icon}
     </S.Icon>
-);
+, (prevProps, nextProps): any => {
+    return true;
+});

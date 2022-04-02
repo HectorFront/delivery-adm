@@ -1,7 +1,7 @@
 /** @name Styled */
 import * as S from "../../../styles";
 /** @name StyledKeyFrames */
-import { TextAnimation } from "../../../keyframes";
+import * as Keyframe from "../../../keyframes";
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
@@ -23,7 +23,7 @@ export const TabStep: Function = React.memo(({ icon, paintedText, normalText, de
                 icon={icon}
                 color={Colors.SECONDARY}
             />
-            <TextAnimation seconds="1" color={Colors.SECONDARY}>{paintedText}</TextAnimation>&nbsp;{normalText}
+            <Keyframe.TextAnimation seconds="1" color={Colors.SECONDARY}>{paintedText}</Keyframe.TextAnimation>&nbsp;{normalText}
         </S.Title>
         <S.Description>{description}</S.Description>
     </>

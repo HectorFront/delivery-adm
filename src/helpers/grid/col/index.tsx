@@ -11,23 +11,23 @@ const MAX_COLUMNS = 5;
 
 export const Col: Function = React.memo(({ cols = '', children }: ColProps): JSX.Element => {
     const [classNamesCol, setClassnameCol] = useState('');
-    const columnsClassnames: ColumnsDefined = useMemo(() => cols?.split(' ') ?? [],[cols]),
+    const allClassNames: ColumnsDefined = useMemo(() => cols?.split(' ') ?? [],[cols]),
         colXS = 'col-12',
-        colSM = `col-sm-${columnsClassnames[0] ?? '12'}`,
-        colMD = `col-md-${columnsClassnames[1] ?? '12'}`,
-        colLG = `col-lg-${columnsClassnames[2] ?? '12'}`,
-        colXL = `col-xl-${columnsClassnames[3] ?? '12'}`,
-        colXXl = `col-xxl-${columnsClassnames[4] ?? '12'}`;
+        colSM = `col-sm-${allClassNames[0] ?? '12'}`,
+        colMD = `col-md-${allClassNames[1] ?? '12'}`,
+        colLG = `col-lg-${allClassNames[2] ?? '12'}`,
+        colXL = `col-xl-${allClassNames[3] ?? '12'}`,
+        colXXl = `col-xxl-${allClassNames[4] ?? '12'}`;
 
     const getAdditionalClassNames = useCallback(() => {
         let CSSClassnames: string = '';
-        if(columnsClassnames.length > MAX_COLUMNS) {
-            columnsClassnames.slice(MAX_COLUMNS, columnsClassnames.length).forEach(className => {
+        if(allClassNames.length > MAX_COLUMNS) {
+            allClassNames.slice(MAX_COLUMNS, allClassNames.length).forEach(className => {
                 if(className) CSSClassnames += ` ${className}`;
             });
             return setClassnameCol(CSSClassnames);
         }
-    },[columnsClassnames]);
+    },[allClassNames]);
 
     useEffect(() => {
         getAdditionalClassNames();

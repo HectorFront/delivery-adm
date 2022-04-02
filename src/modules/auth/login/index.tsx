@@ -1,9 +1,7 @@
 /** @name Styled */
 import * as S from '../styles';
 /** @name StyledKeyFrames */
-import {
-    TextAnimation
-} from '../keyframes';
+import * as Keyframe from '../keyframes';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
@@ -100,8 +98,8 @@ class StoreLogin extends React.PureComponent<any, IState> {
                                 icon={'store_mall_directory'}
                                 color={Colors.DEFAULT}
                             />
-                            <TextAnimation seconds="1">Área</TextAnimation> do&nbsp;
-                            <TextAnimation seconds="3" color={Colors.DEFAULT}>chefe</TextAnimation>
+                            <Keyframe.TextAnimation seconds="1">Área</Keyframe.TextAnimation> do&nbsp;
+                            <Keyframe.TextAnimation seconds="3" color={Colors.DEFAULT}>chefe</Keyframe.TextAnimation>
                         </S.Title>
                         <S.Description>Aqui você facilita sua venda de forma ágil</S.Description>
                     </S.ContainerText>
