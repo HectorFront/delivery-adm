@@ -2,22 +2,21 @@ import React, { ReactNode } from 'react';
 /** @name Internal */
 import * as S from "./styles";
 
-interface ButtonProps {
+type ButtonProps = {
     size?: string,
-    children: ReactNode,
     outline?: boolean,
-    disabled?: boolean,
+    children: ReactNode,
     secondary?: boolean,
-    onClick?: React.MouseEventHandler<HTMLSpanElement>
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export const Button: Function = React.memo((props: ButtonProps): JSX.Element =>
+export const Button: Function = React.memo(({ size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
     <S.ButtonCustom
+        {...props}
         type="button"
-        outline={props.outline}
-        disabled={props.disabled}
-        secondary={props.secondary}
-        className={`btn btn-dark btn-${props.size ?? 'sm'}`}
+        outline={outline}
+        secondary={secondary}
+        className={`btn btn-dark btn-${size ?? 'sm'}`}
         onClick={(e: any) => { props.onClick && props.onClick(e); e.target.blur(); }}
     >
         {props.children}

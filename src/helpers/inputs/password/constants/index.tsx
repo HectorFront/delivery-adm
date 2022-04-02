@@ -2,13 +2,13 @@ type DefinedAttrTypePassword = {
     [index: string]: any
 };
 
-export const AttrTypePassword: DefinedAttrTypePassword = {
+export const ATTR_TYPES_PASSWORD: DefinedAttrTypePassword = {
     text: {
-        typeAttr: 'password',
+        type: 'password',
         icon: 'visibility'
     },
     password: {
-        typeAttr: 'text',
+        type: 'text',
         icon: 'visibility_off'
     }
 };

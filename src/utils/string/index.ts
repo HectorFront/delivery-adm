@@ -13,6 +13,10 @@ export class String {
        return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
+    /**
+     *
+     * @param str
+     */
     static formatCurrency(str: string | number) {
         return str.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
     }

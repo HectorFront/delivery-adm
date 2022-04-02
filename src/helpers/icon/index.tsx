@@ -3,27 +3,26 @@ import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 
-interface MaterialIconProps {
+type MaterialIconProps = {
     icon: string,
+    style?: object,
     type?: string,
     size?: string,
     color?: string,
-    style?: object,
     hover?: boolean,
     pointer?: boolean,
-    onClick?: React.MouseEventHandler<HTMLSpanElement>
 }
 
-export const MaterialIcon: Function = React.memo((props: MaterialIconProps): JSX.Element =>
+export const MaterialIcon: Function = React.memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
     <S.Icon
-        onClick={props.onClick}
-        hasHover={props.hover}
-        className={`material-icons-${props.type ?? 'outlined'}`}
+        {...props}
+        hasHover={hover}
+        className={`material-icons-${type ?? 'outlined'}`}
         style={{
-            fontSize: props.size ?? '1.2em',
-            color: props.color ?? 'inherit',
-            cursor: props.pointer ? 'pointer' : 'default',
-            ...props.style
+            fontSize: size ?? '1.2em',
+            color: color ?? 'inherit',
+            cursor: pointer ? 'pointer' : 'default',
+            ...props?.style
         }}
     >
         {props.icon}

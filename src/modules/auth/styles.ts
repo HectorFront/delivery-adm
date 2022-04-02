@@ -5,7 +5,7 @@ import { flex } from 'mixins/global';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { BarProgressProps } from "./stylesInterfaces";
+import * as Interface from "./stylesInterfaces";
 
 export const Center = styled.div`
   height: 100%;
@@ -32,7 +32,7 @@ export const ContainerBarProgress = styled.div`
   background-color: #e0e0e0;
 `;
 
-export const BarProgress = styled.div<BarProgressProps>`
+export const BarProgress = styled.div<Interface.BarProgressProps>`
   height: 100%;
   position: relative;
   width: ${props => props.width};

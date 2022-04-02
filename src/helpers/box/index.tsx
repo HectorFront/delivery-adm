@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 /** @name Internal */
 import * as S from './styles';
 
-interface BoxProps {
+type BoxProps = {
     children: ReactNode
 }
 

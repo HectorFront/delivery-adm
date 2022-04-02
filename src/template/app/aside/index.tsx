@@ -5,7 +5,7 @@ import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React, { Fragment } from 'react';
 /** @name Internal */
-import { navItems } from "./constants";
+import {NAV_ITEMS} from "./constants";
 /** @name External */
 import { MaterialIcon } from "helpers";
 /** @name Constants */
@@ -33,7 +33,7 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
             </S.Header>
             <hr/>
             <S.MenuNav>
-                {navItems.map((item: NavItemsProps, i: number) => {
+                {NAV_ITEMS.map((item: NavItemsProps, i: number) => {
                     const active = activeNav(item.path);
                     return (
                         <Fragment key={i}>
@@ -50,7 +50,7 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
                                             color={active ? 'white' : Colors.SECONDARY}
                                         />
                                         {item.name}&nbsp;
-                                        {(i === 2 || i === 4 || i === navItems.length-1) &&
+                                        {(i === 2 || i === 4 || i === NAV_ITEMS.length-1) &&
                                             <>
                                                 <S.BadgeNew>novo</S.BadgeNew>
                                                 <S.BadgeCounter>1</S.BadgeCounter>

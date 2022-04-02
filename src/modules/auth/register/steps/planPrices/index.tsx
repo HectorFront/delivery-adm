@@ -1,7 +1,7 @@
 /** @name Dependencies */
 import React, { useState } from 'react';
 /** @name Internal */
-import { planPrices } from "../../constants";
+import { PLAN_PRICES } from "../../constants";
 /** @name External */
 import { Col, Price, Row } from "helpers";
 /** @name Constants */
@@ -11,7 +11,7 @@ export const PlanPrices: Function = React.memo((): JSX.Element => {
     const [idPriceSelected, setPriceSelected] = useState<number>(ID_DEFAULT_PLAN);
     return (
         <Row className="card-deck mb-3 text-center">
-            {planPrices.map((plan, i) =>
+            {PLAN_PRICES.map((plan, i) =>
                 <Col cols="12 12 6 6 6" key={i}>
                     <Price
                         id={plan.id}

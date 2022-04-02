@@ -5,43 +5,29 @@ import React, { useState } from 'react';
 /** @name External */
 import { InputDefault, MaterialIcon } from 'helpers/index';
 /** @name Constants */
-import { AttrTypePassword } from '../constants';
+import { ATTR_TYPES_PASSWORD } from '../constants';
 
-interface InputPasswordLabelProps {
-    id?: string,
-    label: string,
-    size?: string,
-    value?: string,
-    error?: boolean,
-    className?: string,
-    placeholder?: string,
-    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+type InputPasswordLabelProps = {
+    label: string
 }
 
-export const InputPasswordLabel: Function = React.memo((props: InputPasswordLabelProps): JSX.Element => {
-    const [icon, setIcon] = useState<string>(AttrTypePassword.text.icon);
-    const [typeCurrent, setTypeAttr] = useState<string>(AttrTypePassword.text.typeAttr);
+export const InputPasswordLabel: Function = React.memo(({ label, ...props }: InputPasswordLabelProps): JSX.Element => {
+    const [icon, setIcon] = useState<string>(ATTR_TYPES_PASSWORD.text.icon);
+    const [typeCurrent, setTypeAttr] = useState<string>(ATTR_TYPES_PASSWORD.text.type);
 
     const handleTypePassword: React.MouseEventHandler<HTMLButtonElement> = () => {
-        setIcon(AttrTypePassword[typeCurrent].icon);
-        setTypeAttr(AttrTypePassword[typeCurrent].typeAttr);
+        setIcon(ATTR_TYPES_PASSWORD[typeCurrent].icon);
+        setTypeAttr(ATTR_TYPES_PASSWORD[typeCurrent].type);
     }
 
     return (
         <>
             <label className="form-label">
-                <b>{props.label}</b>
+                <b>{label}</b>
             </label>
             <div className="input-group">
                 <InputDefault
-                    id={props.id}
-                    size={props.size}
-                    type={typeCurrent}
-                    error={props.error}
-                    value={props.value}
-                    onChange={props.onChange}
-                    className={props.className}
-                    placeholder={props.placeholder}
+                    {...props}
                 />
                 <S.VisibilityPassword
                     type="button"

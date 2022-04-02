@@ -5,7 +5,7 @@ import { flex } from 'mixins/global';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { AvatarProps, UserProps, ViewPageProps } from "./stylesInterfaces";
+import * as Interface from "./stylesInterfaces";
 
 export const Box = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ export const Profile = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'space-between' })}
 `;
 
-export const Avatar = styled.div<AvatarProps>`
+export const Avatar = styled.div<Interface.AvatarProps>`
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -32,7 +32,7 @@ export const InfoProfile = styled.div`
   ${flex({ wrap: 'no-wrap', direction: 'column', alignY: 'center', alignX: 'start' })}
 `;
 
-export const User = styled.span<UserProps>`
+export const User = styled.span<Interface.UserProps>`
   width: 100%;
   font-size: 14px;
   ${props => props.facebook ? `font-weight: bold; letter-spacing: 1px;` : ''};
@@ -44,7 +44,7 @@ export const Description = styled.span`
   font-size: 11px;
 `;
 
-export const ViewPage = styled.button<ViewPageProps>`
+export const ViewPage = styled.button<Interface.ViewPageProps>`
   border: 0;
   color: white;
   width: 100px;

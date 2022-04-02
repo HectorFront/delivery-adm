@@ -3,13 +3,16 @@ import * as S from './styles';
 /** @name Dependencies */
 import React, { ReactNode } from 'react';
 
-interface CardProps {
+type CardProps = {
     className?: string,
-    children?: ReactNode
+    children: ReactNode
 }
 
-export const Card: Function = React.memo(({ className, children }: CardProps): JSX.Element =>
-    <S.Card className={`card${className ? ` ${className}` : ''}`}>
-        {children}
-    </S.Card>
-);
+export const Card: Function = React.memo(({ className, children }: CardProps): JSX.Element => {
+    const CSSClassname = className ? ` ${className}` : '';
+    return (
+        <S.Card className={`card${CSSClassname}`}>
+            {children}
+        </S.Card>
+    );
+});

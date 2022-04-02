@@ -2,9 +2,9 @@ import styled from 'styled-components';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 /** @name Interface */
-import { RadioProps } from "./stylesInterfaces";
+import * as Interface from "./stylesInterfaces";
 
-export const Radio = styled.input<RadioProps>`
+export const Radio = styled.input<Interface.RadioProps>`
   cursor: pointer;
   &:checked {
     border-color: ${props => !props.secondary ? Colors.DEFAULT : Colors.SECONDARY};

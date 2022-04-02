@@ -14,25 +14,24 @@ import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-
-interface DefinedDataLogin {
+interface DataLoginProps {
     login: string | null,
     password: string | null
 }
 
 interface IState {
-    dataLogin: DefinedDataLogin
+    dataLogin: DataLoginProps
 }
 
 class StoreLogin extends React.PureComponent<any, IState> {
-    private dataLogin: DefinedDataLogin = {
+    private DATA_LOGIN: DataLoginProps = {
         login: null,
         password: null
     };
     constructor(props: any) {
         super(props);
         this.state = {
-            dataLogin: { ...this.dataLogin }
+            dataLogin: { ...this.DATA_LOGIN }
         }
         this.bindFunctions();
     }

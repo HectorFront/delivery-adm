@@ -2,7 +2,7 @@ import styled from "styled-components";
 /** @name Mixins */
 import { flex } from "mixins/global";
 /** @name Interface */
-import { TextDropdownProps, TextProps} from "./stylesInterfaces";
+import * as Interface from "./stylesInterfaces";
 
 export const Container = styled.div.attrs({
     className: 'dropdown mb-5'
@@ -36,7 +36,7 @@ export const Dropdown = styled.button.attrs({
   }
 `;
 
-export const TextDropdown = styled.div<TextDropdownProps>`
+export const TextDropdown = styled.div<Interface.TextDropdownProps>`
   height: 100%;
   font-size: 18px;
   border-radius: 50px;
@@ -60,7 +60,7 @@ export const Item = styled.li.attrs({
   }
 `;
 
-export const Text = styled.span<TextProps>`
+export const Text = styled.span<Interface.TextProps>`
   color: ${props => props.color ?? 'inherit'} !important;
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
   font-size: ${props => props.size ? `${props.size}px` : 'inherit'};

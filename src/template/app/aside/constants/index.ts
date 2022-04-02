@@ -1,4 +1,4 @@
-export const navItems = [
+export const NAV_ITEMS = [
     {
         icon: 'home',
         name: 'Início',

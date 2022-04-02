@@ -1,17 +1,17 @@
-interface flexProps {
+type flexProps = {
     wrap: string,
     direction: string,
     alignY: string,
     alignX: string
 }
 
-const flex: Function = ({ wrap, direction, alignY, alignX }: flexProps): string => `
+const flex: Function = ({ wrap = 'no-wrap', direction = 'row', alignY = 'start', alignX = 'start' }: flexProps): string => `
   display: flex;
   position: relative;
-  flex-wrap: ${wrap ?? 'no-wrap'};
-  align-items: ${alignY ?? 'start'};
-  flex-direction: ${direction ?? 'row'};
-  justify-content: ${alignX ?? 'start'};
+  flex-wrap: ${wrap};
+  align-items: ${alignY};
+  flex-direction: ${direction};
+  justify-content: ${alignX};
 `;
 
 export { flex };

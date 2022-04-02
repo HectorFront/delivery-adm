@@ -3,22 +3,15 @@ import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 
-interface InputRadioProps {
-    id?: string,
-    value?: number,
-    checked?: boolean,
+type InputRadioProps = {
     secondary?: boolean,
-    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InputRadio: Function = React.memo((props: InputRadioProps): JSX.Element =>
+export const InputRadio: Function = React.memo(({ secondary, ...props }: InputRadioProps): JSX.Element =>
     <S.Radio
-        id={props.id}
+        {...props}
         type="radio"
-        value={props.value}
-        checked={props.checked}
-        onChange={props.onChange}
-        secondary={props.secondary}
+        secondary={secondary}
         className="form-check-input"
     />
 )

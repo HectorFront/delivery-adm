@@ -7,11 +7,11 @@ import { InputRadio, MaterialIcon } from "helpers/index";
 /** @name Constants */
 import Colors from 'constants/client/colors';
 
-interface PriceProps {
+type PriceProps = {
     id: number,
-    benefits: string[],
     price: number,
     title: string,
+    benefits: string[],
     priceSelected: number,
     selectPrice: React.MouseEventHandler<HTMLDivElement> | undefined
 }

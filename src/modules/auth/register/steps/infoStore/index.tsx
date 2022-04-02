@@ -4,7 +4,7 @@ import IconInstagram from 'assets/icons/instagram.png';
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
-import { PreviewProfile } from './socialNetworkPreview';
+import { PreviewProfile } from './socialNetwork';
 /** @name External */
 import { Card, Row, Col, InputLabel } from 'helpers';
 
@@ -59,7 +59,7 @@ export const InfoStore: Function = React.memo(({ data: { instagram, facebook, ce
                     value={address ?? ''}
                     error={address === ''}
                     label="Endereço de seu negócio"
-                    placeholder="Exemplo.: Rua Doutour Miguel Bruno Ferreira, 347"
+                    placeholder="Exemplo.: Rua Doutor Miguel Bruno Ferreira, 347"
                 />
             </div>
         </Col>

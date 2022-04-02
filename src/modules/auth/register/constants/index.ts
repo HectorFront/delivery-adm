@@ -1,4 +1,4 @@
-export const registerTabs = [
+export const REGISTER_TABS = [
     {
         step: 1,
         icon: 'add_business',
@@ -32,7 +32,7 @@ export const registerTabs = [
     }
 ];
 
-export const planPrices = [
+export const PLAN_PRICES = [
     {
         id: 1,
         price: 85,

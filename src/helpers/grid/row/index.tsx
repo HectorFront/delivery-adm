@@ -1,12 +1,15 @@
 import React, { ReactNode } from 'react';
 
-interface RowProps {
+type RowProps = {
     className?: string,
-    children?: ReactNode
+    children: ReactNode
 }
 
-export const Row: Function = React.memo(({ className, children }: RowProps): JSX.Element =>
-    <div className={`row${className ? ` ${className}` : ''}`}>
-        {children}
-    </div>
-);
+export const Row: Function = React.memo(({ className, children }: RowProps): JSX.Element => {
+    const CSSClassname = className ? ` ${className}` : '';
+    return (
+        <div className={`row${CSSClassname}`}>
+            {children}
+        </div>
+    );
+});

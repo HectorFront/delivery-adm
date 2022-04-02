@@ -3,7 +3,7 @@ import React, { LazyExoticComponent, ReactNode, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 /** @name External */
 import { App, Auth } from 'template';
-import { RoutesApp, RoutesAuth } from 'modules/paths';
+import { ROUTES_APP, ROUTES_AUTH } from 'modules/paths';
 import ClientRoutes from 'constants/client/routes';
 import { Authentication } from 'services/user/authentication';
 
@@ -34,13 +34,13 @@ const Routes: Function = (): JSX.Element => {
                 {!isLogged
                     ?
                     <Auth>
-                        {RoutesAuth.map<object>(({ path, component }: RoutesComponentsProps, i: number) =>
+                        {ROUTES_AUTH.map<object>(({ path, component }: RoutesComponentsProps, i: number) =>
                             <Route key={i} path={path} component={component} />
                         )}
                     </Auth>
                     :
                     <App pathCurrent={"teste"}>
-                        {RoutesApp.map<object>(({ path, component }: RoutesComponentsProps,  i: number) =>
+                        {ROUTES_APP.map<object>(({ path, component }: RoutesComponentsProps,  i: number) =>
                             <Route key={i} path={path} component={component} />
                         )}
                     </App>
