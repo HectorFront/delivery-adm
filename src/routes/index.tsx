@@ -1,6 +1,6 @@
 /** @name Dependencies */
 import React, { LazyExoticComponent, ReactNode, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 /** @name External */
 import { App, Auth } from 'template';
 import { ROUTES_APP, ROUTES_AUTH } from 'modules/paths';
@@ -29,26 +29,26 @@ const SwitchRoutes: Function = ({ children }: SwitchRoutesProps): JSX.Element =>
 const Routes: Function = (): JSX.Element => {
     const isLogged: boolean = userAuth.hasAuthentication();
     return (
-        <Router>
+        <BrowserRouter>
             <SwitchRoutes>
                 {!isLogged
                     ?
                     <Auth>
-                        {ROUTES_AUTH.map<object>(({ path, component }: RoutesComponentsProps, i: number) =>
+                        {ROUTES_AUTH.map(({ path, component }: RoutesComponentsProps, i: number) =>
                             <Route key={i} path={path} component={component} />
                         )}
                     </Auth>
                     :
-                    <App pathCurrent={"teste"}>
-                        {ROUTES_APP.map<object>(({ path, component }: RoutesComponentsProps,  i: number) =>
+                    <App>
+                        {ROUTES_APP.map(({ path, component }: RoutesComponentsProps,  i: number) =>
                             <Route key={i} path={path} component={component} />
                         )}
                     </App>
                 }
             </SwitchRoutes>
             <Redirect from='*' to={ClientRoutes[!isLogged ? "LOGIN" : "HOME"]} />
-        </Router>
+        </BrowserRouter>
     )
 }
 
-export default Routes;
+export { Routes };

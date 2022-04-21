@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import ClientRoutes from 'constants/client/routes';
 
 const Path = [
-    { path: ClientRoutes.HOME, component: lazy(() => import('modules/dashboard/index')) }
+    { path: ClientRoutes.HOME, component: lazy(() => import('modules/dashboard')) }
 ]
 
 export default Path;

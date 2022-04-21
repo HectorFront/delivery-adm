@@ -7,26 +7,20 @@ import './fonts.css';
 /** @name MaterialIcons */
 import 'material-icons/iconfont/material-icons.css';
 /** @name Bootstrap */
+import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import dotenv from 'dotenv';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Routes from './routes';
+import ReactDOM from 'react-dom/client';
+import { Routes } from './routes';
 import reportWebVitals from './reportWebVitals';
-
-dotenv.config({ path: '../.env' });
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <React.StrictMode>
-    <Routes/>
-  </React.StrictMode>
-);
+root.render(<Routes/>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
