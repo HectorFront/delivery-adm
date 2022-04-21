@@ -14,6 +14,8 @@ import dotenv from 'dotenv';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './routes';
+import reportWebVitals from './reportWebVitals';
+
 dotenv.config({ path: '../.env' });
 
 ReactDOM.render(<Routes/>, document.getElementById('root'));
