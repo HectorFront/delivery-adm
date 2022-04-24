@@ -1,6 +1,6 @@
 /** @name Styled */
 import styled from 'styled-components';
-/** @name Constants */
+/** @name External */
 import Colors from 'constants/client/colors';
 
 export const VisibilityPassword = styled.button`

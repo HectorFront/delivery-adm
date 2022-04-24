@@ -6,11 +6,11 @@ import * as Keyframe from '../keyframes';
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 /** @name External */
+import Colors from 'constants/client/colors';
 import ClientRoutes from 'constants/client/routes';
 import { Button, InputLabel, InputPasswordLabel, MaterialIcon } from 'helpers';
-/** @name Constants */
-import Colors from 'constants/client/colors';
 
 interface DataLoginProps {
     login: string | null,
@@ -21,15 +21,20 @@ interface IState {
     dataLogin: DataLoginProps
 }
 
-class StoreLogin extends React.PureComponent<any, IState> {
-    private DATA_LOGIN: DataLoginProps = {
-        login: null,
-        password: null
-    };
-    constructor(props: any) {
+interface ChildComponentProps extends RouteComponentProps<any> {}
+
+/** @name Constants */
+export const INITIAL_DATA_LOGIN: DataLoginProps = {
+    login: null,
+    password: null
+};
+
+class StoreLogin extends React.PureComponent<ChildComponentProps, IState> {
+
+    constructor(props: ChildComponentProps) {
         super(props);
         this.state = {
-            dataLogin: { ...this.DATA_LOGIN }
+            dataLogin: { ...INITIAL_DATA_LOGIN }
         }
         this.bindFunctions();
     }
@@ -98,8 +103,8 @@ class StoreLogin extends React.PureComponent<any, IState> {
                                 icon={'store_mall_directory'}
                                 color={Colors.DEFAULT}
                             />
-                            <Keyframe.TextAnimation seconds="1">Área</Keyframe.TextAnimation> do&nbsp;
-                            <Keyframe.TextAnimation seconds="3" color={Colors.DEFAULT}>chefe</Keyframe.TextAnimation>
+                            <Keyframe.TextFade seconds="1">Área</Keyframe.TextFade> do&nbsp;
+                            <Keyframe.TextFade seconds="3" color={Colors.DEFAULT}>chefe</Keyframe.TextFade>
                         </S.Title>
                         <S.Description>Aqui você facilita sua venda de forma ágil</S.Description>
                     </S.ContainerText>
@@ -142,4 +147,4 @@ class StoreLogin extends React.PureComponent<any, IState> {
     }
 }
 
-export default StoreLogin;
+export default withRouter(StoreLogin);

@@ -18,7 +18,7 @@ interface RoutesComponentsProps {
     component: LazyExoticComponent<any>
 }
 
-const SwitchRoutes: Function = ({ children }: SwitchRoutesProps): JSX.Element => (
+const SwitchRoutes: React.ElementType = ({ children }: SwitchRoutesProps): JSX.Element => (
     <Suspense fallback={null}>
         <Switch>
             {children}
@@ -26,7 +26,7 @@ const SwitchRoutes: Function = ({ children }: SwitchRoutesProps): JSX.Element =>
     </Suspense>
 )
 
-const Routes: Function = (): JSX.Element => {
+const Routes: React.ElementType = (): JSX.Element => {
     const isLogged: boolean = userAuth.hasAuthentication();
     return (
         <BrowserRouter>
@@ -45,8 +45,8 @@ const Routes: Function = (): JSX.Element => {
                         )}
                     </App>
                 }
+                <Redirect from='*' to={ClientRoutes[!isLogged ? "LOGIN" : "HOME"]} />
             </SwitchRoutes>
-            <Redirect from='*' to={ClientRoutes[!isLogged ? "LOGIN" : "HOME"]} />
         </BrowserRouter>
     )
 }

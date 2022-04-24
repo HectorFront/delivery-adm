@@ -1,11 +1,11 @@
-/** @name Dependencies */
+/** @name Styled */
 import styled from 'styled-components';
 /** @name External */
 import { flex } from 'mixins/global';
 /** @name Images */
 import ImgRealTime from 'assets/backgrounds/real_time.png';
-/** @name Interface */
-import { InfoFloatingProps, ContentProps, TextProps } from "./stylesInterfaces";
+
+import { InfoFloatingProps, ContentProps, TextProps } from "./styles.interfaces";
 
 export const Container = styled.div`
   padding: 20px;

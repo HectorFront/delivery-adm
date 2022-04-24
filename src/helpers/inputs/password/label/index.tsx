@@ -11,7 +11,7 @@ type InputPasswordLabelProps = {
     label: string
 }
 
-export const InputPasswordLabel: Function = React.memo(({ label, ...props }: InputPasswordLabelProps): JSX.Element => {
+export const InputPasswordLabel: React.ElementType = React.memo(({ label, ...props }: InputPasswordLabelProps): JSX.Element => {
     const [icon, setIcon] = useState<string>(ATTR_TYPES_PASSWORD.text.icon);
     const [typeCurrent, setTypeAttr] = useState<string>(ATTR_TYPES_PASSWORD.text.type);
 

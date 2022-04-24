@@ -6,14 +6,15 @@ import * as S from "./styles";
 import { String } from "utils";
 import { Row, Col } from 'helpers';
 import Colors from 'constants/client/colors';
-/** @name Constants */
-const CurrentMonth: string = 'Novembro';
 
-export const BoxRealTime: Function = React.memo((): JSX.Element =>
+/** @name Constants */
+export const CURRENT_MONTH: string = 'Novembro';
+
+export const BoxRealTime: React.ElementType = React.memo((): JSX.Element =>
     <Row>
-        <Col cols="12 12 12 6 6 5">
+        <Col cols="12 12 6 6 5">
             <S.Container>
-                <Col cols="12 12 12 12 7 6">
+                <Col cols="12 12 12 7 6">
                     <S.RealTime>
                         <S.Title>Em <S.Text bold color={Colors.SECONDARY}>tempo real</S.Text></S.Title>
                         <Row className="mt-3">
@@ -36,12 +37,12 @@ export const BoxRealTime: Function = React.memo((): JSX.Element =>
                         </Row>
                     </S.RealTime>
                 </Col>
-                <Col cols="12 12 12 12 5 6">
+                <Col cols="12 12 12 5 6">
                     <S.Content>
                         <Row className="mb-4">
                             <Col>
                                 <S.Text bold color={Colors.SECONDARY} size={18}>Pedidos</S.Text>
-                                <S.Text bold size={18}>&nbsp;/ {CurrentMonth}</S.Text>
+                                <S.Text bold size={18}>&nbsp;/ {CURRENT_MONTH}</S.Text>
                             </Col>
                             <Col>
                                 <S.Text>{0} pedidos</S.Text>
@@ -50,7 +51,7 @@ export const BoxRealTime: Function = React.memo((): JSX.Element =>
                         <Row className="mb-4">
                             <Col>
                                 <S.Text bold color={Colors.SECONDARY} size={18}>Ticket</S.Text>
-                                <S.Text bold size={18}>&nbsp;/ {CurrentMonth}</S.Text>
+                                <S.Text bold size={18}>&nbsp;/ {CURRENT_MONTH}</S.Text>
                             </Col>
                             <Col>
                                 <S.Text>{String.formatCurrency(0.00)}</S.Text>

@@ -7,7 +7,7 @@ import { Col, Price, Row } from "helpers";
 /** @name Constants */
 const ID_DEFAULT_PLAN = 2;
 
-export const PlanPrices: Function = React.memo((): JSX.Element => {
+export const PlanPrices: React.ElementType = React.memo((): JSX.Element => {
     const [idPriceSelected, setPriceSelected] = useState<number>(ID_DEFAULT_PLAN);
     return (
         <Row className="card-deck mb-3 text-center">

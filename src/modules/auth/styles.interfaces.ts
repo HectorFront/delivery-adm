@@ -2,7 +2,7 @@ export interface BarProgressProps {
     width?: string
 }
 
-export interface TextAnimationProps {
+export interface TextFadeProps {
     color?: string,
     seconds?: string
 }

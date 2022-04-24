@@ -1,8 +1,8 @@
 import styled from "styled-components";
 /** @name Mixins */
 import { flex } from "mixins/global";
-/** @name Interface */
-import * as Interface from "./stylesInterfaces";
+
+import * as Interface from "./styles.interfaces";
 
 export const Container = styled.div.attrs({
     className: 'dropdown mb-5'

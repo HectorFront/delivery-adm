@@ -4,13 +4,13 @@ import * as S from '../styles';
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 /** @name Internal */
 import { TabStep } from './helpers';
 import { REGISTER_TABS } from './constants';
-import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './steps';
+import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './components';
 /** @name External */
 import { Render, Button, MaterialIcon } from 'helpers';
-/** @name Constants */
 import Colors from 'constants/client/colors';
 
 interface DataRegisterProps {
@@ -36,33 +36,36 @@ interface IState {
     dataSteps: DataRegisterProps
 }
 
-class StoreRegister extends React.PureComponent<any, IState> {
+interface ChildComponentProps extends RouteComponentProps<any> {}
 
-    private STEPS: number = 5;
-    private PROGRESS_BY_STAGE: number = 100 / this.STEPS;
-    private DATA_REGISTER: DataRegisterProps = {
-        cep: null,
-        cnpj: null,
-        city: null,
-        email: null,
-        login: null,
-        address: null,
-        facebook: null,
-        password: null,
-        telephone: null,
-        instagram: null,
-        cellphone: null,
-        contact_email: null,
-        fantasy_name: null,
-        social_reason: null
-    };
+/** @name Constants */
+export const STEPS: number = 5;
+export const PROGRESS_BY_STAGE: number = 100 / STEPS;
+export const INITIAL_DATA_REGISTER: DataRegisterProps = {
+    cep: null,
+    cnpj: null,
+    city: null,
+    email: null,
+    login: null,
+    address: null,
+    facebook: null,
+    password: null,
+    telephone: null,
+    instagram: null,
+    cellphone: null,
+    contact_email: null,
+    fantasy_name: null,
+    social_reason: null
+};
 
-    constructor(props: any) {
+class StoreRegister extends React.PureComponent<ChildComponentProps, IState> {
+
+    constructor(props: ChildComponentProps) {
         super(props);
         this.state = {
             stepCurrent: 1,
-            progressBar: this.PROGRESS_BY_STAGE,
-            dataSteps: { ...this.DATA_REGISTER },
+            progressBar: PROGRESS_BY_STAGE,
+            dataSteps: { ...INITIAL_DATA_REGISTER },
         };
         this.bindFunctions();
     }
@@ -84,7 +87,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
      * @param callback
      * @private
      */
-    _handleObject(obj: string, atrr: string, value: string, callback: Function = () => { }) {
+    _handleObject(obj: string, atrr: string, value: string, callback: Function = () => { return; }) {
         this.setState((state: any) => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
     }
 
@@ -113,7 +116,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
     nextStep() {
         let { stepCurrent, progressBar } = this.state;
         stepCurrent+=1;
-        progressBar += this.PROGRESS_BY_STAGE;
+        progressBar += PROGRESS_BY_STAGE;
         this.setState({ stepCurrent, progressBar });
     }
 
@@ -126,18 +129,18 @@ class StoreRegister extends React.PureComponent<any, IState> {
             return this.props.history.goBack()
         } else {
             stepCurrent-=1;
-            progressBar -= this.PROGRESS_BY_STAGE;
+            progressBar -= PROGRESS_BY_STAGE;
             this.setState({ stepCurrent, progressBar });
         }
     }
 
     render() {
-        const concluded: Boolean = this.isVisibleStep(this.STEPS);
+        const CONCLUDED_REGISTER: Boolean = this.isVisibleStep(STEPS);
         const { stepCurrent, progressBar, dataSteps }: IState  = this.state;
 
         const {
-            social_reason, fantasy_name, cnpj, email, contact_email, telephone, cellphone,
-            instagram, facebook, cep, city, address, login, password
+            social_reason, fantasy_name, cnpj, email, contact_email,
+            telephone, cellphone, instagram, facebook, cep, city, address, login, password
         }: DataRegisterProps = dataSteps;
 
         return (
@@ -162,7 +165,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
                 </S.ContainerBarProgress>
                 <S.ContainerForm>
                     <S.ContainerText>
-                        <S.CountSteps>{stepCurrent} de {this.STEPS} etapas.</S.CountSteps>
+                        <S.CountSteps>{stepCurrent} de {STEPS} etapas.</S.CountSteps>
                         {REGISTER_TABS.map((tab, i) =>
                             <Render key={i} has={this.isVisibleStep(tab.step)}>
                                 <TabStep
@@ -204,7 +207,7 @@ class StoreRegister extends React.PureComponent<any, IState> {
                                 />
                             </Render>
                             <Button secondary onClick={this.nextStep}>
-                                {concluded ? 'Concluir' : 'Continuar'}
+                                {CONCLUDED_REGISTER ? 'Concluir' : 'Continuar'}
                             </Button>
                         </fieldset>
                     </S.Form>
@@ -214,4 +217,4 @@ class StoreRegister extends React.PureComponent<any, IState> {
     }
 }
 
-export default StoreRegister;
+export default withRouter(StoreRegister);

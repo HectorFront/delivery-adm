@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled, { keyframes } from 'styled-components';
-/** @name Interface */
-import * as Interface from "./stylesInterfaces";
+
+import * as Interface from "./styles.interfaces";
 
 const fade = keyframes`
   from {
@@ -14,7 +14,7 @@ const fade = keyframes`
   }
 `;
 
-export const TextAnimation = styled.span<Interface.TextAnimationProps>`
+export const TextFade = styled.span<Interface.TextFadeProps>`
   color: ${props => props.color};
   animation: ${fade} ${props => props.seconds}s both;
 `;

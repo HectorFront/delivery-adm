@@ -11,7 +11,7 @@ interface CreateLoginProps {
     onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const CreateLogin: Function = React.memo(({ data: { login, password }, onChange }: CreateLoginProps): JSX.Element =>
+export const CreateLogin: React.ElementType = React.memo(({ data: { login, password }, onChange }: CreateLoginProps): JSX.Element =>
     <Row>
         <Col>
             <div className="mb-3">

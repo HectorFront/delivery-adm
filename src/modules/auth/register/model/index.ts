@@ -1,4 +1,4 @@
-export class StorageStoreRegister {
+export class ModelStoreRegister {
 
     /**
      *
@@ -15,7 +15,6 @@ export class StorageStoreRegister {
         }
         profile && window.open(networks[type]);
     }
-
 
     static registerUserStore() {
 

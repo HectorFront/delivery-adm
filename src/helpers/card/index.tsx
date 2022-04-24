@@ -8,10 +8,9 @@ type CardProps = {
     children: ReactNode
 }
 
-export const Card: Function = React.memo(({ className, children }: CardProps): JSX.Element => {
-    const CSSClassname = className ? ` ${className}` : '';
+export const Card: React.ElementType = React.memo(({ className = '', children }: CardProps): JSX.Element => {
     return (
-        <S.Card className={`card${CSSClassname}`}>
+        <S.Card className={`card ${className}`}>
             {children}
         </S.Card>
     );

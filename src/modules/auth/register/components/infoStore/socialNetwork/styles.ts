@@ -2,10 +2,10 @@
 import styled from 'styled-components';
 /** @name Mixins */
 import { flex } from 'mixins/global';
-/** @name Constants */
+/** @name External */
 import Colors from 'constants/client/colors';
-/** @name Interface */
-import * as Interface from "./stylesInterfaces";
+
+import * as Interface from "./styles.interfaces";
 
 export const Box = styled.div`
   width: 100%;

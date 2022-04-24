@@ -7,7 +7,7 @@ type BoxProps = {
     children: ReactNode
 }
 
-export const Box: Function = React.memo(({ children }: BoxProps): JSX.Element =>
+export const Box: React.ElementType = React.memo(({ children }: BoxProps): JSX.Element =>
    <S.ElBox>
        {children}
    </S.ElBox>

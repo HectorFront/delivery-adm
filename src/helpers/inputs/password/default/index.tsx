@@ -7,7 +7,7 @@ import { InputDefault, MaterialIcon } from 'helpers/index';
 /** @name Constants */
 import { ATTR_TYPES_PASSWORD } from "../constants";
 
-export const InputPassword: Function = React.memo((...props): JSX.Element => {
+export const InputPassword: React.ElementType = React.memo((...props): JSX.Element => {
     const [icon, setIcon] = useState<string>(ATTR_TYPES_PASSWORD.text.icon);
     const [typeCurrent, setTypeAttr] = useState<string>(ATTR_TYPES_PASSWORD.text.type);
 

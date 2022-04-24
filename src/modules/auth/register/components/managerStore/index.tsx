@@ -14,7 +14,7 @@ interface ManagerStoreProps {
     onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const ManagerStore: Function = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }: ManagerStoreProps): JSX.Element =>
+export const ManagerStore: React.ElementType = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }: ManagerStoreProps): JSX.Element =>
     <Row>
         <Col>
             <div className="mb-3">

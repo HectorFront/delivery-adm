@@ -3,24 +3,35 @@ import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
+import { matchPath } from 'react-router-dom';
 /** @name Internal */
 import {NAV_ITEMS} from "./constants";
 /** @name External */
 import { MaterialIcon } from "helpers";
-/** @name Constants */
 import Colors from 'constants/client/colors';
 
 interface AsideMenuProps {
-    pathCurrent: string
+    location: {
+        pathname: string
+    }
 }
 
 interface NavItemsProps {
     [index: string]: any
 }
 
-export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Element => {
-    const activeNav: Function = (pathNav: string) => pathNav === props.pathCurrent;
+export const AsideMenu: React.ElementType = React.memo((props: AsideMenuProps): JSX.Element => {
+
+    /**
+     *
+     * @param path
+     * @returns boolean
+     */
+    const hasSamePath = React.useCallback((path: string) => {
+        return matchPath(path, { path: props.location.pathname });
+    }, [props.location]);
+
     return (
         <S.Aside>
             <S.Header>
@@ -34,7 +45,7 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
             <hr/>
             <S.MenuNav>
                 {NAV_ITEMS.map((item: NavItemsProps, i: number) => {
-                    const active = activeNav(item.path);
+                    const ITEM_ACTIVE = hasSamePath(item.path);
                     return (
                         <Fragment key={i}>
                             {item.dividerNavs
@@ -42,15 +53,15 @@ export const AsideMenu: Function = React.memo((props: AsideMenuProps): JSX.Eleme
                                 :
                                 <S.NavItem>
                                     <span
-                                        className={`nav-link d-flex align-items-center ${active && 'nav__active__item'} position-relative`}
+                                        className={`nav-link d-flex align-items-center ${ITEM_ACTIVE && 'nav__active__item'} position-relative`}
                                     >
                                         <MaterialIcon
                                             icon={item.icon}
                                             style={{ marginRight: 10 }}
-                                            color={active ? 'white' : Colors.SECONDARY}
+                                            color={ITEM_ACTIVE ? 'white' : Colors.SECONDARY}
                                         />
                                         {item.name}&nbsp;
-                                        {(i === 2 || i === 4 || i === NAV_ITEMS.length-1) &&
+                                        {(i === 2 || i === 4 || i === NAV_ITEMS.length-1) && // 'Temporary validation to add tag <New> in item'
                                             <>
                                                 <S.BadgeNew>novo</S.BadgeNew>
                                                 <S.BadgeCounter>1</S.BadgeCounter>

@@ -5,7 +5,9 @@ type flexProps = {
     alignX: string
 }
 
-const flex: Function = ({ wrap = 'no-wrap', direction = 'row', alignY = 'start', alignX = 'start' }: flexProps): string => `
+const flex: Function = (
+    { wrap = 'no-wrap', direction = 'row', alignY = 'start', alignX = 'start' }: flexProps
+): string => `
   display: flex;
   position: relative;
   flex-wrap: ${wrap};

@@ -10,7 +10,7 @@ type ButtonProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export const Button: Function = React.memo(({ size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
+export const Button: React.ElementType = React.memo(({ size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
     <S.ButtonCustom
         {...props}
         type="button"

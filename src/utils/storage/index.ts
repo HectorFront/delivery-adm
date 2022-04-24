@@ -4,7 +4,7 @@
  */
 export class AsyncStorage {
     /**
-     * set in storage
+     * set in model
      *
      * @param {String} key
      * @param {*} value
@@ -14,7 +14,7 @@ export class AsyncStorage {
     }
 
     /**
-     * get in storage
+     * get in model
      *
      * @param {String} key
      * @returns {*} Value
@@ -25,7 +25,7 @@ export class AsyncStorage {
     }
 
     /**
-     * set object in storage
+     * set object in model
      *
      * @param {String} key
      * @param {Object} value
@@ -35,7 +35,7 @@ export class AsyncStorage {
     }
 
     /**
-     * get object in storage
+     * get object in model
      *
      * @param {String} key
      * @returns {Object} value
@@ -46,7 +46,7 @@ export class AsyncStorage {
     }
 
     /**
-     * remove item do storage
+     * remove item do model
      *
      * @param {String} key
      */
@@ -55,7 +55,7 @@ export class AsyncStorage {
     }
 
     /**
-     * Clear storage
+     * Clear model
      */
     static clear() {
         localStorage.clear();

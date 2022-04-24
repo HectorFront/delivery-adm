@@ -1,9 +1,9 @@
 /** @name Styled */
 import styled from 'styled-components';
-/** @name Constants */
+/** @name External */
 import Colors from 'constants/client/colors';
-/** @name Interface */
-import { ButtonCustomProps } from "./stylesInterfaces";
+
+import { ButtonCustomProps } from "./styles.interfaces";
 
 export const ButtonCustom = styled.button<ButtonCustomProps>`
   height: 50px;

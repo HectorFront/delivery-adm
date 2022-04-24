@@ -1,4 +1,4 @@
-import Dashboard from 'modules/dashboard/path';
+import Home from 'modules/home/path';
 import StoreLogin from 'modules/auth/login/path';
 import StoreRegister from 'modules/auth/register/path';
 
@@ -8,5 +8,5 @@ export const ROUTES_AUTH = [
 ];
 
 export const ROUTES_APP = [
-    ...Dashboard
+    ...Home
 ];

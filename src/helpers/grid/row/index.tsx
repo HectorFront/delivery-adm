@@ -1,3 +1,4 @@
+/** @name Dependencies */
 import React, { ReactNode } from 'react';
 
 type RowProps = {
@@ -5,10 +6,9 @@ type RowProps = {
     children: ReactNode
 }
 
-export const Row: Function = React.memo(({ className, children }: RowProps): JSX.Element => {
-    const CSSClassname = className ? ` ${className}` : '';
+export const Row: React.ElementType = React.memo(({ className = '', children }: RowProps): JSX.Element => {
     return (
-        <div className={`row${CSSClassname}`}>
+        <div className={`row ${className}`}>
             {children}
         </div>
     );

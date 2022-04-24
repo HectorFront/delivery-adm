@@ -9,24 +9,22 @@ type InputDefaultProps = {
     className?: string | undefined
 }
 
-type CSSClassnamesProps = {
-    size: string,
-    error: string,
-    className: string
-}
+/** @name Constants */
+export const CSS_NAMESPACE_INPUT = 'form-control';
 
-export const InputDefault: Function = React.memo(({ size, error, className, ...props }: InputDefaultProps): JSX.Element => {
-    const CSSClassnames: CSSClassnamesProps = {
-        size: size ?? 'md',
-        error: error ? ` is-invalid` : '',
-        className: className ? ` ${className}` : ''
-    };
-    const style = `form-control-${CSSClassnames.size ?? 'md'}${CSSClassnames.className}${CSSClassnames.error}`;
+export const InputDefault: React.ElementType = React.memo(({size = 'md', error = false, className = '', ...props}: InputDefaultProps): JSX.Element => {
+
+    const CSS_NAMESPACE_FORMAT_STYLES = (
+        `${CSS_NAMESPACE_INPUT} ${CSS_NAMESPACE_INPUT}-${size}`
+        + ` ${className}`
+        + (error ? ' is-invalid' : '')
+    );
+
     return (
         <>
             <S.Default
                 {...props}
-                className={`form-control ${style}`}
+                className={`${CSS_NAMESPACE_FORMAT_STYLES}`}
             />
             <S.Invalid>Preencha o campo corretamente.</S.Invalid>
         </>

@@ -13,7 +13,7 @@ type MaterialIconProps = {
     pointer?: boolean,
 }
 
-export const MaterialIcon: Function = React.memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
+export const MaterialIcon: React.ElementType = React.memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
     <S.Icon
         {...props}
         hasHover={hover}
@@ -28,5 +28,7 @@ export const MaterialIcon: Function = React.memo(({ type, size, color, hover, po
         {props.icon}
     </S.Icon>
 , (prevProps, nextProps): any => {
-    return true;
+    if(JSON.stringify(prevProps) !== JSON.stringify(nextProps)) {
+        return false;
+    }
 });

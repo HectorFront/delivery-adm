@@ -6,7 +6,7 @@ import React from 'react';
 import { MaterialIcon } from "helpers/icon";
 
 interface RestaurantStatusProps {
-    isRestaurantOpen: boolean | null
+    statusToggle: boolean | null
 }
 
 interface StatusProps {
@@ -42,13 +42,13 @@ const STATUS: StatusProps = {
     }
 }
 
-export const RestaurantStatus: Function = React.memo(({ isRestaurantOpen }: RestaurantStatusProps): JSX.Element => {
-    const collectToggle = isRestaurantOpen ? 'open' : 'closed';
-    const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[collectToggle];
+export const RestaurantStatus: React.ElementType = React.memo(({ statusToggle }: RestaurantStatusProps): JSX.Element => {
+    const COLLECT_TOGGLE_STATUS = statusToggle ? 'open' : 'closed';
+    const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[COLLECT_TOGGLE_STATUS];
     return (
         <S.Container>
             <S.Dropdown>
-                <S.TextDropdown open={isRestaurantOpen}>
+                <S.TextDropdown open={statusToggle}>
                     {status}&nbsp;<MaterialIcon icon={iconStatus} pointer size={15} />&nbsp;&nbsp;
                 </S.TextDropdown>
             </S.Dropdown>

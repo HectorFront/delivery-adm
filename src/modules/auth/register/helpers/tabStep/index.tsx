@@ -6,7 +6,6 @@ import * as Keyframe from "../../../keyframes";
 import React from 'react';
 /** @name External */
 import { MaterialIcon } from "helpers";
-/** @name Constants */
 import Colors from 'constants/client/colors';
 
 interface TabStepProps {
@@ -16,14 +15,14 @@ interface TabStepProps {
     description: string
 }
 
-export const TabStep: Function = React.memo(({ icon, paintedText, normalText, description }: TabStepProps): JSX.Element =>
+export const TabStep: React.ElementType = React.memo(({ icon, paintedText, normalText, description }: TabStepProps): JSX.Element =>
     <>
         <S.Title>
             <MaterialIcon
                 icon={icon}
                 color={Colors.SECONDARY}
             />
-            <Keyframe.TextAnimation seconds="1" color={Colors.SECONDARY}>{paintedText}</Keyframe.TextAnimation>&nbsp;{normalText}
+            <Keyframe.TextFade seconds="1" color={Colors.SECONDARY}>{paintedText}</Keyframe.TextFade>&nbsp;{normalText}
         </S.Title>
         <S.Description>{description}</S.Description>
     </>

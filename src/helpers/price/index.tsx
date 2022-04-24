@@ -4,8 +4,12 @@ import * as S from './styles';
 import React from 'react';
 /** @name External */
 import { InputRadio, MaterialIcon } from "helpers/index";
-/** @name Constants */
 import Colors from 'constants/client/colors';
+
+export const OBJ_STYLES_CARD_HEADER = {
+    default: { backgroundColor: 'white', color: 'black' },
+    selected: { backgroundColor: Colors.DARK, color: 'white' }
+}
 
 type PriceProps = {
     id: number,
@@ -16,27 +20,27 @@ type PriceProps = {
     selectPrice: React.MouseEventHandler<HTMLDivElement> | undefined
 }
 
-export const Price: Function = React.memo(({ id, title, price, benefits, priceSelected, selectPrice = () => {} }: PriceProps): JSX.Element => {
-    const CSSHeaderWhenSelected = id === priceSelected
-        ? { backgroundColor: Colors.DARK, color: 'white' }
-        : { backgroundColor: 'white', color: 'black' };
+export const Price: React.ElementType = React.memo((props: PriceProps): JSX.Element => {
+    const STYLE_HEADER = (
+        OBJ_STYLES_CARD_HEADER[props.id === props.priceSelected ? 'selected' : 'default']
+    );
     return (
-        <S.CardPrice onClick={selectPrice}>
-            <div className="card-header" style={CSSHeaderWhenSelected}>
-                <h5 className="my-0 font-weight-normal">{title}</h5>
+        <S.CardPrice onClick={'selectPrice' in props ? props.selectPrice : () => { return; }}>
+            <div className="card-header" style={STYLE_HEADER}>
+                <h5 className="my-0 font-weight-normal">{props.title}</h5>
             </div>
             <div className="card-body">
                 <div className="form-check">
                     <InputRadio
-                        value={id}
+                        value={props.id}
                         id="plan_prices"
                         onChange={() => {}}
-                        checked={id === priceSelected}
+                        checked={props.id === props.priceSelected}
                     />
                 </div>
-                <h1><sub>R$</sub><b>{price}</b></h1>
+                <h1><sub>R$</sub><b>{props.price}</b></h1>
                 <ul className="list-unstyled mt-3 mb-4 text-start">
-                    {benefits.map((text, i) =>
+                    {props.benefits.map((text, i) =>
                         <li className="fs-6" key={i}><MaterialIcon icon={'check'}/>&nbsp;{text}.</li>
                     )}
                 </ul>

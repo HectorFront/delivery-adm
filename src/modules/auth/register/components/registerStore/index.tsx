@@ -11,7 +11,7 @@ interface RegisterStoreProps {
     onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const RegisterStore: Function = React.memo(({ data: { social_reason, fantasy_name }, onChange }: RegisterStoreProps): JSX.Element =>
+export const RegisterStore: React.ElementType = React.memo(({ data: { social_reason, fantasy_name }, onChange }: RegisterStoreProps): JSX.Element =>
     <>
         <div className="mb-3">
             <InputLabel

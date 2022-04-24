@@ -19,7 +19,7 @@ interface InfoStoreProps {
     onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InfoStore: Function = React.memo(({ data: { instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
+export const InfoStore: React.ElementType = React.memo(({ data: { instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
     <Row>
         <Col cols="12 12 4 4 4">
             <div className="mb-3">

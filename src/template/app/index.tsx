@@ -1,20 +1,29 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React from 'react';
+import React, { ReactNode } from 'react';
 /** @name Internal */
 import { AsideMenu } from "./aside";
 import { RestaurantStatus } from './restaurantStatus';
 
-export const App: Function = React.memo(({ location: { pathname }, children }: any): JSX.Element => {
+interface PropsApp {
+    location: {
+        pathname: string
+    },
+    children: ReactNode
+}
+
+export const App: React.ElementType = React.memo(({ location, children }: PropsApp): JSX.Element => {
     const RESTAURANT_OPEN = true;
     return (
         <S.AppContainer>
             <AsideMenu
-                pathCurrent={pathname}
+                location={location}
             />
             <S.ContentWrapper>
-                <RestaurantStatus isRestaurantOpen={RESTAURANT_OPEN}/>
+                <RestaurantStatus
+                    statusToggle={RESTAURANT_OPEN}
+                />
                 {children}
             </S.ContentWrapper>
         </S.AppContainer>

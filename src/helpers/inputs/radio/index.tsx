@@ -7,7 +7,7 @@ type InputRadioProps = {
     secondary?: boolean,
 }
 
-export const InputRadio: Function = React.memo(({ secondary, ...props }: InputRadioProps): JSX.Element =>
+export const InputRadio: React.ElementType = React.memo(({ secondary, ...props }: InputRadioProps): JSX.Element =>
     <S.Radio
         {...props}
         type="radio"

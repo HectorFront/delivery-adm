@@ -30,7 +30,7 @@ Local onde o dono ou responsável irá cadastrar sua loja.
 
 ### /home
 
-<img src="src/assets/readme/dashboard.png" height="300px" width="auto" alt="Login">\
+<img src="src/assets/readme/home.png" height="300px" width="auto" alt="Login">\
 Local onde o dono ou responsável irá gerenciar sua loja.
 
 ### @Author
