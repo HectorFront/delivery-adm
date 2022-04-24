@@ -12,7 +12,7 @@ export class Authentication {
      *
      * @returns {boolean}
      */
-    hasAuthentication() {
+    static logged() {
         return false;
     }
 }

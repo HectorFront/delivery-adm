@@ -20,6 +20,7 @@ export const InputPassword: React.ElementType = React.memo((...props): JSX.Eleme
         <div className="input-group">
             <InputDefault
                 {...props}
+                type={typeCurrent}
             />
             <S.VisibilityPassword
                 type="button"

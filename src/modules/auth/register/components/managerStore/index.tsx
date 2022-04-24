@@ -39,7 +39,7 @@ export const ManagerStore: React.ElementType = React.memo(({ data: { cnpj, email
                     onChange={onChange}
                     value={email ?? ''}
                     error={email === ''}
-                    label="Email pessoal"
+                    label="E-mail pessoal"
                     placeholder="exemplo@gmail.com"
                 />
             </div>
@@ -51,7 +51,7 @@ export const ManagerStore: React.ElementType = React.memo(({ data: { cnpj, email
                     type="email"
                     id="contact_email"
                     onChange={onChange}
-                    label="Email de contato"
+                    label="E-mail de contato"
                     value={contact_email ?? ''}
                     error={contact_email === ''}
                     placeholder="sualoja@gmail.com"

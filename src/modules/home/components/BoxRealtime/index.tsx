@@ -10,7 +10,7 @@ import Colors from 'constants/client/colors';
 /** @name Constants */
 export const CURRENT_MONTH: string = 'Novembro';
 
-export const BoxRealTime: React.ElementType = React.memo((): JSX.Element =>
+export const BoxRealtime: React.ElementType = React.memo((): JSX.Element =>
     <Row>
         <Col cols="12 12 6 6 5">
             <S.Container>

@@ -1,8 +1,8 @@
-import { lazy } from 'react';
 import ClientRoutes from 'constants/client/routes';
+import Register from 'modules/auth/register';
 
 const Path = [
-    { path: ClientRoutes.REGISTER, component: lazy(() => import('modules/auth/register')) }
+    { path: ClientRoutes.REGISTER, component: Register }
 ]
 
 export default Path;

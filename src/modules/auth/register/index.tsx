@@ -167,7 +167,7 @@ class StoreRegister extends React.PureComponent<ChildComponentProps, IState> {
                     <S.ContainerText>
                         <S.CountSteps>{stepCurrent} de {STEPS} etapas.</S.CountSteps>
                         {REGISTER_TABS.map((tab, i) =>
-                            <Render key={i} has={this.isVisibleStep(tab.step)}>
+                            <Render key={i} contains={this.isVisibleStep(tab.step)}>
                                 <TabStep
                                     icon={tab.icon}
                                     paintedText={tab.painted_text}
@@ -179,28 +179,28 @@ class StoreRegister extends React.PureComponent<ChildComponentProps, IState> {
                     </S.ContainerText>
                     <S.Form>
                         <fieldset>
-                            <Render has={this.isVisibleStep(1)}>
+                            <Render contains={this.isVisibleStep(1)}>
                                 <RegisterStore
                                     onChange={this.onChangeInputRegister}
                                     data={{ social_reason, fantasy_name }}
                                 />
                             </Render>
-                            <Render has={this.isVisibleStep(2)}>
+                            <Render contains={this.isVisibleStep(2)}>
                                 <ManagerStore
                                     onChange={this.onChangeInputRegister}
                                     data={{ cnpj, email, contact_email, telephone, cellphone }}
                                 />
                             </Render>
-                            <Render has={this.isVisibleStep(3)}>
+                            <Render contains={this.isVisibleStep(3)}>
                                 <InfoStore
                                     onChange={this.onChangeInputRegister}
                                     data={{ instagram, facebook, cep, city, address }}
                                 />
                             </Render>
-                            <Render has={this.isVisibleStep(4)}>
+                            <Render contains={this.isVisibleStep(4)}>
                                 <PlanPrices/>
                             </Render>
-                            <Render has={this.isVisibleStep(5)}>
+                            <Render contains={this.isVisibleStep(5)}>
                                 <CreateLogin
                                     data={{ login, password }}
                                     onChange={this.onChangeInputRegister}

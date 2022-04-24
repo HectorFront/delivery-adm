@@ -1,7 +1,7 @@
 /** @name Dependencies */
 import React from 'react';
 /** @name Internal */
-import { BoxRealTime } from "./components";
+import { BoxRealtime } from "./components";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 /** @name External */
 
@@ -20,7 +20,7 @@ class Home extends React.PureComponent<ChildComponentProps, IState> {
 
     render() {
         return (
-            <BoxRealTime/>
+            <BoxRealtime/>
         )
     }
 }

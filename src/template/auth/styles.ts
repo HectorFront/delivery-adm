@@ -1,8 +1,8 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name Images */
-import SVGShapes from 'assets/svg/shapes.svg';
-import Background from 'assets/backgrounds/food_login.jpg';
+import SVGShapes from 'assets/backgrounds/svg/shapes.svg';
+import Background from 'assets/backgrounds/bg_auth.jpg';
 
 export const ContainerAuth = styled.div`
   width: 100%;

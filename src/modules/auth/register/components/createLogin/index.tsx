@@ -23,7 +23,7 @@ export const CreateLogin: React.ElementType = React.memo(({ data: { login, passw
                     value={login ?? ''}
                     error={login === ''}
                     onChange={onChange}
-                    placeholder="Email ou usuário"
+                    placeholder="E-mail"
                 />
             </div>
         </Col>

@@ -3,15 +3,16 @@ import * as S from '../styles';
 /** @name Dependencies */
 import React, { useState } from 'react';
 /** @name External */
-import { InputDefault, MaterialIcon } from 'helpers/index';
+import { Render, InputDefault, MaterialIcon } from 'helpers';
 /** @name Constants */
 import { ATTR_TYPES_PASSWORD } from '../constants';
 
 type InputPasswordLabelProps = {
-    label: string
+    label: string,
+    error?: boolean
 }
 
-export const InputPasswordLabel: React.ElementType = React.memo(({ label, ...props }: InputPasswordLabelProps): JSX.Element => {
+export const InputPasswordLabel: React.ElementType = React.memo(({ label, error, ...props }: InputPasswordLabelProps): JSX.Element => {
     const [icon, setIcon] = useState<string>(ATTR_TYPES_PASSWORD.text.icon);
     const [typeCurrent, setTypeAttr] = useState<string>(ATTR_TYPES_PASSWORD.text.type);
 
@@ -25,17 +26,20 @@ export const InputPasswordLabel: React.ElementType = React.memo(({ label, ...pro
             <label className="form-label">
                 <b>{label}</b>
             </label>
-            <div className="input-group">
+            <div className={!error && 'input-group'}>
                 <InputDefault
                     {...props}
+                    error={error}
                 />
-                <S.VisibilityPassword
-                    type="button"
-                    className="btn"
-                    onClick={handleTypePassword}
-                >
-                    <MaterialIcon hover icon={icon} />
-                </S.VisibilityPassword>
+                <Render contains={!error}>
+                    <S.VisibilityPassword
+                        type="button"
+                        className="btn"
+                        onClick={handleTypePassword}
+                    >
+                        <MaterialIcon hover icon={icon} />
+                    </S.VisibilityPassword>
+                </Render>
             </div>
         </>
     )

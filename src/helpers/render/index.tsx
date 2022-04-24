@@ -1,5 +1,8 @@
-export const Render: React.ElementType = ({ has, children }: any): JSX.Element | null =>
-    has ? children : null;
+/** @name Dependencies */
+import React from 'react';
+
+export const Render: React.ElementType = ({ contains, children }: any): JSX.Element | null =>
+    contains ? children : null;
 
 
 

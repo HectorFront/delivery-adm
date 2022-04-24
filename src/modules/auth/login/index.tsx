@@ -115,7 +115,7 @@ class StoreLogin extends React.PureComponent<ChildComponentProps, IState> {
                                     size="lg"
                                     id="login"
                                     type="email"
-                                    label="Email"
+                                    label="E-mail"
                                     value={login ?? ''}
                                     error={login === ''}
                                     placeholder="exemplo@gmail.com"
