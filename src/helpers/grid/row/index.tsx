@@ -10,8 +10,4 @@ export const Row: ElementType = memo(({ className = '', children }: RowProps): J
     <div className={`row ${className}`}>
         {children}
     </div>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

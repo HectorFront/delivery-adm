@@ -27,8 +27,4 @@ export const MaterialIcon: ElementType = memo(({ type, size, color, hover, point
     >
         {props.icon}
     </S.Icon>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

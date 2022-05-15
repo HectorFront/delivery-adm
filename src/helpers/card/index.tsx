@@ -12,8 +12,4 @@ export const Card: ElementType = memo(({ className = '', children }: CardProps):
     <S.Card className={`card ${className}`}>
         {children}
     </S.Card>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

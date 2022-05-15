@@ -12,7 +12,7 @@ type InputLabelProps = {
     iconLabelImg?: string,
 }
 
-export const InputLabel: ElementType = memo(({ label, iconLabel, iconLabelImg ,...props }: InputLabelProps): JSX.Element =>
+export const InputLabel: ElementType = memo(({ label, iconLabel, iconLabelImg, ...props }: InputLabelProps): JSX.Element =>
     <>
         <S.Label className="form-label">
             <Render contains={iconLabel}>
@@ -36,9 +36,5 @@ export const InputLabel: ElementType = memo(({ label, iconLabel, iconLabelImg ,.
             {...props}
         />
     </>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);
 

@@ -7,7 +7,7 @@ import {InputDefault, MaterialIcon} from 'helpers/index';
 /** @name Constants */
 import {ATTR_TYPES_PASSWORD} from "../constants";
 
-export const InputPassword: ElementType = memo((...props): JSX.Element => {
+export const InputPassword: ElementType = memo((error, ...props): JSX.Element => {
     const [icon, setIcon] = useState<string>(ATTR_TYPES_PASSWORD.text.icon);
     const [typeCurrent, setTypeAttr] = useState<string>(ATTR_TYPES_PASSWORD.text.type);
 
@@ -17,12 +17,13 @@ export const InputPassword: ElementType = memo((...props): JSX.Element => {
     const handleTypePassword: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
         setIcon(ATTR_TYPES_PASSWORD[typeCurrent].icon);
         setTypeAttr(ATTR_TYPES_PASSWORD[typeCurrent].type);
-    },[]);
+    },[typeCurrent]);
 
     return (
         <div className="input-group">
             <InputDefault
                 {...props}
+                error={error}
                 type={typeCurrent}
             />
             <S.VisibilityPassword
@@ -34,8 +35,4 @@ export const InputPassword: ElementType = memo((...props): JSX.Element => {
             </S.VisibilityPassword>
         </div>
     );
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

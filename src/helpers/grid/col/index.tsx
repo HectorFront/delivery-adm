@@ -66,8 +66,4 @@ export const Col: ElementType = memo(({ cols = '', children }: ColProps): JSX.El
         </div>
     )
 
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

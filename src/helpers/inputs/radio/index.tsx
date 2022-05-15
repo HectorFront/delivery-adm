@@ -14,8 +14,4 @@ export const InputRadio: ElementType = memo(({ secondary, ...props }: InputRadio
         secondary={secondary}
         className="form-check-input"
     />
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

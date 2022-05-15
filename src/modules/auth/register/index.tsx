@@ -93,7 +93,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
      */
     const isVisibleStep = useCallback((step: number) => {
         return step === state.stepCurrent;
-    },[state]);
+    },[state.stepCurrent]);
 
     /**
      *
@@ -108,30 +108,26 @@ const StoreRegister = memo((props: ChildComponentProps) => {
      *
      */
     const nextStep = useCallback(() => {
-        let {stepCurrent, progressBar} = state;
-        handleState('stepCurrent', stepCurrent + 1);
-        handleState('progressBar', progressBar + PROGRESS_BY_STAGE);
-    },[state]);
+        handleState('stepCurrent', state.stepCurrent + 1);
+        handleState('progressBar', state.progressBar + PROGRESS_BY_STAGE);
+    },[state.stepCurrent, state.progressBar]);
 
     /**
      *
      */
     const goBackStep = useCallback(() => {
-        let {stepCurrent, progressBar} = state;
         if(stepCurrent <= 1) {
             return props.history.goBack();
         } else {
-            handleState('stepCurrent', stepCurrent - 1);
-            handleState('progressBar', progressBar - PROGRESS_BY_STAGE);
+            handleState('stepCurrent', state.stepCurrent - 1);
+            handleState('progressBar', state.progressBar - PROGRESS_BY_STAGE);
         }
-    },[state]);
+    },[state.stepCurrent, state.progressBar]);
 
     const concludedRegister: Boolean = isVisibleStep(STEPS);
     const {
-        stepCurrent, progressBar,
-        social_reason, fantasy_name, cnpj, email,
-        contact_email, telephone, cellphone, instagram,
-        facebook, cep, city, address, login, password
+        stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email,
+        contact_email, telephone, cellphone, instagram, facebook, cep, city, address, login, password
     }: IState = state;
 
     return (

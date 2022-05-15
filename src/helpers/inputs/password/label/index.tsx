@@ -22,17 +22,18 @@ export const InputPasswordLabel: ElementType = memo(({ label, error, ...props }:
     const handleTypePassword: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
         setIcon(ATTR_TYPES_PASSWORD[typeCurrent].icon);
         setTypeAttr(ATTR_TYPES_PASSWORD[typeCurrent].type);
-    },[]);
+    },[typeCurrent]);
 
     return (
         <>
             <label className="form-label">
                 <b>{label}</b>
             </label>
-            <div className={!error && 'input-group'}>
+            <div className={!error ? 'input-group' : undefined}>
                 <InputDefault
                     {...props}
                     error={error}
+                    type={typeCurrent}
                 />
                 <Render contains={!error}>
                     <S.VisibilityPassword
@@ -46,8 +47,4 @@ export const InputPasswordLabel: ElementType = memo(({ label, error, ...props }:
             </div>
         </>
     )
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

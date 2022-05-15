@@ -11,8 +11,4 @@ export const Box: ElementType = memo(({ children }: BoxProps): JSX.Element =>
    <S.ElBox>
        {children}
    </S.ElBox>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

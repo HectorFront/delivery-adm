@@ -22,8 +22,4 @@ export const Button: ElementType = memo(({ size, outline, secondary, ...props}: 
     >
         {props.children}
     </S.ButtonCustom>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
-});
+);

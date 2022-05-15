@@ -48,8 +48,4 @@ export const Price: React.ElementType = React.memo((props: PriceProps): JSX.Elem
             </div>
         </S.CardPrice>
     );
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });
