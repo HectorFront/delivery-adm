@@ -7,14 +7,13 @@ interface AuthProps {
     children: ReactNode
 }
 
-export const Auth: ElementType = memo(({ children }: AuthProps): JSX.Element =>
-    <S.ContainerAuth>
-        <S.Content>
-            {children}
-        </S.Content>
-    </S.ContainerAuth>
-, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
+export const Auth: ElementType = memo(({ children }: AuthProps): JSX.Element => {
+    console.log('a')
+    return (
+        <S.ContainerAuth>
+            <S.Content>
+                {children}
+            </S.Content>
+        </S.ContainerAuth>
+    )
 });

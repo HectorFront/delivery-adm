@@ -6,10 +6,19 @@ interface IAction {
     payload?: any | undefined
 }
 
+/**
+ *
+ * @param initialState
+ */
 export const init = (initialState) => {
     return initialState;
 }
 
+/**
+ *
+ * @param state
+ * @param action
+ */
 export const reducer = (state, action: IAction) => {
     switch (action.type) {
         case 'set':

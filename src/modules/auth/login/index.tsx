@@ -6,7 +6,7 @@ import * as Keyframe from '../keyframes';
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
 import {memo, useCallback, useReducer} from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {reducer} from "utils/reducer/useReducer";
 /** @name External */

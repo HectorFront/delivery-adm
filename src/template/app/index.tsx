@@ -4,7 +4,7 @@ import * as S from './styles';
 import {memo, ElementType, ReactNode} from 'react';
 /** @name Internal */
 import {AsideMenu} from "./aside";
-import {RestaurantStatus} from './restaurantStatus';
+import {RestaurantStatus} from './status';
 
 interface PropsApp {
     location: {
@@ -13,12 +13,13 @@ interface PropsApp {
     children: ReactNode
 }
 
-export const App: ElementType = memo(({ location, children }: PropsApp): JSX.Element => {
+export const App: ElementType = memo(({ children }: PropsApp): JSX.Element => {
     const restaurantOpen = true;
+    console.log('a')
     return (
         <S.AppContainer>
             <AsideMenu
-                location={location}
+                location={'/home'}
             />
             <S.ContentWrapper>
                 <RestaurantStatus
@@ -28,8 +29,4 @@ export const App: ElementType = memo(({ location, children }: PropsApp): JSX.Ele
             </S.ContentWrapper>
         </S.AppContainer>
     );
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

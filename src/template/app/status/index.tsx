@@ -60,8 +60,4 @@ export const RestaurantStatus: ElementType = memo(({ statusToggle }: RestaurantS
             </S.List>
         </S.Container>
     );
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

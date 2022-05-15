@@ -77,8 +77,4 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
             <S.Version>v1.0.0</S.Version>
         </S.Aside>
     );
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });

@@ -71,7 +71,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
     const handleState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
         dispatch({type: 'set', attr, value});
         return callback();
-    },[state]);
+    },[]);
 
     /**
      *
@@ -84,7 +84,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
     const handleObject = useCallback((obj: string, attr: string, value: any, callback: Function = () => {}) => {
         dispatch({type: 'setObject', obj, attr, value});
         return callback();
-    },[state]);
+    },[]);
 
     /**
      *
