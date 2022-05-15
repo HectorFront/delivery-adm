@@ -1,7 +1,7 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 
 type MaterialIconProps = {
     icon: string,
@@ -13,7 +13,7 @@ type MaterialIconProps = {
     pointer?: boolean,
 }
 
-export const MaterialIcon: React.ElementType = React.memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
+export const MaterialIcon: ElementType = memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
     <S.Icon
         {...props}
         hasHover={hover}
@@ -27,8 +27,8 @@ export const MaterialIcon: React.ElementType = React.memo(({ type, size, color, 
     >
         {props.icon}
     </S.Icon>
-, (prevProps, nextProps): any => {
-    if(JSON.stringify(prevProps) !== JSON.stringify(nextProps)) {
-        return false;
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
     }
 });

@@ -1,5 +1,5 @@
 /** @name Dependencies */
-import React, { ReactNode } from 'react';
+import {memo, ElementType, ReactNode} from 'react';
 /** @name Internal */
 import * as S from './styles';
 
@@ -7,8 +7,12 @@ type BoxProps = {
     children: ReactNode
 }
 
-export const Box: React.ElementType = React.memo(({ children }: BoxProps): JSX.Element =>
+export const Box: ElementType = memo(({ children }: BoxProps): JSX.Element =>
    <S.ElBox>
        {children}
    </S.ElBox>
-)
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

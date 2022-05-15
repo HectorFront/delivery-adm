@@ -1,17 +1,17 @@
 /** @name Dependencies */
-import React from 'react';
+import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name External */
-import { Row, Col, InputLabel, InputPasswordLabel } from "helpers";
+import {Row, Col, InputLabel, InputPasswordLabel} from "helpers";
 
 interface CreateLoginProps {
     data: {
         login?: string | null,
         password?: string | null
     },
-    onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
+    onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const CreateLogin: React.ElementType = React.memo(({ data: { login, password }, onChange }: CreateLoginProps): JSX.Element =>
+export const CreateLogin: ElementType = memo(({ data: { login, password }, onChange }: CreateLoginProps): JSX.Element =>
     <Row>
         <Col>
             <div className="mb-3">
@@ -41,4 +41,8 @@ export const CreateLogin: React.ElementType = React.memo(({ data: { login, passw
             </div>
         </Col>
     </Row>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

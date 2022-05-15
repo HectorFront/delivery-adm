@@ -1,11 +1,11 @@
 /** @name Styled */
-import * as S from "../../../styles";
+import * as S from "modules/auth/styles";
 /** @name StyledKeyFrames */
-import * as Keyframe from "../../../keyframes";
+import * as Keyframe from "modules/auth/keyframes";
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 /** @name External */
-import { MaterialIcon } from "helpers";
+import {MaterialIcon} from "helpers";
 import Colors from 'constants/client/colors';
 
 interface TabStepProps {
@@ -15,7 +15,7 @@ interface TabStepProps {
     description: string
 }
 
-export const TabStep: React.ElementType = React.memo(({ icon, paintedText, normalText, description }: TabStepProps): JSX.Element =>
+export const TabStep: ElementType = memo(({ icon, paintedText, normalText, description }: TabStepProps): JSX.Element =>
     <>
         <S.Title>
             <MaterialIcon
@@ -26,4 +26,8 @@ export const TabStep: React.ElementType = React.memo(({ icon, paintedText, norma
         </S.Title>
         <S.Description>{description}</S.Description>
     </>
-)
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

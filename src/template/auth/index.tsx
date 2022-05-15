@@ -1,16 +1,20 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React, { ReactNode } from 'react';
+import {memo, ElementType, ReactNode} from 'react';
 
 interface AuthProps {
     children: ReactNode
 }
 
-export const Auth: React.ElementType = React.memo(({ children }: AuthProps): JSX.Element =>
+export const Auth: ElementType = memo(({ children }: AuthProps): JSX.Element =>
     <S.ContainerAuth>
         <S.Content>
             {children}
         </S.Content>
     </S.ContainerAuth>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

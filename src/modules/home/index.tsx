@@ -1,28 +1,28 @@
 /** @name Dependencies */
-import React from 'react';
+import {memo, useReducer} from 'react';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
-import { BoxRealtime } from "./components";
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import {BoxRealtime} from "./components";
+import {reducer} from "utils/reducer/useReducer";
 /** @name External */
 
-interface IState {
+interface IState {}
 
-}
+interface ChildComponentProps extends RouteComponentProps<any> {};
 
-interface ChildComponentProps extends RouteComponentProps<any> {}
+export const INITIAL_STATE = {};
 
-class Home extends React.PureComponent<ChildComponentProps, IState> {
+const Home = memo((props: ChildComponentProps) => {
 
-    constructor(props: ChildComponentProps) {
-        super(props);
-        this.state = {}
+    const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+
+    return (
+        <BoxRealtime/>
+    )
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
     }
-
-    render() {
-        return (
-            <BoxRealtime/>
-        )
-    }
-}
+});
 
 export default withRouter(Home);

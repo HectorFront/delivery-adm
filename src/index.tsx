@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Routes } from './routes';
+import {Routes} from './routes';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(

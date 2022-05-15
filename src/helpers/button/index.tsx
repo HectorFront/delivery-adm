@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+/** @name Dependencies */
+import {memo, ElementType, ReactNode, MouseEventHandler} from 'react';
 /** @name Internal */
 import * as S from "./styles";
 
@@ -7,10 +8,10 @@ type ButtonProps = {
     outline?: boolean,
     children: ReactNode,
     secondary?: boolean,
-    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
+    onClick?: MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export const Button: React.ElementType = React.memo(({ size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
+export const Button: ElementType = memo(({ size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
     <S.ButtonCustom
         {...props}
         type="button"
@@ -21,4 +22,8 @@ export const Button: React.ElementType = React.memo(({ size, outline, secondary,
     >
         {props.children}
     </S.ButtonCustom>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

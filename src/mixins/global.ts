@@ -5,9 +5,7 @@ type flexProps = {
     alignX: string
 }
 
-const flex: Function = (
-    { wrap = 'no-wrap', direction = 'row', alignY = 'start', alignX = 'start' }: flexProps
-): string => `
+export const flex: Function = ({wrap = 'no-wrap', direction = 'row', alignY = 'start', alignX = 'start'}: flexProps): string => `
   display: flex;
   position: relative;
   flex-wrap: ${wrap};
@@ -15,5 +13,3 @@ const flex: Function = (
   flex-direction: ${direction};
   justify-content: ${alignX};
 `;
-
-export { flex };

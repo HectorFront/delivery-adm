@@ -1,17 +1,21 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 
 type InputRadioProps = {
     secondary?: boolean,
 }
 
-export const InputRadio: React.ElementType = React.memo(({ secondary, ...props }: InputRadioProps): JSX.Element =>
+export const InputRadio: ElementType = memo(({ secondary, ...props }: InputRadioProps): JSX.Element =>
     <S.Radio
         {...props}
         type="radio"
         secondary={secondary}
         className="form-check-input"
     />
-)
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

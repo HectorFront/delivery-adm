@@ -1,5 +1,5 @@
 /** @name External */
-// import { AsyncStorage } from 'utils';
+// import {AsyncStorage} from 'utils';
 
 /**
  * @author Hector Rodrigues da Silva

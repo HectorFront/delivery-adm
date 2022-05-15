@@ -3,17 +3,20 @@ import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
-import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import {memo, useCallback, useReducer} from 'react';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
-import { TabStep } from './helpers';
-import { REGISTER_TABS } from './constants';
-import { RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin } from './components';
+import {TabStep} from './helpers';
+import {REGISTER_TABS} from './constants';
+import {reducer} from "utils/reducer/useReducer";
+import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
-import { Render, Button, MaterialIcon } from 'helpers';
 import Colors from 'constants/client/colors';
+import {Render, Button, MaterialIcon} from 'helpers';
 
-interface DataRegisterProps {
+interface IState {
+    stepCurrent: number | null,
+    progressBar: number | null,
     cep: string | null,
     cnpj: string | null,
     city: string | null,
@@ -30,18 +33,14 @@ interface DataRegisterProps {
     social_reason: string | null
 }
 
-interface IState {
-    stepCurrent: number,
-    progressBar: number,
-    dataSteps: DataRegisterProps
-}
-
 interface ChildComponentProps extends RouteComponentProps<any> {}
 
 /** @name Constants */
-export const STEPS: number = 5;
-export const PROGRESS_BY_STAGE: number = 100 / STEPS;
-export const INITIAL_DATA_REGISTER: DataRegisterProps = {
+const STEPS: number = 5;
+const PROGRESS_BY_STAGE: number = 100 / STEPS;
+const INITIAL_STATE: IState = {
+    stepCurrent: 1,
+    progressBar: PROGRESS_BY_STAGE,
     cep: null,
     cnpj: null,
     city: null,
@@ -58,163 +57,158 @@ export const INITIAL_DATA_REGISTER: DataRegisterProps = {
     social_reason: null
 };
 
-class StoreRegister extends React.PureComponent<ChildComponentProps, IState> {
+const StoreRegister = memo((props: ChildComponentProps) => {
 
-    constructor(props: ChildComponentProps) {
-        super(props);
-        this.state = {
-            stepCurrent: 1,
-            progressBar: PROGRESS_BY_STAGE,
-            dataSteps: { ...INITIAL_DATA_REGISTER },
-        };
-        this.bindFunctions();
-    }
+    const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
     /**
      *
-     */
-    bindFunctions() {
-        this.nextStep = this.nextStep.bind(this);
-        this.goBackPage = this.goBackPage.bind(this);
-        this.onChangeInputRegister = this.onChangeInputRegister.bind(this);
-    }
-
-    /**
-     *
-     * @param obj
-     * @param atrr
+     * @param attr
      * @param value
      * @param callback
      * @private
      */
-    _handleObject(obj: string, atrr: string, value: string, callback: Function = () => { return; }) {
-        this.setState((state: any) => ({ ...state, [obj]: {...state[obj], [atrr]: value } }), () => callback())
-    }
+    const handleState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
+        dispatch({type: 'set', attr, value});
+        return callback();
+    },[state]);
 
     /**
      *
-     * @param stepSpecified
+     * @param obj
+     * @param attr
+     * @param value
+     * @param callback
+     * @private
+     */
+    const handleObject = useCallback((obj: string, attr: string, value: any, callback: Function = () => {}) => {
+        dispatch({type: 'setObject', obj, attr, value});
+        return callback();
+    },[state]);
+
+    /**
+     *
+     * @param step
      * @returns {boolean}
      */
-    isVisibleStep(stepSpecified: number) {
-        const { stepCurrent } = this.state;
-        return stepSpecified === stepCurrent;
-    }
+    const isVisibleStep = useCallback((step: number) => {
+        return step === state.stepCurrent;
+    },[state]);
 
     /**
      *
      * @param id
      * @param value
      */
-    onChangeInputRegister({ target: { id, value }}: { target: HTMLInputElement }) {
-        this._handleObject('dataSteps', id, value);
-    }
+    const onChangeInputRegister = useCallback(({ target: { id, value }}: { target: HTMLInputElement }) => {
+        return handleState(id, value);
+    },[]);
 
     /**
      *
      */
-    nextStep() {
-        let { stepCurrent, progressBar } = this.state;
-        stepCurrent+=1;
-        progressBar += PROGRESS_BY_STAGE;
-        this.setState({ stepCurrent, progressBar });
-    }
+    const nextStep = useCallback(() => {
+        let {stepCurrent, progressBar} = state;
+        handleState('stepCurrent', stepCurrent + 1);
+        handleState('progressBar', progressBar + PROGRESS_BY_STAGE);
+    },[state]);
 
     /**
      *
      */
-    goBackPage() {
-        let { stepCurrent, progressBar }= this.state;
+    const goBackStep = useCallback(() => {
+        let {stepCurrent, progressBar} = state;
         if(stepCurrent <= 1) {
-            return this.props.history.goBack()
+            return props.history.goBack();
         } else {
-            stepCurrent-=1;
-            progressBar -= PROGRESS_BY_STAGE;
-            this.setState({ stepCurrent, progressBar });
+            handleState('stepCurrent', stepCurrent - 1);
+            handleState('progressBar', progressBar - PROGRESS_BY_STAGE);
         }
+    },[state]);
+
+    const concludedRegister: Boolean = isVisibleStep(STEPS);
+    const {
+        stepCurrent, progressBar,
+        social_reason, fantasy_name, cnpj, email,
+        contact_email, telephone, cellphone, instagram,
+        facebook, cep, city, address, login, password
+    }: IState = state;
+
+    return (
+        <>
+            <S.BackPage>
+                <MaterialIcon
+                    hover
+                    size="45px"
+                    icon={'arrow_back'}
+                    onClick={goBackStep}
+                    color={Colors.DEFAULT}
+                    style={{ position: 'absolute', left: 25 }}
+                />
+                <S.Logo
+                    alt="Logo"
+                    height="100%"
+                    src={LogoDefault}
+                />
+            </S.BackPage>
+            <S.ContainerBarProgress>
+                <S.BarProgress width={`${progressBar}%`}/>
+            </S.ContainerBarProgress>
+            <S.ContainerForm>
+                <S.ContainerText>
+                    <S.CountSteps>{stepCurrent} de {STEPS} etapas.</S.CountSteps>
+                    {REGISTER_TABS.map((tab, i) =>
+                        <Render key={i} contains={isVisibleStep(tab.step)}>
+                            <TabStep
+                                icon={tab.icon}
+                                paintedText={tab.painted_text}
+                                normalText={tab.normal_text}
+                                description={tab.description}
+                            />
+                        </Render>
+                    )}
+                </S.ContainerText>
+                <S.Form>
+                    <fieldset>
+                        <Render contains={isVisibleStep(1)}>
+                            <RegisterStore
+                                onChange={onChangeInputRegister}
+                                data={{ social_reason, fantasy_name }}
+                            />
+                        </Render>
+                        <Render contains={isVisibleStep(2)}>
+                            <ManagerStore
+                                onChange={onChangeInputRegister}
+                                data={{ cnpj, email, contact_email, telephone, cellphone }}
+                            />
+                        </Render>
+                        <Render contains={isVisibleStep(3)}>
+                            <InfoStore
+                                onChange={onChangeInputRegister}
+                                data={{ instagram, facebook, cep, city, address }}
+                            />
+                        </Render>
+                        <Render contains={isVisibleStep(4)}>
+                            <PlanPrices/>
+                        </Render>
+                        <Render contains={isVisibleStep(5)}>
+                            <CreateLogin
+                                data={{ login, password }}
+                                onChange={onChangeInputRegister}
+                            />
+                        </Render>
+                        <Button secondary onClick={nextStep}>
+                            {concludedRegister ? 'Concluir' : 'Continuar'}
+                        </Button>
+                    </fieldset>
+                </S.Form>
+            </S.ContainerForm>
+        </>
+    )
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
     }
-
-    render() {
-        const CONCLUDED_REGISTER: Boolean = this.isVisibleStep(STEPS);
-        const { stepCurrent, progressBar, dataSteps }: IState  = this.state;
-
-        const {
-            social_reason, fantasy_name, cnpj, email, contact_email,
-            telephone, cellphone, instagram, facebook, cep, city, address, login, password
-        }: DataRegisterProps = dataSteps;
-
-        return (
-            <>
-                <S.BackPage>
-                    <MaterialIcon
-                        hover
-                        size="45px"
-                        icon={'arrow_back'}
-                        color={Colors.DEFAULT}
-                        onClick={this.goBackPage}
-                        style={{ position: 'absolute', left: 25 }}
-                    />
-                    <S.Logo
-                        alt="Logo"
-                        height="100%"
-                        src={LogoDefault}
-                    />
-                </S.BackPage>
-                <S.ContainerBarProgress>
-                    <S.BarProgress width={`${progressBar}%`}/>
-                </S.ContainerBarProgress>
-                <S.ContainerForm>
-                    <S.ContainerText>
-                        <S.CountSteps>{stepCurrent} de {STEPS} etapas.</S.CountSteps>
-                        {REGISTER_TABS.map((tab, i) =>
-                            <Render key={i} contains={this.isVisibleStep(tab.step)}>
-                                <TabStep
-                                    icon={tab.icon}
-                                    paintedText={tab.painted_text}
-                                    normalText={tab.normal_text}
-                                    description={tab.description}
-                                />
-                            </Render>
-                        )}
-                    </S.ContainerText>
-                    <S.Form>
-                        <fieldset>
-                            <Render contains={this.isVisibleStep(1)}>
-                                <RegisterStore
-                                    onChange={this.onChangeInputRegister}
-                                    data={{ social_reason, fantasy_name }}
-                                />
-                            </Render>
-                            <Render contains={this.isVisibleStep(2)}>
-                                <ManagerStore
-                                    onChange={this.onChangeInputRegister}
-                                    data={{ cnpj, email, contact_email, telephone, cellphone }}
-                                />
-                            </Render>
-                            <Render contains={this.isVisibleStep(3)}>
-                                <InfoStore
-                                    onChange={this.onChangeInputRegister}
-                                    data={{ instagram, facebook, cep, city, address }}
-                                />
-                            </Render>
-                            <Render contains={this.isVisibleStep(4)}>
-                                <PlanPrices/>
-                            </Render>
-                            <Render contains={this.isVisibleStep(5)}>
-                                <CreateLogin
-                                    data={{ login, password }}
-                                    onChange={this.onChangeInputRegister}
-                                />
-                            </Render>
-                            <Button secondary onClick={this.nextStep}>
-                                {CONCLUDED_REGISTER ? 'Concluir' : 'Continuar'}
-                            </Button>
-                        </fieldset>
-                    </S.Form>
-                </S.ContainerForm>
-            </>
-        )
-    }
-}
+});
 
 export default withRouter(StoreRegister);

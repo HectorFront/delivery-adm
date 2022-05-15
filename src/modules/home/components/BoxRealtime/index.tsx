@@ -1,16 +1,16 @@
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 /** @name Internal */
 import * as S from "./styles";
 /** @name External */
-import { String } from "utils";
-import { Row, Col } from 'helpers';
+import {String} from "utils";
+import {Row, Col} from 'helpers';
 import Colors from 'constants/client/colors';
 
 /** @name Constants */
 export const CURRENT_MONTH: string = 'Novembro';
 
-export const BoxRealtime: React.ElementType = React.memo((): JSX.Element =>
+export const BoxRealtime: ElementType = memo((): JSX.Element =>
     <Row>
         <Col cols="12 12 6 6 5">
             <S.Container>
@@ -70,4 +70,8 @@ export const BoxRealtime: React.ElementType = React.memo((): JSX.Element =>
             </S.Container>
         </Col>
     </Row>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

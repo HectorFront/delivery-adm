@@ -1,9 +1,9 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 /** @name External */
-import { MaterialIcon } from "helpers/icon";
+import {MaterialIcon} from "helpers/icon";
 
 interface RestaurantStatusProps {
     statusToggle: boolean | null
@@ -42,9 +42,9 @@ const STATUS: StatusProps = {
     }
 }
 
-export const RestaurantStatus: React.ElementType = React.memo(({ statusToggle }: RestaurantStatusProps): JSX.Element => {
-    const COLLECT_TOGGLE_STATUS = statusToggle ? 'open' : 'closed';
-    const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[COLLECT_TOGGLE_STATUS];
+export const RestaurantStatus: ElementType = memo(({ statusToggle }: RestaurantStatusProps): JSX.Element => {
+    const collectToggleStatus = statusToggle ? 'open' : 'closed';
+    const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[collectToggleStatus];
     return (
         <S.Container>
             <S.Dropdown>
@@ -60,4 +60,8 @@ export const RestaurantStatus: React.ElementType = React.memo(({ statusToggle }:
             </S.List>
         </S.Container>
     );
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
 });

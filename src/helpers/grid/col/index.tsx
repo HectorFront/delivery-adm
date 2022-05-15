@@ -1,5 +1,5 @@
 /** @name Dependencies */
-import React, {ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
+import {memo, ElementType, ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
 
 type ColProps = {
     cols?: string,
@@ -18,51 +18,56 @@ type sizesProps = {
 type ColumnsProps = string[] | undefined;
 
 /** @name Constants */
-export const MAX_COLUMNS: number = 5;
-export const DEFAULT_COLUMN: number = 12;
-export const CSS_NAMESPACE_GRID: string = 'col';
+const MAX_COLUMNS: number = 5;
+const DEFAULT_COLUMN: number = 12;
+const CSS_NAMESPACE: string = 'col';
 
-export const Col: React.ElementType = React.memo(({ cols = '', children }: ColProps): JSX.Element => {
-
-    const [className, setClassName] = useState('');
-    const COLUMNS: ColumnsProps = useMemo(() => cols.split(' ') ?? [], [cols]);
+export const Col: ElementType = memo(({ cols = '', children }: ColProps): JSX.Element => {
 
     /**
      * Set values in columns of different sizes
      */
+    const columns: ColumnsProps = useMemo(() => cols.split(' ') ?? [], [cols]);
     const GRID: sizesProps = {
-        xs: `${CSS_NAMESPACE_GRID}-${DEFAULT_COLUMN}`,
-        sm: `${CSS_NAMESPACE_GRID}-sm-${COLUMNS[0]}`,
-        md: `${CSS_NAMESPACE_GRID}-md-${COLUMNS[1]}`,
-        lg: `${CSS_NAMESPACE_GRID}-lg-${COLUMNS[2]}`,
-        xl: `${CSS_NAMESPACE_GRID}-xl-${COLUMNS[3]}`,
-        xxl: `${CSS_NAMESPACE_GRID}-xxl-${COLUMNS[4]}`
+        xs: `${CSS_NAMESPACE}-${DEFAULT_COLUMN}`,
+        sm: `${CSS_NAMESPACE}-sm-${columns[0]}`,
+        md: `${CSS_NAMESPACE}-md-${columns[1]}`,
+        lg: `${CSS_NAMESPACE}-lg-${columns[2]}`,
+        xl: `${CSS_NAMESPACE}-xl-${columns[3]}`,
+        xxl: `${CSS_NAMESPACE}-xxl-${columns[4]}`
     };
+
+    const [className, setClassName] = useState('');
 
     /**
      * Add if contains additional ClassName in Cols
      */
-    const containsAdditionalClassName = useCallback(() => {
-        let CLASSNAMES: string = '';
-        if(COLUMNS.length >= MAX_COLUMNS) {
-            COLUMNS.slice(MAX_COLUMNS, COLUMNS.length)
+    const containsClassName = useCallback(() => {
+        let classNames: string = '';
+        if(columns.length >= MAX_COLUMNS) {
+            columns.slice(MAX_COLUMNS, columns.length)
                 .forEach(className => {
                     if(className) {
-                        CLASSNAMES += ` ${className}`
+                        classNames += ` ${className}`
                     }
                 });
-            return setClassName(CLASSNAMES);
+            return setClassName(classNames);
         }
-    },[COLUMNS]);
+    },[columns]);
 
     useEffect(() => {
-        containsAdditionalClassName();
-    });
+        return containsClassName();
+    },[]);
 
-    const { xs, sm, md, lg, xl, xxl } = GRID;
+    const {xs, sm, md, lg, xl, xxl} = GRID;
     return (
         <div className={`${xs} ${sm} ${md} ${lg} ${xl} ${xxl}${className}`}>
             {children}
         </div>
     )
+
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
 });

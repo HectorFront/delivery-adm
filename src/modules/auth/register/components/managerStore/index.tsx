@@ -1,7 +1,7 @@
 /** @name Dependencies */
-import React from 'react';
+import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name External */
-import { Row, Col, InputLabel } from 'helpers';
+import {Row, Col, InputLabel} from 'helpers';
 
 interface ManagerStoreProps {
     data: {
@@ -11,10 +11,10 @@ interface ManagerStoreProps {
         telephone?: string | null,
         cellphone?: string | null
     },
-    onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
+    onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const ManagerStore: React.ElementType = React.memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }: ManagerStoreProps): JSX.Element =>
+export const ManagerStore:ElementType = memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }: ManagerStoreProps): JSX.Element =>
     <Row>
         <Col>
             <div className="mb-3">
@@ -87,4 +87,8 @@ export const ManagerStore: React.ElementType = React.memo(({ data: { cnpj, email
             </div>
         </Col>
     </Row>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

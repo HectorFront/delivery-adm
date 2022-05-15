@@ -3,12 +3,12 @@ import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
-import React, {Fragment} from 'react';
-import { matchPath } from 'react-router-dom';
+import {matchPath} from 'react-router-dom';
+import {Fragment, memo, ElementType, useCallback} from 'react';
 /** @name Internal */
 import {NAV_ITEMS} from "./constants";
 /** @name External */
-import { MaterialIcon } from "helpers";
+import {MaterialIcon} from "helpers";
 import Colors from 'constants/client/colors';
 
 interface AsideMenuProps {
@@ -21,14 +21,14 @@ interface NavItemsProps {
     [index: string]: any
 }
 
-export const AsideMenu: React.ElementType = React.memo((props: AsideMenuProps): JSX.Element => {
+export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element => {
 
     /**
      *
      * @param path
      * @returns boolean
      */
-    const hasSamePath = React.useCallback((path: string) => {
+    const hasSamePath = useCallback((path: string) => {
         return matchPath(path, { path: props.location.pathname });
     }, [props.location]);
 
@@ -77,4 +77,8 @@ export const AsideMenu: React.ElementType = React.memo((props: AsideMenuProps): 
             <S.Version>v1.0.0</S.Version>
         </S.Aside>
     );
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
 });

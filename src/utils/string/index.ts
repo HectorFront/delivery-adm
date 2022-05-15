@@ -3,7 +3,6 @@
  * @class String
  */
 export class String {
-
     /**
      *
      * @param str

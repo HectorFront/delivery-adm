@@ -2,11 +2,11 @@
 import IconFacebook from 'assets/icons/facebook.png';
 import IconInstagram from 'assets/icons/instagram.png';
 /** @name Dependencies */
-import React from 'react';
+import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name Internal */
-import { PreviewProfile } from './socialNetwork';
+import {Profile} from './social';
 /** @name External */
-import { Card, Row, Col, InputLabel } from 'helpers';
+import {Card, Row, Col, InputLabel} from 'helpers';
 
 interface InfoStoreProps {
     data: {
@@ -16,10 +16,10 @@ interface InfoStoreProps {
         city?: string | null,
         address?: string | null
     }
-    onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
+    onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InfoStore: React.ElementType = React.memo(({ data: { instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
+export const InfoStore: ElementType = memo(({ data: { instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
     <Row>
         <Col cols="12 12 4 4 4">
             <div className="mb-3">
@@ -75,8 +75,8 @@ export const InfoStore: React.ElementType = React.memo(({ data: { instagram, fac
                     iconLabelImg={IconInstagram}
                     value={instagram?.toLowerCase() ?? ''}
                 />
-                <PreviewProfile
-                    typeSocial="instagram"
+                <Profile
+                    type="instagram"
                     profile={instagram?.toLowerCase()}
                 />
             </Card>
@@ -93,11 +93,15 @@ export const InfoStore: React.ElementType = React.memo(({ data: { instagram, fac
                     iconLabelImg={IconFacebook}
                     value={facebook?.toLowerCase() ?? ''}
                 />
-                <PreviewProfile
-                    typeSocial="facebook"
+                <Profile
+                    type="facebook"
                     profile={facebook?.toLowerCase()}
                 />
             </Card>
         </Col>
     </Row>
-);
+, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
+});

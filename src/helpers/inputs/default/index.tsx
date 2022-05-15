@@ -1,7 +1,7 @@
 /** @name Styled */
 import * as S from "./styles";
 /** @name Dependencies */
-import React from 'react';
+import {memo, ElementType} from 'react';
 
 type InputDefaultProps = {
     size?: string | undefined,
@@ -10,12 +10,12 @@ type InputDefaultProps = {
 }
 
 /** @name Constants */
-export const CSS_NAMESPACE_INPUT = 'form-control';
+const CSS_NAMESPACE = 'form-control';
 
-export const InputDefault: React.ElementType = React.memo(({size = 'md', error = false, className = '', ...props}: InputDefaultProps): JSX.Element => {
+export const InputDefault: ElementType = memo(({size = 'md', error = false, className = '', ...props}: InputDefaultProps): JSX.Element => {
 
-    const CSS_NAMESPACE_FORMAT_STYLES = (
-        `${CSS_NAMESPACE_INPUT} ${CSS_NAMESPACE_INPUT}-${size}`
+    const defineCSSNameSpace = (
+        `${CSS_NAMESPACE} ${CSS_NAMESPACE}-${size}`
         + ` ${className}`
         + (error ? ' is-invalid' : '')
     );
@@ -24,7 +24,7 @@ export const InputDefault: React.ElementType = React.memo(({size = 'md', error =
         <>
             <S.Default
                 {...props}
-                className={`${CSS_NAMESPACE_FORMAT_STYLES}`}
+                className={`${defineCSSNameSpace}`}
             />
             <S.Invalid>Preencha o campo corretamente.</S.Invalid>
         </>

@@ -1,14 +1,15 @@
 /** @name Dependencies */
-import React, { useState } from 'react';
+import {memo, useState, ElementType} from 'react';
 /** @name Internal */
-import { PLAN_PRICES } from "../../constants";
+import {PLAN_PRICES} from "modules/auth/register/constants";
 /** @name External */
-import { Col, Price, Row } from "helpers";
-/** @name Constants */
-const ID_DEFAULT_PLAN = 2;
+import {Col, Price, Row} from "helpers";
 
-export const PlanPrices: React.ElementType = React.memo((): JSX.Element => {
-    const [idPriceSelected, setPriceSelected] = useState<number>(ID_DEFAULT_PLAN);
+/** @name Constants */
+const INITIAL_ID_SELECTED = 2;
+
+export const PlanPrices: ElementType = memo((): JSX.Element => {
+    const [idPriceSelected, setPriceSelected] = useState<number>(INITIAL_ID_SELECTED);
     return (
         <Row className="card-deck mb-3 text-center">
             {PLAN_PRICES.map((plan, i) =>
@@ -25,4 +26,8 @@ export const PlanPrices: React.ElementType = React.memo((): JSX.Element => {
             )}
         </Row>
     );
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
 });

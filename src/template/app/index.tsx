@@ -1,10 +1,10 @@
 /** @name Styled */
 import * as S from './styles';
 /** @name Dependencies */
-import React, { ReactNode } from 'react';
+import {memo, ElementType, ReactNode} from 'react';
 /** @name Internal */
-import { AsideMenu } from "./aside";
-import { RestaurantStatus } from './restaurantStatus';
+import {AsideMenu} from "./aside";
+import {RestaurantStatus} from './restaurantStatus';
 
 interface PropsApp {
     location: {
@@ -13,8 +13,8 @@ interface PropsApp {
     children: ReactNode
 }
 
-export const App: React.ElementType = React.memo(({ location, children }: PropsApp): JSX.Element => {
-    const RESTAURANT_OPEN = true;
+export const App: ElementType = memo(({ location, children }: PropsApp): JSX.Element => {
+    const restaurantOpen = true;
     return (
         <S.AppContainer>
             <AsideMenu
@@ -22,10 +22,14 @@ export const App: React.ElementType = React.memo(({ location, children }: PropsA
             />
             <S.ContentWrapper>
                 <RestaurantStatus
-                    statusToggle={RESTAURANT_OPEN}
+                    statusToggle={restaurantOpen}
                 />
                 {children}
             </S.ContentWrapper>
         </S.AppContainer>
     );
+}, (prevProps, nextProps) => {
+    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
+        return true;
+    }
 });
