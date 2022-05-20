@@ -8,7 +8,7 @@ import LogoDefault from 'assets/logos/default.svg';
 import {memo, useCallback, useReducer} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
-import {reducer} from "utils/reducer/useReducer";
+import {reducer, handleState} from "utils/reducer/useReducer";
 /** @name External */
 import Colors from 'constants/client/colors';
 import ClientRoutes from 'constants/client/routes';
@@ -33,36 +33,11 @@ const StoreLogin = memo((props: ChildComponentProps) => {
 
     /**
      *
-     * @param attr
-     * @param value
-     * @param callback
-     * @private
-     */
-    const handleState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
-        dispatch({type: 'set', attr, value});
-        return callback();
-    },[]);
-
-    /**
-     *
-     * @param obj
-     * @param attr
-     * @param value
-     * @param callback
-     * @private
-     */
-    const handleStateObject = useCallback((obj: string, attr: string, value: any, callback: Function = () => {}) => {
-        dispatch({type: 'setObject', obj, attr, value});
-        return callback()
-    },[]);
-
-    /**
-     *
      * @param id
      * @param value
      */
-    const onChangeInputLogin = useCallback(({ target: { id, value }}: { target: HTMLInputElement }) => {
-        return handleState(id, value);
+    const onChangeInputLogin = useCallback(({ target: { id: key, value }}: { target: HTMLInputElement }) => {
+        return handleState(dispatch, key, value);
     },[]);
 
     /**

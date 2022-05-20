@@ -15,7 +15,6 @@ interface PropsApp {
 
 export const App: ElementType = memo(({ children }: PropsApp): JSX.Element => {
     const restaurantOpen = true;
-    console.log('a')
     return (
         <S.AppContainer>
             <AsideMenu

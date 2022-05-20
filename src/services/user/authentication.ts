@@ -6,13 +6,33 @@
  * @class Authentication
  */
 export class Authentication {
-    private user: object = { }
 
     /**
      *
-     * @returns {boolean}
      */
-    static logged() {
-        return true;
+    static login() {
+        return null;
+    }
+
+    /**
+     *
+     */
+    static signIn() {
+        return null;
+    }
+
+    /**
+     * s
+     * @param token
+     */
+    static validateToken(token) {
+        return token;
+    }
+
+    /**
+     *
+     */
+    static logout() {
+        return null;
     }
 }

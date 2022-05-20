@@ -8,7 +8,6 @@ interface AuthProps {
 }
 
 export const Auth: ElementType = memo(({ children }: AuthProps): JSX.Element => {
-    console.log('a')
     return (
         <S.ContainerAuth>
             <S.Content>

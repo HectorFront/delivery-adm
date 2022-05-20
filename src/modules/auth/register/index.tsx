@@ -8,7 +8,7 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {TabStep} from './helpers';
 import {REGISTER_TABS} from './constants';
-import {reducer} from "utils/reducer/useReducer";
+import {reducer, handleState} from "utils/reducer/useReducer";
 import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
 import Colors from 'constants/client/colors';
@@ -61,30 +61,10 @@ const StoreRegister = memo((props: ChildComponentProps) => {
 
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-    /**
-     *
-     * @param attr
-     * @param value
-     * @param callback
-     * @private
-     */
-    const handleState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
-        dispatch({type: 'set', attr, value});
-        return callback();
-    },[]);
-
-    /**
-     *
-     * @param obj
-     * @param attr
-     * @param value
-     * @param callback
-     * @private
-     */
-    const handleObject = useCallback((obj: string, attr: string, value: any, callback: Function = () => {}) => {
-        dispatch({type: 'setObject', obj, attr, value});
-        return callback();
-    },[]);
+    const {
+        stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email, contact_email,
+        telephone, cellphone, instagram, facebook, cep, city, address, login, password
+    }: IState = state;
 
     /**
      *
@@ -100,16 +80,16 @@ const StoreRegister = memo((props: ChildComponentProps) => {
      * @param id
      * @param value
      */
-    const onChangeInputRegister = useCallback(({ target: { id, value }}: { target: HTMLInputElement }) => {
-        return handleState(id, value);
+    const onChangeInputRegister = useCallback(({ target: { id: key, value }}: { target: HTMLInputElement }) => {
+        return handleState(dispatch, key, value);
     },[]);
 
     /**
      *
      */
     const nextStep = useCallback(() => {
-        handleState('stepCurrent', state.stepCurrent + 1);
-        handleState('progressBar', state.progressBar + PROGRESS_BY_STAGE);
+        handleState(dispatch, 'stepCurrent', stepCurrent + 1);
+        handleState(dispatch, 'progressBar', progressBar + PROGRESS_BY_STAGE);
     },[state.stepCurrent, state.progressBar]);
 
     /**
@@ -119,16 +99,12 @@ const StoreRegister = memo((props: ChildComponentProps) => {
         if(stepCurrent <= 1) {
             return props.history.goBack();
         } else {
-            handleState('stepCurrent', state.stepCurrent - 1);
-            handleState('progressBar', state.progressBar - PROGRESS_BY_STAGE);
+            handleState(dispatch, 'stepCurrent', stepCurrent - 1);
+            handleState(dispatch, 'progressBar', progressBar - PROGRESS_BY_STAGE);
         }
     },[state.stepCurrent, state.progressBar]);
 
     const concludedRegister: Boolean = isVisibleStep(STEPS);
-    const {
-        stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email,
-        contact_email, telephone, cellphone, instagram, facebook, cep, city, address, login, password
-    }: IState = state;
 
     return (
         <>

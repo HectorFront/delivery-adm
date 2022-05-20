@@ -1,3 +1,5 @@
+import {Dispatch} from 'react';
+
 interface IAction {
     value: any,
     type: string,
@@ -31,3 +33,32 @@ export const reducer = (state, action: IAction) => {
             throw new Error();
     }
 }
+
+/**
+ *
+ * @param attr
+ * @param value
+ * @param callback
+ * @private
+ */
+export const handleState = (
+    dispatch: Dispatch<IAction>, attr: string, value: any, callback: Function = () => {}
+) => {
+    dispatch({type: 'set', attr, value});
+    return callback();
+};
+
+/**
+ *
+ * @param obj
+ * @param attr
+ * @param value
+ * @param callback
+ * @private
+ */
+export const handleStateObject = (
+    dispatch: Dispatch<IAction>, obj: string, attr: string, value: any, callback: Function = () => {}
+) => {
+    dispatch({type: 'setObject', obj, attr, value});
+    return callback()
+};
