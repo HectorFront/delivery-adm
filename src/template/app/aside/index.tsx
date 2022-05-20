@@ -3,12 +3,12 @@ import * as S from '../styles';
 /** @name Images */
 import LogoDefault from 'assets/logos/default.svg';
 /** @name Dependencies */
-import {matchPath} from 'react-router-dom';
+import {useLocation, matchPath} from 'react-router-dom';
 import {Fragment, memo, ElementType, useCallback} from 'react';
 /** @name Internal */
 import {NAV_ITEMS} from "./constants";
 /** @name External */
-import {MaterialIcon} from "helpers";
+import {Render, MaterialIcon} from "helpers";
 import Colors from 'constants/client/colors';
 
 interface AsideMenuProps {
@@ -21,15 +21,23 @@ interface NavItemsProps {
     [index: string]: any
 }
 
+/** @name Constants */
+const CSS_NAMESPACE = {
+    ITEM: 'nav-link d-flex align-items-center position-relative',
+    ITEM_ACTIVE: 'nav__active__item'
+};
+
 export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element => {
+
+    const location = useLocation();
 
     /**
      *
      * @param path
      * @returns boolean
      */
-    const hasSamePath = useCallback((path: string) => {
-        return matchPath(path, { path: props.location.pathname });
+    const samePath = useCallback((path: string) => {
+        return matchPath(path, { path: location.pathname });
     }, [props.location]);
 
     return (
@@ -45,28 +53,27 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
             <hr/>
             <S.MenuNav>
                 {NAV_ITEMS.map((item: NavItemsProps, i: number) => {
-                    const ITEM_ACTIVE = hasSamePath(item.path);
+                    const active = samePath(item.path);
                     return (
                         <Fragment key={i}>
                             {item.dividerNavs
-                                ? <br/>
+                                ? <hr/>
                                 :
                                 <S.NavItem>
                                     <span
-                                        className={`nav-link d-flex align-items-center ${ITEM_ACTIVE && 'nav__active__item'} position-relative`}
+                                        className={`${CSS_NAMESPACE.ITEM} ${active ? CSS_NAMESPACE.ITEM_ACTIVE : ''}`}
                                     >
                                         <MaterialIcon
                                             icon={item.icon}
                                             style={{ marginRight: 10 }}
-                                            color={ITEM_ACTIVE ? 'white' : Colors.SECONDARY}
+                                            color={active ? 'white' : Colors.SECONDARY}
                                         />
                                         {item.name}&nbsp;
-                                        {(i === 2 || i === 4 || i === NAV_ITEMS.length-1) && // 'Temporary validation to add tag <New> in item'
-                                            <>
-                                                <S.BadgeNew>novo</S.BadgeNew>
-                                                <S.BadgeCounter>1</S.BadgeCounter>
-                                            </>
-                                        }
+                                        {/*Temporary validation to add tag <new> in item*/}
+                                        <Render contains={i === 4}>
+                                            <S.BadgeNew>novo</S.BadgeNew>
+                                            <S.BadgeCounter>1</S.BadgeCounter>
+                                        </Render>
                                     </span>
                                 </S.NavItem>
                             }

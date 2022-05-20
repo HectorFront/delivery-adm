@@ -1,18 +1,18 @@
 import {Dispatch} from 'react';
 
 interface IAction {
-    value: any,
-    type: string,
+    value?: any,
+    type?: string,
     obj?: string | undefined,
-    attr: string | undefined,
-    payload?: any | undefined
+    attr?: string | undefined,
+    payload?: object | undefined
 }
 
 /**
  *
  * @param initialState
  */
-export const init = (initialState) => {
+export const init = (initialState: object) => {
     return initialState;
 }
 
@@ -36,10 +36,10 @@ export const reducer = (state, action: IAction) => {
 
 /**
  *
+ * @param dispatch
  * @param attr
  * @param value
  * @param callback
- * @private
  */
 export const handleState = (
     dispatch: Dispatch<IAction>, attr: string, value: any, callback: Function = () => {}
@@ -50,11 +50,11 @@ export const handleState = (
 
 /**
  *
+ * @param dispatch
  * @param obj
  * @param attr
  * @param value
  * @param callback
- * @private
  */
 export const handleStateObject = (
     dispatch: Dispatch<IAction>, obj: string, attr: string, value: any, callback: Function = () => {}
@@ -62,3 +62,14 @@ export const handleStateObject = (
     dispatch({type: 'setObject', obj, attr, value});
     return callback()
 };
+
+/**
+ *
+ * @param dispatch
+ * @param payload
+ * @param callback
+ */
+export const resetState = (dispatch: Dispatch<IAction>, payload: object, callback: Function = () => {}) => {
+    dispatch({type: 'reset', payload});
+    return callback();
+}

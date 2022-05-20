@@ -1,1 +1,1 @@
-export * from './BoxRealtime';
+export * from './boxRealtime';

@@ -43,8 +43,18 @@ const STATUS: StatusProps = {
 }
 
 export const RestaurantStatus: ElementType = memo(({ statusToggle }: RestaurantStatusProps): JSX.Element => {
-    const collectToggleStatus = statusToggle ? 'open' : 'closed';
-    const { action: { color, icon: iconAction, text }, status, icon: iconStatus } = STATUS[collectToggleStatus];
+
+    const collectStatus = statusToggle ? 'open' : 'closed';
+    const {
+        action: {
+            text,
+            color,
+            icon: iconAction
+        },
+        status,
+        icon: iconStatus
+    } = STATUS[collectStatus];
+
     return (
         <S.Container>
             <S.Dropdown>

@@ -42,7 +42,7 @@ const Home = memo((props: ChildComponentProps) => {
     },[]);
 
     useEffect(() => {
-        console.log('hello')
+        console.log('home')
     },[]);
 
     return (
