@@ -33,7 +33,7 @@ type UserProviderProps = {
  */
 export const UserProvider: ElementType = ({children}: UserProviderProps): JSX.Element => {
 
-    const [token, setToken] = useState('#');
+    const [token, setToken] = useState('');
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
     return (

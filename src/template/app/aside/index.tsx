@@ -1,7 +1,7 @@
 /** @name Styled */
 import * as S from '../styles';
 /** @name Images */
-import LogoDefault from 'assets/logos/default.svg';
+import LogoMedium from 'assets/logos/medium.svg';
 /** @name Dependencies */
 import {useLocation, matchPath} from 'react-router-dom';
 import {Fragment, memo, ElementType, useCallback} from 'react';
@@ -45,8 +45,7 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
             <S.Header>
                 <S.Logo
                     alt="Logo"
-                    height="50px"
-                    src={LogoDefault}
+                    src={LogoMedium}
                 />
                 <S.NameCompany>Santa Fome Burger</S.NameCompany>
             </S.Header>

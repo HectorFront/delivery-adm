@@ -22,12 +22,12 @@ const CSS_STYLES = {
 }
 
 export const Price: React.ElementType = React.memo((props: PriceProps): JSX.Element => {
-    const STYLE_HEADER = (
+    const styleHeader = (
         CSS_STYLES[props.id === props.priceSelected ? 'selected' : 'default']
     );
     return (
         <S.CardPrice onClick={'selectPrice' in props ? props.selectPrice : () => {}}>
-            <div className="card-header" style={STYLE_HEADER}>
+            <div className="card-header" style={styleHeader}>
                 <h5 className="my-0 font-weight-normal">{props.title}</h5>
             </div>
             <div className="card-body">

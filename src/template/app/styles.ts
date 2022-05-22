@@ -12,10 +12,11 @@ export const AppContainer = styled.div`
 
 export const Logo = styled.img`
   width: auto;
+  height: 100px;
 `;
 
 export const Aside = styled.aside.attrs({
-    className: 'd-flex flex-column flex-shrink-0 p-3 pt-4'
+    className: 'd-flex flex-column flex-shrink-0 p-3'
 })`
   top: 0;
   left: 0;
@@ -30,9 +31,7 @@ export const Header = styled.div.attrs({
     className: 'd-flex align-items-center justify-content-center flex-column'
 })``;
 
-export const NameCompany = styled.div.attrs({
-    className: 'mt-3'
-})`
+export const NameCompany = styled.div`
   width: 100%;
   overflow: hidden;
   font-weight: bold;

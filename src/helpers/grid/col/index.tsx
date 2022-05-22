@@ -2,6 +2,7 @@
 import {memo, ElementType, ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
 
 type ColProps = {
+    style?: object,
     cols?: string,
     children: ReactNode
 }
@@ -22,7 +23,7 @@ const MAX_COLUMNS: number = 5;
 const DEFAULT_COLUMN: number = 12;
 const CSS_NAMESPACE: string = 'col';
 
-export const Col: ElementType = memo(({ cols = '', children }: ColProps): JSX.Element => {
+export const Col: ElementType = memo(({ cols = '', children, ...props }: ColProps): JSX.Element => {
 
     /**
      * Set values in columns of different sizes
@@ -57,13 +58,12 @@ export const Col: ElementType = memo(({ cols = '', children }: ColProps): JSX.El
 
     useEffect(() => {
         return containsClassName();
-    },[]);
+    },[cols]);
 
     const {xs, sm, md, lg, xl, xxl} = GRID;
     return (
-        <div className={`${xs} ${sm} ${md} ${lg} ${xl} ${xxl}${className}`}>
+        <div {...props} className={`${xs} ${sm} ${md} ${lg} ${xl} ${xxl}${className}`}>
             {children}
         </div>
     )
-
 });

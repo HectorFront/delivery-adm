@@ -15,7 +15,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Routes} from './routes';
 import {UserProvider} from "./context/user";
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

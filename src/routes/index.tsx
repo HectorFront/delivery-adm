@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {App, Auth} from 'template';
 import {UserContext} from 'context/user';
 import ClientRoutes from 'constants/client/routes';
-import {ROUTES_APP, ROUTES_AUTH} from 'modules/paths';
+import {ROUTES, PRIVATE_ROUTES} from 'modules/paths';
 import {Authentication} from 'services/user/authentication';
 
 interface SwitchRoutesProps {
@@ -33,7 +33,7 @@ const SwitchRoutes: ElementType = ({ children }: SwitchRoutesProps): JSX.Element
     </Suspense>
 );
 
-const RenderRoutes: ElementType = ({authenticated, authRoutes, privateRoutes}) => {
+const RenderRoutes: ElementType = ({authenticated, routes, privateRoutes}): JSX.Element => {
     if (authenticated) {
         return (
             <App>
@@ -45,7 +45,7 @@ const RenderRoutes: ElementType = ({authenticated, authRoutes, privateRoutes}) =
     }
     return (
         <Auth>
-            {authRoutes.map(({ path, component }: RoutesComponentsProps, i: number) =>
+            {routes.map(({ path, component }: RoutesComponentsProps, i: number) =>
                 <Route key={i} path={path} component={component}/>
             )}
         </Auth>
@@ -58,7 +58,11 @@ export const Routes: ElementType = (): JSX.Element => {
     return (
         <BrowserRouter>
             <SwitchRoutes>
-                <RenderRoutes authenticated={userAuthenticated} authRoutes={ROUTES_AUTH} privateRoutes={ROUTES_APP}/>
+                <RenderRoutes
+                    routes={ROUTES}
+                    privateRoutes={PRIVATE_ROUTES}
+                    authenticated={userAuthenticated}
+                />
             </SwitchRoutes>
             <Redirect from='*' to={ClientRoutes[!userAuthenticated ? 'LOGIN' : 'HOME']}/>
         </BrowserRouter>

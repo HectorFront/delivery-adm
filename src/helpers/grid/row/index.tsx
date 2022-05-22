@@ -6,8 +6,8 @@ type RowProps = {
     children: ReactNode
 }
 
-export const Row: ElementType = memo(({ className = '', children }: RowProps): JSX.Element =>
-    <div className={`row ${className}`}>
+export const Row: ElementType = memo(({ className = '', children, ...props }: RowProps): JSX.Element =>
+    <div {...props} className={`row ${className}`}>
         {children}
     </div>
 );

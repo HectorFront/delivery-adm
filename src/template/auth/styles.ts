@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name Images */
-import SVGShapes from 'assets/backgrounds/svg/shapes.svg';
+import Shapes from 'assets/svg/shapes.svg';
 import Background from 'assets/backgrounds/bg_auth.jpg';
 
 export const ContainerAuth = styled.div`
@@ -16,7 +16,7 @@ export const Content = styled.div`
   width: 45%;
   height: 100%;
   overflow-x: hidden;
-  background-image: url(${SVGShapes});
+  background-image: url(${Shapes});
   @media(max-width: 1510px) {
     width: 100%;
   }
