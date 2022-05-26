@@ -4,7 +4,7 @@ import * as S from './styles';
 import React from 'react';
 /** @name External */
 import {InputRadio, MaterialIcon} from "helpers/index";
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 type PriceProps = {
     id: number,

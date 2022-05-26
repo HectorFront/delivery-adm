@@ -11,7 +11,7 @@ import {REGISTER_TABS} from './constants';
 import {reducer, handleState} from "utils/reducer/useReducer";
 import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 import {Render, Button, MaterialIcon} from 'helpers';
 
 interface IState {

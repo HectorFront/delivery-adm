@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name External */
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 export const Default = styled.input`
   color: #5e5e5e;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 /** @name Mixins */
 import {flex} from "mixins/global";
 /** @name External */
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 import { ButtonCustomProps } from "./styles.interfaces";
 

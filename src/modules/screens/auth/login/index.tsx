@@ -10,7 +10,7 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {reducer, handleState} from "utils/reducer/useReducer";
 /** @name External */
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 import ClientRoutes from 'constants/client/routes';
 import {Button, InputLabel, InputPasswordLabel, MaterialIcon} from 'helpers';
 

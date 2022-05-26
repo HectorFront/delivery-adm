@@ -6,7 +6,7 @@ import * as Keyframe from "modules/screens/auth/keyframes";
 import {memo, ElementType} from 'react';
 /** @name External */
 import {MaterialIcon} from "helpers";
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 interface TabStepProps {
     icon: string,

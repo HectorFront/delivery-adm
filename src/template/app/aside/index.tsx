@@ -9,7 +9,7 @@ import {Fragment, memo, ElementType, useCallback} from 'react';
 import {NAV_ITEMS} from "./constants";
 /** @name External */
 import {Render, MaterialIcon} from "helpers";
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 interface AsideMenuProps {
     location: {

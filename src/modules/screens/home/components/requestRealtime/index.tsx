@@ -5,7 +5,7 @@ import * as S from "./styles";
 /** @name External */
 import {String} from "utils";
 import {Row, Col} from 'helpers';
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 /** @name Constants */
 export const CURRENT_MONTH: string = 'Novembro';

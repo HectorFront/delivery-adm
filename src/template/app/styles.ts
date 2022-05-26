@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name External */
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 const WIDTH_ASIDE: number = 270;
 

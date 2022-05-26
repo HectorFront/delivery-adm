@@ -1,9 +1,12 @@
+/** @name VarsCSS */
+import 'layout/vars/colors/index.css';
+import 'layout/vars/zIndex/index.css';
 /** @name ResetCSS */
-import './normalize.css';
+import 'layout/normalize/index.css';
 /** @name ScrollBarCSS */
-import './scrollbar.css';
+import 'layout/scrollbar/index.css';
 /** @name Fonts */
-import './fonts.css';
+import 'layout/fonts/index.css';
 /** @name MaterialIcons */
 import 'material-icons/iconfont/material-icons.css';
 /** @name Bootstrap */

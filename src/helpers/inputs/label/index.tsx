@@ -4,7 +4,7 @@ import * as S from './styles';
 import {memo, ElementType} from 'react';
 /** @name External */
 import {Render, MaterialIcon, InputDefault} from 'helpers/index';
-import Colors from 'constants/client/colors';
+import Colors from 'layout/vars/colors';
 
 type InputLabelProps = {
     label: string,
