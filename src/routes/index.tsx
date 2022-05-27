@@ -4,9 +4,11 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 /** @name External */
 import {App, Auth} from 'template';
 import {UserContext} from 'context/user';
-import ClientRoutes from 'constants/client/routes';
+import {ClientRoutes} from 'constants/client/routes';
 import {ROUTES, PRIVATE_ROUTES} from 'modules/paths';
-import {Authentication} from 'services/user/authentication';
+import {LoaderFallback} from "helpers/fallback";
+
+import * as ContextInterfaces from 'context/context.interfaces';
 
 interface SwitchRoutesProps {
     children?: ReactNode
@@ -17,16 +19,8 @@ interface RoutesComponentsProps {
     component: LazyExoticComponent<ComponentType> | ComponentType
 }
 
-interface UserContextProps {
-    state: object,
-    token: string | object,
-    setToken: Function,
-    handleState: Function,
-    handleStateObject: Function
-}
-
 const SwitchRoutes: ElementType = ({ children }: SwitchRoutesProps): JSX.Element => (
-    <Suspense fallback={null}>
+    <Suspense fallback={<LoaderFallback/>}>
         <Switch>
             {children}
         </Switch>
@@ -53,15 +47,15 @@ const RenderRoutes: ElementType = ({authenticated, routes, privateRoutes}): JSX.
 };
 
 export const Routes: ElementType = (): JSX.Element => {
-    const userContext = useContext<UserContextProps>(UserContext);
-    const userAuthenticated = Authentication.validateToken(userContext.token);
+    const userContext = useContext<ContextInterfaces.UserContextProps>(UserContext);
+    const userAuthenticated = userContext.token;
     return (
         <BrowserRouter>
             <SwitchRoutes>
                 <RenderRoutes
                     routes={ROUTES}
                     privateRoutes={PRIVATE_ROUTES}
-                    authenticated={userAuthenticated}
+                    authenticated={userContext.token}
                 />
             </SwitchRoutes>
             <Redirect from='*' to={ClientRoutes[!userAuthenticated ? 'LOGIN' : 'HOME']}/>

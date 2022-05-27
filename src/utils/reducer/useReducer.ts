@@ -1,3 +1,7 @@
+/**
+ * @author Hector Rodrigues da Silva
+ */
+
 import {Dispatch} from 'react';
 
 interface IAction {
@@ -5,7 +9,7 @@ interface IAction {
     type?: string,
     obj?: string | undefined,
     attr?: string | undefined,
-    payload?: object | undefined
+    payload?: Object | undefined
 }
 
 /**
@@ -41,7 +45,7 @@ export const reducer = (state, action: IAction) => {
  * @param value
  * @param callback
  */
-export const handleState = (
+export const handleKeyState = (
     dispatch: Dispatch<IAction>, attr: string, value: any, callback: Function = () => {}
 ) => {
     dispatch({type: 'set', attr, value});
@@ -56,7 +60,7 @@ export const handleState = (
  * @param value
  * @param callback
  */
-export const handleStateObject = (
+export const handleKeyStateObject = (
     dispatch: Dispatch<IAction>, obj: string, attr: string, value: any, callback: Function = () => {}
 ) => {
     dispatch({type: 'setObject', obj, attr, value});
@@ -69,7 +73,7 @@ export const handleStateObject = (
  * @param payload
  * @param callback
  */
-export const resetState = (dispatch: Dispatch<IAction>, payload: object, callback: Function = () => {}) => {
+export const resetState = (dispatch: Dispatch<IAction>, payload: Object, callback: Function = () => {}) => {
     dispatch({type: 'reset', payload});
     return callback();
 }

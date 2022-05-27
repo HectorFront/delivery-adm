@@ -17,7 +17,7 @@ export const InputDefault: ElementType = memo(({size = 'md', error = false, clas
     const errorClassname: string = error ? ' is-invalid' : '';
     const customClassName: string = className ? ` ${className}` : '';
 
-    const defineCSSNameSpace: string = `${CSS_NAMESPACE} ${CSS_NAMESPACE}-${size}` + customClassName + errorClassname;
+    const defineCSSNameSpace: string = `${CSS_NAMESPACE} ${CSS_NAMESPACE}-${size}${customClassName}${errorClassname}`;
     return (
         <>
             <S.Default

@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name External */
-import {flex} from 'mixins/global';
+import {flex} from 'layout/mixins/styles';
 /** @name Images */
 import ImgRealTime from 'assets/backgrounds/bg_realtime.png';
 

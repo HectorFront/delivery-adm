@@ -8,10 +8,10 @@ import LogoBig from 'assets/logos/big.svg';
 import {memo, useCallback, useReducer} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
-import {reducer, handleState} from "utils/reducer/useReducer";
+import {reducer, handleKeyState} from "utils/reducer/useReducer";
 /** @name External */
 import Colors from 'layout/vars/colors';
-import ClientRoutes from 'constants/client/routes';
+import {ClientRoutes} from 'constants/client/routes';
 import {Button, InputLabel, InputPasswordLabel, MaterialIcon} from 'helpers';
 
 interface IState {
@@ -37,7 +37,7 @@ const StoreLogin = memo((props: ChildComponentProps) => {
      * @param value
      */
     const onChangeInputLogin = useCallback(({ target: { id: key, value }}: { target: HTMLInputElement }) => {
-        return handleState(dispatch, key, value);
+        return handleKeyState(dispatch, key, value);
     },[]);
 
     /**
@@ -93,7 +93,7 @@ const StoreLogin = memo((props: ChildComponentProps) => {
                             />
                             <S.Link className="form-text">Esqueci minha senha</S.Link>
                         </div>
-                        <Button size="lg">Entrar</Button>
+                        <Button fullWidth>Entrar</Button>
                     </fieldset>
                 </S.Form>
                 <S.RegisterStore>

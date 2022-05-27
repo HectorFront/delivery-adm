@@ -23,7 +23,7 @@ const Home = memo((props: ChildComponentProps) => {
      * @param callback
      * @private
      */
-    const handleState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
+    const handleKeyState = useCallback((attr: string, value: any, callback: Function = () => {}) => {
         dispatch({type: 'set', attr, value});
         return callback();
     },[]);

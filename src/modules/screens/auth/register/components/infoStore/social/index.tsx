@@ -5,7 +5,7 @@ import {memo, useCallback, ElementType} from 'react';
 /** @name Internal */
 import {ModelStoreRegister} from 'modules/screens/auth/register/model';
 /** @name External */
-import {String} from 'utils';
+import {FormatString} from 'utils';
 import {MaterialIcon} from 'helpers';
 
 interface ProfileProps {
@@ -37,7 +37,7 @@ export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfilePr
                 <S.InfoProfile>
                     <S.User isFacebook={isFacebook}>{!profile?.length ? 'sualoja' : profile}</S.User>
                     <S.Description>
-                        Perfil do {String.capitalize(type)}&nbsp;
+                        Perfil do {FormatString.capitalize(type)}&nbsp;
                         <MaterialIcon
                             size="10px"
                             color="gray"

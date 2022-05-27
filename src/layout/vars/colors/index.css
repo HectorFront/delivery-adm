@@ -6,7 +6,7 @@
     --color-secondary: #4A143B;
     --color-bg-facebook: #FE5A58;
     --color-bg-instagram: #1877F2;
-    --color-main-instagram: #0095F6;
+    --color-bg-secondary-instagram: #0095F6;
 }
 /**
  Colors
@@ -16,9 +16,9 @@
 .color-default {color: var(--color-default) !important}
 .color-tertiary {color: var(--color-tertiary) !important}
 .color-secondary {color: var(--color-secondary) !important}
-.color-facebook {color: var(--color-bg-facebook) !important}
+.color-bg-facebook {color: var(--color-bg-facebook) !important}
 .color-bg-instagram {color: var(--color-bg-instagram) !important}
-.color-main-instagram {color: var(--color-main-instagram) !important}
+.color-bg-secondary-instagram {color: var(--color-bg-secondary-instagram) !important}
 /**
  Backgrounds
  */
@@ -29,4 +29,4 @@
 .bg-color-secondary {background-color: var(--color-secondary) !important}
 .bg-color-facebook {background-color: var(--color-bg-facebook) !important}
 .bg-color-instagram {background-color: var(--color-bg-instagram) !important}
-.bg-color-main-instagram {background-color: var(--color-main-instagram) !important}
+.bg-color-secondary-instagram {background-color: var(--color-bg-secondary-instagram) !important}

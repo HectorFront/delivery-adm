@@ -1,18 +1,13 @@
-/** @name VarsCSS */
+/** @name Layout */
+import 'layout/fonts/index.css';
+import 'layout/normalize/index.css';
+import 'layout/scrollbar/index.css';
+
 import 'layout/vars/colors/index.css';
 import 'layout/vars/zIndex/index.css';
-/** @name ResetCSS */
-import 'layout/normalize/index.css';
-/** @name ScrollBarCSS */
-import 'layout/scrollbar/index.css';
-/** @name Fonts */
-import 'layout/fonts/index.css';
-/** @name MaterialIcons */
-import 'material-icons/iconfont/material-icons.css';
-/** @name Bootstrap */
-import '@popperjs/core';
-import 'bootstrap/dist/js/bootstrap.min';
-import 'bootstrap/dist/css/bootstrap.min.css';
+/** @name Plugins */
+import 'assets/plugins/boostrap';
+import 'assets/plugins/material-icons';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

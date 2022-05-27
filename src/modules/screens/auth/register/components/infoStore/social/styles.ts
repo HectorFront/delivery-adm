@@ -1,7 +1,7 @@
 /** @name Styled */
 import styled from 'styled-components';
 /** @name Mixins */
-import { flex } from 'mixins/global';
+import { flex } from 'layout/mixins/styles';
 /** @name External */
 import Colors from 'layout/vars/colors';
 
@@ -24,7 +24,7 @@ export const Avatar = styled.div<Interface.AvatarProps>`
   height: 35px;
   border-radius: 50px;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
-  background-color: ${props => props.isFacebook ? Colors.BG_FACEBOOK : Colors.MAIN_INSTAGRAM};
+  background-color: ${props => props.isFacebook ? Colors.BG_FACEBOOK : Colors.BG_SECONDARY_INSTAGRAM};
 `;
 
 export const InfoProfile = styled.div`

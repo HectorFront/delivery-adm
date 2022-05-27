@@ -8,7 +8,7 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {TabStep} from './components';
 import {REGISTER_TABS} from './constants';
-import {reducer, handleState} from "utils/reducer/useReducer";
+import {reducer, handleKeyState} from "utils/reducer/useReducer";
 import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
 import Colors from 'layout/vars/colors';
@@ -81,15 +81,15 @@ const StoreRegister = memo((props: ChildComponentProps) => {
      * @param value
      */
     const onChangeInputRegister = useCallback(({ target: { id: key, value }}: { target: HTMLInputElement }) => {
-        return handleState(dispatch, key, value);
+        return handleKeyState(dispatch, key, value);
     },[]);
 
     /**
      *
      */
     const nextStep = useCallback(() => {
-        handleState(dispatch, 'stepCurrent', stepCurrent + 1);
-        handleState(dispatch, 'progressBar', progressBar + PROGRESS_BY_STAGE);
+        handleKeyState(dispatch, 'stepCurrent', stepCurrent + 1);
+        handleKeyState(dispatch, 'progressBar', progressBar + PROGRESS_BY_STAGE);
     },[state.stepCurrent, state.progressBar]);
 
     /**
@@ -99,8 +99,8 @@ const StoreRegister = memo((props: ChildComponentProps) => {
         if(stepCurrent <= 1) {
             return props.history.goBack();
         } else {
-            handleState(dispatch, 'stepCurrent', stepCurrent - 1);
-            handleState(dispatch, 'progressBar', progressBar - PROGRESS_BY_STAGE);
+            handleKeyState(dispatch, 'stepCurrent', stepCurrent - 1);
+            handleKeyState(dispatch, 'progressBar', progressBar - PROGRESS_BY_STAGE);
         }
     },[state.stepCurrent, state.progressBar]);
 
@@ -170,7 +170,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                                 onChange={onChangeInputRegister}
                             />
                         </Render>
-                        <Button secondary onClick={nextStep}>
+                        <Button fullWidth secondary onClick={nextStep}>
                             {concludedRegister ? 'Concluir' : 'Continuar'}
                         </Button>
                     </fieldset>

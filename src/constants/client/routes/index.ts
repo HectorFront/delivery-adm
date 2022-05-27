@@ -1,11 +1,9 @@
-type envRoutes = {
+type ClientRoutesProps = {
     [index: string]: string
 }
 
-const Routes: envRoutes  = {
+export const ClientRoutes: ClientRoutesProps  = {
     LOGIN: '/login',
     REGISTER: '/register',
     HOME: '/home'
 };
-
-export default Routes;

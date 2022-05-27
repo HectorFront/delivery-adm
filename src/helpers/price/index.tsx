@@ -3,7 +3,7 @@ import * as S from './styles';
 /** @name Dependencies */
 import React from 'react';
 /** @name External */
-import {InputRadio, MaterialIcon} from "helpers/index";
+import {InputRadio, MaterialIcon} from "helpers";
 import Colors from 'layout/vars/colors';
 
 type PriceProps = {

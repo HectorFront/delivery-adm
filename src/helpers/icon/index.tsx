@@ -13,15 +13,17 @@ type MaterialIconProps = {
     pointer?: boolean,
 }
 
-export const MaterialIcon: ElementType = memo(({ type, size, color, hover, pointer, ...props}: MaterialIconProps): JSX.Element =>
+export const MaterialIcon: ElementType = memo(({
+    type = 'outlined', size = '1.2em', color = 'inherit', hover, pointer, ...props
+}: MaterialIconProps): JSX.Element =>
     <S.Icon
         {...props}
         hasHover={hover}
-        className={`material-icons-${type ?? 'outlined'}`}
+        pointer={pointer}
+        className={`material-icons-${type}`}
         style={{
-            fontSize: size ?? '1.2em',
-            color: color ?? 'inherit',
-            cursor: pointer ? 'pointer' : 'default',
+            color: color,
+            fontSize: size,
             ...props?.style
         }}
     >

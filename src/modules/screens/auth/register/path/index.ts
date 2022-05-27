@@ -1,4 +1,4 @@
-import ClientRoutes from 'constants/client/routes';
+import {ClientRoutes} from 'constants/client/routes';
 import Register from 'modules/screens/auth/register/index';
 
 const Path = [

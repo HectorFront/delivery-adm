@@ -7,20 +7,23 @@ import {MaterialIcon, Render} from "helpers";
 
 type ButtonProps = {
     icon?: string,
-    size?: string,
+    radius?: boolean,
     outline?: boolean,
+    fullWidth?: boolean,
     children: ReactNode,
     secondary?: boolean,
     onClick?: MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export const Button: ElementType = memo(({ icon = '', size, outline, secondary, ...props}: ButtonProps): JSX.Element =>
+export const Button: ElementType = memo(({ icon = '', fullWidth = false, radius = false, outline, secondary, ...props}: ButtonProps): JSX.Element =>
     <S.ButtonCustom
         {...props}
         type="button"
         outline={outline}
+        hasRadius={radius}
         secondary={secondary}
-        className={`btn btn-dark btn-${size ?? 'sm'}`}
+        fullWidth={fullWidth}
+        className={`btn btn-dark`}
         onClick={(e: any) => { props.onClick && props.onClick(e); e.target.blur(); }}
     >
         <Render contains={icon}>

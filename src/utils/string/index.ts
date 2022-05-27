@@ -1,15 +1,32 @@
 /**
  * @author Hector Rodrigues da Silva
- * @class String
+ * @class FormatString
  */
-export class String {
+export class FormatString {
+
     /**
      *
      * @param str
-     * @constructor
      */
     static capitalize(str: string) {
        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    /**
+     *
+     * @param str
+     */
+    static validEmail(str: string) {
+        const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regex.test(str);
+    }
+
+    /**
+     *
+     * @param str
+     */
+    static removeAccents(str: string) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
     /**

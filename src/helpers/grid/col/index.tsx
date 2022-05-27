@@ -7,62 +7,49 @@ type ColProps = {
     children: ReactNode
 }
 
-type sizesProps = {
-    xs: string,
-    sm: string,
-    md: string,
-    lg: string,
-    xl: string,
-    xxl: string
-}
-
-type ColumnsProps = string[] | undefined;
+type ColumnsProps = string[] | number[] | undefined;
 
 /** @name Constants */
 const MAX_COLUMNS: number = 5;
-const DEFAULT_COLUMN: number = 12;
-const CSS_NAMESPACE: string = 'col';
+const MAX_SIZE_COLUMN: number = 12;
 
 export const Col: ElementType = memo(({ cols = '', children, ...props }: ColProps): JSX.Element => {
 
-    /**
-     * Set values in columns of different sizes
-     */
-    const columns: ColumnsProps = useMemo(() => cols.split(' ') ?? [], [cols]);
-    const GRID: sizesProps = {
-        xs: `${CSS_NAMESPACE}-${DEFAULT_COLUMN}`,
-        sm: `${CSS_NAMESPACE}-sm-${columns[0]}`,
-        md: `${CSS_NAMESPACE}-md-${columns[1]}`,
-        lg: `${CSS_NAMESPACE}-lg-${columns[2]}`,
-        xl: `${CSS_NAMESPACE}-xl-${columns[3]}`,
-        xxl: `${CSS_NAMESPACE}-xxl-${columns[4]}`
-    };
-
     const [className, setClassName] = useState('');
+
+    const columns: ColumnsProps = useMemo(() => cols.split(' '), [cols]);
 
     /**
      * Add if contains additional ClassName in Cols
      */
-    const containsClassName = useCallback(() => {
+    const handleClassNames = useCallback(() => {
         let classNames: string = '';
         if(columns.length >= MAX_COLUMNS) {
             columns.slice(MAX_COLUMNS, columns.length)
                 .forEach(className => {
-                    if(className) {
-                        classNames += ` ${className}`
-                    }
+                    if(className) classNames += ` ${className}`;
                 });
             return setClassName(classNames);
         }
     },[columns]);
 
     useEffect(() => {
-        return containsClassName();
+        return handleClassNames();
     },[cols]);
 
-    const {xs, sm, md, lg, xl, xxl} = GRID;
+    const [
+        sm = MAX_SIZE_COLUMN,
+        md = MAX_SIZE_COLUMN,
+        lg = MAX_SIZE_COLUMN,
+        xl = MAX_SIZE_COLUMN,
+        xxl = MAX_SIZE_COLUMN
+    ]: ColumnsProps = columns;
+
     return (
-        <div {...props} className={`${xs} ${sm} ${md} ${lg} ${xl} ${xxl}${className}`}>
+        <div
+            {...props}
+            className={`col-12 col-sm-${sm} col-md-${md} col-lg-${lg} col-xl-${xl} col-xxl-${xxl}${className}`}
+        >
             {children}
         </div>
     )

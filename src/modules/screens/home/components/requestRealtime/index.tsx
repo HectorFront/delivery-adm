@@ -3,7 +3,7 @@ import {memo, ElementType} from 'react';
 /** @name Internal */
 import * as S from "./styles";
 /** @name External */
-import {String} from "utils";
+import {FormatString} from "utils";
 import {Row, Col} from 'helpers';
 import Colors from 'layout/vars/colors';
 
@@ -23,7 +23,7 @@ export const RequestRealtime: ElementType = memo((): JSX.Element =>
                                 <S.Text>&nbsp;de hoje</S.Text>
                             </Col>
                             <Col>
-                                <S.Text bold size={18}>{String.formatCurrency(1253.74)}</S.Text>
+                                <S.Text bold size={18}>{FormatString.formatCurrency(1253.74)}</S.Text>
                             </Col>
                         </Row>
                         <Row className="mt-4">
@@ -32,7 +32,7 @@ export const RequestRealtime: ElementType = memo((): JSX.Element =>
                                 <S.Text>&nbsp;por pedido</S.Text>
                             </Col>
                             <Col>
-                                <S.Text bold size={23}>{String.formatCurrency(65.98)}</S.Text>
+                                <S.Text bold size={23}>{FormatString.formatCurrency(65.98)}</S.Text>
                             </Col>
                         </Row>
                     </S.RealTime>
@@ -54,7 +54,7 @@ export const RequestRealtime: ElementType = memo((): JSX.Element =>
                                 <S.Text bold size={18}>&nbsp;/ {CURRENT_MONTH}</S.Text>
                             </Col>
                             <Col>
-                                <S.Text>{String.formatCurrency(0.00)}</S.Text>
+                                <S.Text>{FormatString.formatCurrency(0.00)}</S.Text>
                             </Col>
                         </Row>
                         <Row>
