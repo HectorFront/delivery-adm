@@ -48,5 +48,4 @@ export const hideDisplay = (breakpoint) => `
  *
  * @param isSecondary
  */
-export const toggleColors = isSecondary =>
-    isSecondary ? Colors.SECONDARY : Colors.DEFAULT;
+export const toggleColors = isSecondary => isSecondary ? Colors.SECONDARY : Colors.DEFAULT;

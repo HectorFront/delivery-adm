@@ -6,9 +6,9 @@ import {App, Auth} from 'template';
 import {UserContext} from 'context/user';
 import {ClientRoutes} from 'constants/client/routes';
 import {ROUTES, PRIVATE_ROUTES} from 'modules/paths';
-import {LoaderFallback} from "helpers/fallback";
+import {LoaderFallback} from "components";
 
-import * as ContextInterfaces from 'context/context.interfaces';
+import * as ContextInterfaces from 'types/context.interfaces';
 
 interface SwitchRoutesProps {
     children?: ReactNode

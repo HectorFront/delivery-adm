@@ -17,9 +17,7 @@ export const App: ElementType = memo(({ children }: PropsApp): JSX.Element => {
     const restaurantOpen = true;
     return (
         <S.AppContainer>
-            <AsideMenu
-                location={'/home'}
-            />
+            <AsideMenu/>
             <S.ContentWrapper>
                 <RestaurantStatus
                     statusToggle={restaurantOpen}

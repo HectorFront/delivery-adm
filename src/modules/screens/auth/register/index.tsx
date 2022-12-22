@@ -12,7 +12,7 @@ import {reducer, handleKeyState} from "utils/reducer/useReducer";
 import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
 import Colors from 'layout/vars/colors';
-import {Render, Button, MaterialIcon} from 'helpers';
+import {Render, Button, MaterialIcon} from "components";
 
 interface IState {
     stepCurrent: number | null,
@@ -131,7 +131,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                 <S.ContainerText>
                     <S.CountSteps>{stepCurrent} de {STEPS} etapas.</S.CountSteps>
                     {REGISTER_TABS.map((tab, i) =>
-                        <Render key={i} contains={isVisibleStep(tab.step)}>
+                        <Render key={i} has={isVisibleStep(tab.step)}>
                             <TabStep
                                 icon={tab.icon}
                                 paintedText={tab.painted_text}
@@ -143,28 +143,28 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                 </S.ContainerText>
                 <S.Form>
                     <fieldset>
-                        <Render contains={isVisibleStep(1)}>
+                        <Render has={isVisibleStep(1)}>
                             <RegisterStore
                                 onChange={onChangeInputRegister}
                                 data={{ social_reason, fantasy_name }}
                             />
                         </Render>
-                        <Render contains={isVisibleStep(2)}>
+                        <Render has={isVisibleStep(2)}>
                             <ManagerStore
                                 onChange={onChangeInputRegister}
                                 data={{ cnpj, email, contact_email, telephone, cellphone }}
                             />
                         </Render>
-                        <Render contains={isVisibleStep(3)}>
+                        <Render has={isVisibleStep(3)}>
                             <InfoStore
                                 onChange={onChangeInputRegister}
                                 data={{ instagram, facebook, cep, city, address }}
                             />
                         </Render>
-                        <Render contains={isVisibleStep(4)}>
+                        <Render has={isVisibleStep(4)}>
                             <PlanPrices/>
                         </Render>
-                        <Render contains={isVisibleStep(5)}>
+                        <Render has={isVisibleStep(5)}>
                             <CreateLogin
                                 data={{ login, password }}
                                 onChange={onChangeInputRegister}

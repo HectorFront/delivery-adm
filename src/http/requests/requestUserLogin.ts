@@ -1,5 +1,5 @@
 import {ConstructorRequest} from '../constructor';
-import {APIRoutes} from 'src/constants/api/routes'
+import {APIRoutes} from 'constants/api/routes';
 
 export class RequestUserLogin extends ConstructorRequest {
     /**
@@ -7,9 +7,9 @@ export class RequestUserLogin extends ConstructorRequest {
      * @param body
      */
     constructor(body) {
-        const url = APIRoutes.login;
-        const headers = new Headers();
+        const url: string = APIRoutes.login;
+        const headers: Headers = new Headers();
         headers.append("Content-Type", "application/json");
-        super(url, headers, 'POST', body);
+        super({ url, headers, method: 'POST', body });
     }
 }

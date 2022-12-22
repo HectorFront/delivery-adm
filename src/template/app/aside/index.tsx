@@ -8,13 +8,10 @@ import {Fragment, memo, ElementType, useCallback} from 'react';
 /** @name Internal */
 import {NAV_ITEMS} from "./constants";
 /** @name External */
-import {Render, MaterialIcon} from "helpers";
+import {Render, MaterialIcon} from "components";
 import Colors from 'layout/vars/colors';
 
 interface AsideMenuProps {
-    location: {
-        pathname: string
-    }
 }
 
 interface NavItemsProps {
@@ -27,7 +24,7 @@ const CSS_NAMESPACE = {
     ITEM_ACTIVE: 'nav__active__item'
 };
 
-export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element => {
+export const AsideMenu: ElementType = memo((_props: AsideMenuProps): JSX.Element => {
 
     const location = useLocation();
 
@@ -38,7 +35,7 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
      */
     const samePath = useCallback((path: string) => {
         return matchPath(path, { path: location.pathname });
-    }, [props.location]);
+    }, [location]);
 
     return (
         <S.Aside>
@@ -56,8 +53,7 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
                     return (
                         <Fragment key={i}>
                             {item.dividerNavs
-                                ? <hr/>
-                                :
+                                ? <hr/> :
                                 <S.NavItem>
                                     <span
                                         className={`${CSS_NAMESPACE.ITEM} ${active ? CSS_NAMESPACE.ITEM_ACTIVE : ''}`}
@@ -69,7 +65,7 @@ export const AsideMenu: ElementType = memo((props: AsideMenuProps): JSX.Element 
                                         />
                                         {item.name}&nbsp;
                                         {/*Temporary validation to add tag <new> in item*/}
-                                        <Render contains={i === 4}>
+                                        <Render has={i === 4}>
                                             <S.BadgeNew>novo</S.BadgeNew>
                                             <S.BadgeCounter>1</S.BadgeCounter>
                                         </Render>

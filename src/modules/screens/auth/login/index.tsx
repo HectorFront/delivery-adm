@@ -12,7 +12,7 @@ import {reducer, handleKeyState} from "utils/reducer/useReducer";
 /** @name External */
 import Colors from 'layout/vars/colors';
 import {ClientRoutes} from 'constants/client/routes';
-import {Button, InputLabel, InputPasswordLabel, MaterialIcon} from 'helpers';
+import {Button, InputLabel, InputPasswordLabel, MaterialIcon} from "components";
 
 interface IState {
     login: string | null,

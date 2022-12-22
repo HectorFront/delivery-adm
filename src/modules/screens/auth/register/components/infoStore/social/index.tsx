@@ -6,7 +6,7 @@ import {memo, useCallback, ElementType} from 'react';
 import {ModelStoreRegister} from 'modules/screens/auth/register/model';
 /** @name External */
 import {FormatString} from 'utils';
-import {MaterialIcon} from 'helpers';
+import {MaterialIcon} from "components";
 
 interface ProfileProps {
     type: string | null

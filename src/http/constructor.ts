@@ -1,16 +1,22 @@
 export class ConstructorRequest {
+
+    _url: string;
+    _body: string | object;
+    _method: string;
+    _headers: Headers;
+
     /**
      *
      * @param url
      * @param headers
      * @param method
-     * @param payload
+     * @param body
      */
-    constructor(url = null, headers = null, method = null, payload = {}) {
+    constructor({ url = null, headers = new Headers(), method = null, body = {} }) {
         this._url = url;
-        this._headers = headers;
+        this._body = body;
         this._method = method;
-        this._payload = payload;
+        this._headers = headers;
     }
 
     /**
@@ -41,7 +47,7 @@ export class ConstructorRequest {
      *
      * @returns {*}
      */
-    get payload() {
-        return this._payload;
+    get body() {
+        return this._body;
     }
 }

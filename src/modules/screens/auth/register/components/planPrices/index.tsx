@@ -3,7 +3,7 @@ import {memo, useState, ElementType} from 'react';
 /** @name Internal */
 import {PLAN_PRICES} from "modules/screens/auth/register/constants";
 /** @name External */
-import {Col, Price, Row} from "helpers";
+import {Col, Price, Row} from "components";
 
 /** @name Constants */
 const INITIAL_ID_SELECTED = 2;

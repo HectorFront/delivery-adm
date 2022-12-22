@@ -1,7 +1,7 @@
 /** @name Dependencies */
 import {memo, ElementType, ChangeEventHandler} from 'react';
 /** @name External */
-import {InputLabel} from 'helpers';
+import {InputLabel} from "components";
 
 interface RegisterStoreProps {
     data: {

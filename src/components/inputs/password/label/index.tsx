@@ -3,7 +3,7 @@ import * as S from '../styles';
 /** @name Dependencies */
 import {memo, ElementType, MouseEventHandler, useState, useCallback} from 'react';
 /** @name External */
-import {Render, InputDefault, MaterialIcon} from 'helpers';
+import {Render, InputDefault, MaterialIcon} from "components";
 /** @name Constants */
 import {ATTR_TYPES_PASSWORD} from '../constants';
 
@@ -35,7 +35,7 @@ export const InputPasswordLabel: ElementType = memo(({ label, error, ...props }:
                     error={error}
                     type={typeCurrent}
                 />
-                <Render contains={!error}>
+                <Render has={!error}>
                     <S.VisibilityPassword
                         type="button"
                         className="btn"

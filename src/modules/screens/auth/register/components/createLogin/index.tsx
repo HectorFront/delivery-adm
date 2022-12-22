@@ -1,7 +1,7 @@
 /** @name Dependencies */
 import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name External */
-import {Row, Col, InputLabel, InputPasswordLabel} from "helpers";
+import {Row, Col, InputLabel, InputPasswordLabel} from "components";
 
 interface CreateLoginProps {
     data: {

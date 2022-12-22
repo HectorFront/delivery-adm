@@ -1,5 +1,6 @@
 /** @name External */
 // import {AsyncStorage} from 'utils';
+import {RouteComponentProps} from "react-router-dom";
 
 /**
  * @author Hector Rodrigues da Silva
@@ -7,32 +8,32 @@
  */
 export class Authentication {
 
+    _history: RouteComponentProps;
+    _userContext: any;
+
+    constructor({ history, userContext }) {
+        this._history = history;
+        this._userContext = userContext;
+    }
+
     /**
      *
      */
-    static login() {
+    login() {
         return null;
     }
 
     /**
      *
      */
-    static signIn() {
+    signIn() {
         return null;
-    }
-
-    /**
-     * s
-     * @param token
-     */
-    static validateToken(token) {
-        return token;
     }
 
     /**
      *
      */
-    static logout() {
+    logout() {
         return null;
     }
 }

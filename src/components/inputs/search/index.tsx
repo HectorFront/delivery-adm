@@ -4,7 +4,7 @@ import * as S from "./styles";
 import {memo, ElementType} from 'react';
 /** @name External */
 import Colors from "layout/vars/colors";
-import {MaterialIcon} from "helpers/icon";
+import {MaterialIcon} from "components";
 
 type InputSearchProps = {
     error?: boolean | undefined,

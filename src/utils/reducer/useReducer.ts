@@ -46,7 +46,10 @@ export const reducer = (state, action: IAction) => {
  * @param callback
  */
 export const handleKeyState = (
-    dispatch: Dispatch<IAction>, attr: string, value: any, callback: Function = () => {}
+    dispatch: Dispatch<IAction>,
+    attr: string,
+    value: any,
+    callback: Function = () => {}
 ) => {
     dispatch({type: 'set', attr, value});
     return callback();
@@ -61,10 +64,14 @@ export const handleKeyState = (
  * @param callback
  */
 export const handleKeyStateObject = (
-    dispatch: Dispatch<IAction>, obj: string, attr: string, value: any, callback: Function = () => {}
+    dispatch: Dispatch<IAction>,
+    obj: string,
+    attr: string,
+    value: any,
+    callback: Function = () => {}
 ) => {
     dispatch({type: 'setObject', obj, attr, value});
-    return callback()
+    return callback();
 };
 
 /**
@@ -73,7 +80,11 @@ export const handleKeyStateObject = (
  * @param payload
  * @param callback
  */
-export const resetState = (dispatch: Dispatch<IAction>, payload: Object, callback: Function = () => {}) => {
+export const resetState = (
+    dispatch: Dispatch<IAction>,
+    payload: Object,
+    callback: Function = () => {}
+) => {
     dispatch({type: 'reset', payload});
     return callback();
 }

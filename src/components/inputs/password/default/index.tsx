@@ -3,7 +3,7 @@ import * as S from '../styles';
 /** @name Dependencies */
 import {memo, ElementType, MouseEventHandler, useState, useCallback} from 'react';
 /** @name External */
-import {InputDefault, MaterialIcon} from 'helpers';
+import {InputDefault, MaterialIcon} from "components";
 /** @name Constants */
 import {ATTR_TYPES_PASSWORD} from "../constants";
 

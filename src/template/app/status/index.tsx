@@ -3,7 +3,7 @@ import * as S from './styles';
 /** @name Dependencies */
 import {memo, ElementType} from 'react';
 /** @name External */
-import {MaterialIcon} from "helpers/icon";
+import {MaterialIcon} from "components";
 
 interface RestaurantStatusProps {
     statusToggle: boolean | null

@@ -1,18 +1,16 @@
-type envProps = {
-    [index: string]: string | undefined
+type colorsProps = {
+    [index: string]: string
 }
 
-const env: envProps = process.env;
-
-const Colors: envProps = {
-    DARK: env.REACT_APP_DARK_COLOR,
-    LIGHT: env.REACT_APP_LIGHT_COLOR,
-    DEFAULT: env.REACT_APP_DEFAULT_COLOR,
-    TERTIARY: env.REACT_APP_TERTIARY_COLOR,
-    SECONDARY: env.REACT_APP_SECONDARY_COLOR,
-    BG_FACEBOOK: env.REACT_APP_FACEBOOK_BACKGROUND_COLOR,
-    BG_INSTAGRAM: env.REACT_APP_INSTAGRAM_BACKGROUND_COLOR,
-    BG_SECONDARY_INSTAGRAM: env.REACT_APP_INSTAGRAM_BACKGROUND_SECONDARY_COLOR
+const Colors: colorsProps = {
+    DARK: '#6E2DFC',
+    LIGHT: '#8B6AFF',
+    DEFAULT: '#7A2DFD',
+    TERTIARY: '#4A143B',
+    SECONDARY: '#FF9400',
+    BG_FACEBOOK: '#1877F2',
+    BG_INSTAGRAM: '#0095F6',
+    BG_SECONDARY_INSTAGRAM: '#FE5A58'
 };
 
 export default Colors;

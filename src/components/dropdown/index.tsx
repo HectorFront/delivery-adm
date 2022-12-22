@@ -4,7 +4,7 @@ import {ElementType, memo, ReactNode} from "react";
 /** @name Internal */
 import * as S from "./styles";
 /** @name External */
-import {MaterialIcon} from 'helpers/index';
+import {MaterialIcon} from 'components';
 import Colors from 'layout/vars/colors';
 
 type DropdownProps = {

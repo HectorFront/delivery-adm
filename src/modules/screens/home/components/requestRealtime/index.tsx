@@ -4,7 +4,7 @@ import {memo, ElementType} from 'react';
 import * as S from "./styles";
 /** @name External */
 import {FormatString} from "utils";
-import {Row, Col} from 'helpers';
+import {Row, Col} from "components";
 import Colors from 'layout/vars/colors';
 
 /** @name Constants */

@@ -6,7 +6,7 @@ import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name Internal */
 import {Profile} from './social';
 /** @name External */
-import {Card, Row, Col, InputLabel} from 'helpers';
+import {Card, Row, Col, InputLabel} from "components";
 
 interface InfoStoreProps {
     data: {
