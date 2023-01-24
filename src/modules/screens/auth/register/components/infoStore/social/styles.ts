@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { flex } from 'layout/mixins/styles';
 /** @name External */
 import Colors from 'layout/vars/colors';
-
 import * as Interface from "./styles.interfaces";
 
 export const Box = styled.div`
@@ -24,7 +23,7 @@ export const Avatar = styled.div<Interface.AvatarProps>`
   height: 35px;
   border-radius: 50px;
   ${flex({ wrap: 'no-wrap', direction: 'row', alignY: 'center', alignX: 'center' })}
-  background-color: ${props => props.isFacebook ? Colors.BG_FACEBOOK : Colors.BG_SECONDARY_INSTAGRAM};
+  background-color: ${props => Colors[props.social.toUpperCase()]};
 `;
 
 export const InfoProfile = styled.div`
@@ -35,7 +34,6 @@ export const InfoProfile = styled.div`
 export const User = styled.span<Interface.UserProps>`
   width: 100%;
   font-size: 14px;
-  ${props => props.isFacebook ? `font-weight: bold; letter-spacing: 1px;` : ''};
 `;
 
 export const Description = styled.span`
@@ -51,7 +49,7 @@ export const ViewPage = styled.button<Interface.ViewPageProps>`
   height: 30px;
   font-size: 13px;
   border-radius: 5px;
-  background-color: ${props => props.isFacebook ? Colors.BG_FACEBOOK : Colors.BG_INSTAGRAM};
+  background-color: ${props => Colors[props.social.toUpperCase()]};
   &:hover {
     opacity: .8;
   }

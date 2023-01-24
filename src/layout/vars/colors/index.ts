@@ -7,10 +7,12 @@ const Colors: colorsProps = {
     LIGHT: '#8B6AFF',
     DEFAULT: '#7A2DFD',
     TERTIARY: '#4A143B',
+    TIKTOK: '#e92b5e',
     SECONDARY: '#FF9400',
-    BG_FACEBOOK: '#1877F2',
-    BG_INSTAGRAM: '#0095F6',
-    BG_SECONDARY_INSTAGRAM: '#FE5A58'
+    FACEBOOK: '#1877F2',
+    INSTAGRAM: '#0095F6',
+    TWITTER: '#00a2e4',
+    LINKEDIN: '#0275b4'
 };
 
 export default Colors;

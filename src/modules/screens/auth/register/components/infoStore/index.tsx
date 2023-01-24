@@ -1,4 +1,7 @@
 /** @name Images */
+import IconTikTok from 'assets/icons/tiktok_black.png';
+import IconTwitter from 'assets/icons/twitter_black.png';
+import IconLinkedin from 'assets/icons/linkedin_black.png';
 import IconFacebook from 'assets/icons/facebook_black.png';
 import IconInstagram from 'assets/icons/instagram_black.png';
 /** @name Dependencies */
@@ -10,6 +13,9 @@ import {Card, Row, Col, InputLabel} from "components";
 
 interface InfoStoreProps {
     data: {
+        linkedin?: string | null,
+        twitter?: string | null,
+        tiktok?: string | null,
         instagram?: string | null,
         facebook?: string | null,
         cep?: string | null,
@@ -19,7 +25,7 @@ interface InfoStoreProps {
     onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const InfoStore: ElementType = memo(({ data: { instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
+export const InfoStore: ElementType = memo(({ data: { linkedin, twitter, tiktok, instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
     <Row>
         <Col cols="12 12 4 4 4">
             <div className="mb-3">
@@ -89,13 +95,67 @@ export const InfoStore: ElementType = memo(({ data: { instagram, facebook, cep, 
                     id="facebook"
                     label="Facebook"
                     onChange={onChange}
-                    placeholder="/sualoja"
+                    placeholder="@sualoja"
                     iconLabelImg={IconFacebook}
                     value={facebook?.toLowerCase() ?? ''}
                 />
                 <Profile
                     type="facebook"
                     profile={facebook?.toLowerCase()}
+                />
+            </Card>
+        </Col>
+        <Col>
+            <Card className="mb-3 p-3">
+                <InputLabel
+                    size="lg"
+                    type="text"
+                    id="tiktok"
+                    label="TikTok"
+                    onChange={onChange}
+                    placeholder="@sualoja"
+                    iconLabelImg={IconTikTok}
+                    value={tiktok?.toLowerCase() ?? ''}
+                />
+                <Profile
+                    type="tiktok"
+                    profile={tiktok?.toLowerCase()}
+                />
+            </Card>
+        </Col>
+        <Col>
+            <Card className="mb-3 p-3">
+                <InputLabel
+                    size="lg"
+                    type="text"
+                    id="twitter"
+                    label="Twitter"
+                    onChange={onChange}
+                    placeholder="@sualoja"
+                    iconLabelImg={IconTwitter}
+                    value={tiktok?.toLowerCase() ?? ''}
+                />
+                <Profile
+                    type="twitter"
+                    profile={twitter?.toLowerCase()}
+                />
+            </Card>
+        </Col>
+        <Col>
+            <Card className="mb-3 p-3">
+                <InputLabel
+                    size="lg"
+                    type="text"
+                    id="linkedin"
+                    label="LinkedIn"
+                    onChange={onChange}
+                    placeholder="@sualoja"
+                    iconLabelImg={IconLinkedin}
+                    value={linkedin?.toLowerCase() ?? ''}
+                />
+                <Profile
+                    type="linkedin"
+                    profile={linkedin?.toLowerCase()}
                 />
             </Card>
         </Col>

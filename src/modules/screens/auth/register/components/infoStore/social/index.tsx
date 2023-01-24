@@ -15,8 +15,6 @@ interface ProfileProps {
 
 export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfileProps): JSX.Element => {
 
-    const isFacebook = type.includes('facebook');
-
     /**
      * Open new window to social network of store
      */
@@ -27,7 +25,7 @@ export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfilePr
     return (
         <S.Box>
             <S.Profile>
-                <S.Avatar isFacebook={isFacebook}>
+                <S.Avatar social={type}>
                     <MaterialIcon
                         size="18px"
                         color="white"
@@ -35,7 +33,7 @@ export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfilePr
                     />
                 </S.Avatar>
                 <S.InfoProfile>
-                    <S.User isFacebook={isFacebook}>{!profile?.length ? 'sualoja' : profile}</S.User>
+                    <S.User social={type}>{!profile?.length ? 'sualoja' : profile}</S.User>
                     <S.Description>
                         Perfil do {FormatString.capitalize(type)}&nbsp;
                         <MaterialIcon
@@ -48,7 +46,7 @@ export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfilePr
             </S.Profile>
             <S.ViewPage
                 type="button"
-                isFacebook={isFacebook}
+                social={type}
                 onClick={redirectSocialNetwork}
             >
                 Ver perfil

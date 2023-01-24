@@ -1,11 +1,11 @@
 export interface AvatarProps {
-    isFacebook?: boolean
+    social?: string
 }
 
 export interface UserProps {
-    isFacebook?: boolean
+    social?: string
 }
 
 export interface ViewPageProps {
-    isFacebook?: boolean
+    social?: string
 }

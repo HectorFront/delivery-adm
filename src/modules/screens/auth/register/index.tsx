@@ -22,8 +22,11 @@ interface IState {
     city: string | null,
     email: string | null,
     login: string | null,
+    tiktok: string | null,
     address: string | null,
+    twitter: string | null,
     facebook: string | null,
+    linkedin: string | null,
     password: string | null,
     telephone: string | null,
     instagram: string | null,
@@ -46,8 +49,11 @@ const INITIAL_STATE: IState = {
     city: null,
     email: null,
     login: null,
+    tiktok: null,
     address: null,
+    twitter: null,
     facebook: null,
+    linkedin: null,
     password: null,
     telephone: null,
     instagram: null,
@@ -63,7 +69,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
 
     const {
         stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email, contact_email,
-        telephone, cellphone, instagram, facebook, cep, city, address, login, password
+        telephone, cellphone, linkedin, twitter, instagram, facebook, tiktok, cep, city, address, login, password
     }: IState = state;
 
     /**
@@ -158,7 +164,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                         <Render has={isVisibleStep(3)}>
                             <InfoStore
                                 onChange={onChangeInputRegister}
-                                data={{ instagram, facebook, cep, city, address }}
+                                data={{ linkedin, twitter, tiktok, instagram, facebook, cep, city, address }}
                             />
                         </Render>
                         <Render has={isVisibleStep(4)}>
