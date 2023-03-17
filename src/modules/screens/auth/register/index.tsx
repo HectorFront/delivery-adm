@@ -8,7 +8,7 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {TabStep} from './components';
 import {REGISTER_TABS} from './constants';
-import {reducer, handleKeyState} from "utils/reducer/useReducer";
+import {reducer, handleKeyState, handleKeyStateObject} from "utils/reducer/useReducer";
 import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from './components';
 /** @name External */
 import Colors from 'layout/vars/colors';
@@ -22,14 +22,16 @@ interface IState {
     city: string | null,
     email: string | null,
     login: string | null,
-    tiktok: string | null,
+    social: {
+        tiktok: string | null,
+        twitter: string | null,
+        instagram: string | null,
+        facebook: string | null,
+        linkedin: string | null
+    },
     address: string | null,
-    twitter: string | null,
-    facebook: string | null,
-    linkedin: string | null,
     password: string | null,
     telephone: string | null,
-    instagram: string | null,
     cellphone: string | null,
     contact_email: string | null,
     fantasy_name: string | null,
@@ -49,14 +51,16 @@ const INITIAL_STATE: IState = {
     city: null,
     email: null,
     login: null,
-    tiktok: null,
+    social: {
+        tiktok: null,
+        twitter: null,
+        instagram: null,
+        facebook: null,
+        linkedin: null
+    },
     address: null,
-    twitter: null,
-    facebook: null,
-    linkedin: null,
     password: null,
     telephone: null,
-    instagram: null,
     cellphone: null,
     contact_email: null,
     fantasy_name: null,
@@ -69,7 +73,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
 
     const {
         stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email, contact_email,
-        telephone, cellphone, linkedin, twitter, instagram, facebook, tiktok, cep, city, address, login, password
+        telephone, cellphone, social: { linkedin, twitter, instagram, facebook, tiktok }, cep, city, address, login, password
     }: IState = state;
 
     /**
@@ -86,7 +90,10 @@ const StoreRegister = memo((props: ChildComponentProps) => {
      * @param id
      * @param value
      */
-    const onChangeInputRegister = useCallback(({ target: { id: key, value }}: { target: HTMLInputElement }) => {
+    const onChangeInputRegister = useCallback(({ target: { id: key, value, dataset } }: { target: HTMLInputElement }) => {
+        if(dataset['object']) {
+            return handleKeyStateObject(dispatch, dataset['object'], key, value);
+        }
         return handleKeyState(dispatch, key, value);
     },[]);
 
@@ -176,7 +183,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                                 onChange={onChangeInputRegister}
                             />
                         </Render>
-                        <Button fullWidth secondary onClick={nextStep}>
+                        <Button fullWidth secondary onClick={concludedRegister ? () => {} : nextStep}>
                             {concludedRegister ? 'Concluir' : 'Continuar'}
                         </Button>
                     </fieldset>

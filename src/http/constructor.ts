@@ -1,9 +1,10 @@
 export class ConstructorRequest {
 
     _url: string;
-    _body: string | object;
+    _body?: object;
     _method: string;
     _headers: Headers;
+    _externalOrigin?: string;
 
     /**
      *
@@ -11,19 +12,21 @@ export class ConstructorRequest {
      * @param headers
      * @param method
      * @param body
+     * @param externalOrigin
      */
-    constructor({ url = null, headers = new Headers(), method = null, body = {} }) {
+    constructor({ url = null, headers = new Headers(), method = null, body = {}, externalOrigin = null }) {
         this._url = url;
         this._body = body;
         this._method = method;
         this._headers = headers;
+        this._externalOrigin = externalOrigin;
     }
 
     /**
      *
      * @returns {*}
      */
-    get url() {
+    get url(): string {
         return this._url;
     }
 
@@ -31,7 +34,7 @@ export class ConstructorRequest {
      *
      * @returns {*}
      */
-    get headers() {
+    get headers(): object {
         return this._headers;
     }
 
@@ -39,7 +42,7 @@ export class ConstructorRequest {
      *
      * @returns {*}
      */
-    get method() {
+    get method(): string {
         return this._method;
     }
 
@@ -47,7 +50,15 @@ export class ConstructorRequest {
      *
      * @returns {*}
      */
-    get body() {
+    get body(): object {
         return this._body;
+    }
+
+    /**
+     *
+     * @returns {*}
+     */
+    get externalOrigin(): string {
+        return this._externalOrigin;
     }
 }

@@ -9,6 +9,7 @@ import {memo, ChangeEventHandler, ElementType} from 'react';
 /** @name Internal */
 import {Profile} from './social';
 /** @name External */
+import * as Carousel from 'components/carousel';
 import {Card, Row, Col, InputLabel} from "components";
 
 interface InfoStoreProps {
@@ -24,6 +25,7 @@ interface InfoStoreProps {
     }
     onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
+
 
 export const InfoStore: ElementType = memo(({ data: { linkedin, twitter, tiktok, instagram, facebook, cep, city, address }, onChange }: InfoStoreProps): JSX.Element =>
     <Row>
@@ -70,94 +72,104 @@ export const InfoStore: ElementType = memo(({ data: { linkedin, twitter, tiktok,
             </div>
         </Col>
         <Col>
-            <Card className="mb-3 p-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="instagram"
-                    label="Instagram"
-                    onChange={onChange}
-                    placeholder="@sualoja"
-                    iconLabelImg={IconInstagram}
-                    value={instagram?.toLowerCase() ?? ''}
-                />
-                <Profile
-                    type="instagram"
-                    profile={instagram?.toLowerCase()}
-                />
-            </Card>
-        </Col>
-        <Col>
-            <Card className="mb-3 p-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="facebook"
-                    label="Facebook"
-                    onChange={onChange}
-                    placeholder="@sualoja"
-                    iconLabelImg={IconFacebook}
-                    value={facebook?.toLowerCase() ?? ''}
-                />
-                <Profile
-                    type="facebook"
-                    profile={facebook?.toLowerCase()}
-                />
-            </Card>
-        </Col>
-        <Col>
-            <Card className="mb-3 p-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="tiktok"
-                    label="TikTok"
-                    onChange={onChange}
-                    placeholder="@sualoja"
-                    iconLabelImg={IconTikTok}
-                    value={tiktok?.toLowerCase() ?? ''}
-                />
-                <Profile
-                    type="tiktok"
-                    profile={tiktok?.toLowerCase()}
-                />
-            </Card>
-        </Col>
-        <Col>
-            <Card className="mb-3 p-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="twitter"
-                    label="Twitter"
-                    onChange={onChange}
-                    placeholder="@sualoja"
-                    iconLabelImg={IconTwitter}
-                    value={tiktok?.toLowerCase() ?? ''}
-                />
-                <Profile
-                    type="twitter"
-                    profile={twitter?.toLowerCase()}
-                />
-            </Card>
-        </Col>
-        <Col>
-            <Card className="mb-3 p-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="linkedin"
-                    label="LinkedIn"
-                    onChange={onChange}
-                    placeholder="@sualoja"
-                    iconLabelImg={IconLinkedin}
-                    value={linkedin?.toLowerCase() ?? ''}
-                />
-                <Profile
-                    type="linkedin"
-                    profile={linkedin?.toLowerCase()}
-                />
-            </Card>
+            <label className="form-label fw-bold">Redes Sociais</label>
+            <Carousel.Container dots={5}>
+                <Carousel.Item active>
+                    <Card className="mb-3 p-3">
+                        <InputLabel
+                            size="lg"
+                            type="text"
+                            id="instagram"
+                            label="Instagram"
+                            data-object='social'
+                            onChange={onChange}
+                            placeholder="@sualoja"
+                            iconLabelImg={IconInstagram}
+                            value={instagram?.toLowerCase() ?? ''}
+                        />
+                        <Profile
+                            type="instagram"
+                            profile={instagram?.toLowerCase()}
+                        />
+                    </Card>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <Card className="mb-3 p-3">
+                        <InputLabel
+                            size="lg"
+                            type="text"
+                            id="facebook"
+                            label="Facebook"
+                            data-object='social'
+                            onChange={onChange}
+                            placeholder="@sualoja"
+                            iconLabelImg={IconFacebook}
+                            value={facebook?.toLowerCase() ?? ''}
+                        />
+                        <Profile
+                            type="facebook"
+                            profile={facebook?.toLowerCase()}
+                        />
+                    </Card>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <Card className="mb-3 p-3">
+                        <InputLabel
+                            size="lg"
+                            type="text"
+                            id="tiktok"
+                            label="TikTok"
+                            data-object='social'
+                            onChange={onChange}
+                            placeholder="@sualoja"
+                            iconLabelImg={IconTikTok}
+                            value={tiktok?.toLowerCase() ?? ''}
+                        />
+                        <Profile
+                            type="tiktok"
+                            profile={tiktok?.toLowerCase()}
+                        />
+                    </Card>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <Card className="mb-3 p-3">
+                        <InputLabel
+                            size="lg"
+                            type="text"
+                            id="twitter"
+                            label="Twitter"
+                            onChange={onChange}
+                            data-object='social'
+                            placeholder="@sualoja"
+                            iconLabelImg={IconTwitter}
+                            value={tiktok?.toLowerCase() ?? ''}
+                        />
+                        <Profile
+                            type="twitter"
+                            profile={twitter?.toLowerCase()}
+                        />
+                    </Card>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <Card className="mb-3 p-3">
+                        <InputLabel
+                            size="lg"
+                            type="text"
+                            id="linkedin"
+                            label="LinkedIn"
+                            onChange={onChange}
+                            data-object='social'
+                            placeholder="@sualoja"
+                            iconLabelImg={IconLinkedin}
+                            value={linkedin?.toLowerCase() ?? ''}
+                        />
+                        <Profile
+                            type="linkedin"
+                            profile={linkedin?.toLowerCase()}
+                        />
+                    </Card>
+                </Carousel.Item>
+            </Carousel.Container>
         </Col>
     </Row>
 , (prevProps, nextProps) => {

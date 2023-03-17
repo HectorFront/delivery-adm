@@ -8,3 +8,4 @@ export * from './button';
 export * from './render';
 export * from './fallback';
 export * from './dropdown';
+export * from './carousel';

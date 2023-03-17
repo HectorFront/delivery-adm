@@ -14,7 +14,7 @@ type InputLabelProps = {
 
 export const InputLabel: ElementType = memo(({ label, iconLabel = '', iconLabelImg, ...props }: InputLabelProps): JSX.Element =>
     <>
-        <S.Label className="form-label">
+        <S.Label className="form-label fw-bold">
             <Render has={iconLabel}>
                 <MaterialIcon
                     size="15px"
@@ -30,7 +30,7 @@ export const InputLabel: ElementType = memo(({ label, iconLabel = '', iconLabelI
                     src={iconLabelImg}
                 />&nbsp;
             </Render>
-            <b>{label}</b>
+            {label}
         </S.Label>
         <InputDefault
             {...props}

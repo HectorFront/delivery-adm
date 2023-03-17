@@ -1,7 +1,6 @@
 /**
  * @author Hector Rodrigues da Silva
  */
-
 import {Dispatch} from 'react';
 
 interface IAction {

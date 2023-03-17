@@ -1,4 +1,4 @@
-import {ConstructorRequest} from '../constructor';
+import {ConstructorRequest} from '../../constructor';
 import {APIRoutes} from 'constants/api/routes';
 
 export class RequestUserLogin extends ConstructorRequest {
