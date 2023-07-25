@@ -2,6 +2,7 @@ import {memo, ReactNode} from "react";
 
 type Carousel = {
     dots: number,
+    id?: string | null,
     children: ReactNode
 }
 
@@ -10,30 +11,31 @@ type CarouselItem = {
     children: ReactNode
 }
 
-export const Container = memo(({ dots = 0, children }: Carousel) => {
+export const Container = memo(({ dots = 0, id = crypto.randomUUID(), children }: Carousel) => {
     const countBtnSocialCarousel = Array.from(Array(dots).keys());
+    const idCarousel = `carousel-${id}`;
     return (
-        <div id="social-carousel" className="carousel carousel-dark slide" data-bs-ride="true">
+        <div id={idCarousel} className="carousel carousel-dark slide" data-bs-ride data-bs-interval={false}>
             <div className="carousel-indicators">
                 {countBtnSocialCarousel.map(i =>
                     <button
+                        key={i}
+                        aria-current
                         type="button"
-                        aria-current="true"
                         data-bs-slide-to={i}
-                        style={{ height: 5 }}
-                        data-bs-target="#social-carousel"
-                        className={`${i === 0 && 'active'} bg-dark`}
+                        data-bs-target={`#${idCarousel}`}
+                        className={`${i === 0 && 'active'} bg-color-dark`}
                     />
                 )}
             </div>
             <div className="carousel-inner">
                 {children}
             </div>
-            <button style={{ left: '-100px' }} className="carousel-control-prev" type="button" data-bs-target="#social-carousel" data-bs-slide="prev">
+            <button style={{ left: '-100px' }} className="carousel-control-prev" type="button" data-bs-target={`#${idCarousel}`} data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
             </button>
-            <button style={{ right: '-100px' }} className="carousel-control-next" type="button" data-bs-target="#social-carousel" data-bs-slide="next">
+            <button style={{ right: '-100px' }} className="carousel-control-next" type="button" data-bs-target={`#${idCarousel}`} data-bs-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>
@@ -42,7 +44,7 @@ export const Container = memo(({ dots = 0, children }: Carousel) => {
 });
 
 export const Item = memo(({ active = false, children }: CarouselItem) =>
-    <div className={`carousel-item ${active && 'active'}`}>
+    <div className={`carousel-item ${active && 'active'}`} data-bs-interval={false}>
         {children}
     </div>
 );

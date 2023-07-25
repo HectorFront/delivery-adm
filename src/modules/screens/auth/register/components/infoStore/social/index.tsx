@@ -18,9 +18,9 @@ export const Profile: ElementType = memo(({ type = '', profile = '' }: ProfilePr
     /**
      * Open new window to social network of store
      */
-    const redirectSocialNetwork = useCallback(() => {
+    const redirectSocialNetwork = () => {
         return ModelStoreRegister.visitSocialNetwork(type, profile);
-    },[type, profile]);
+    };
 
     return (
         <S.Box>

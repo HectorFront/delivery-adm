@@ -5,34 +5,34 @@ import {InputLabel} from "components";
 
 interface RegisterStoreProps {
     data: {
-        fantasy_name?: string | null,
-        social_reason?: string | null
+        fantasyName?: string | null,
+        socialReason?: string | null
     },
     onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const RegisterStore: ElementType = memo(({ data: { social_reason, fantasy_name }, onChange }: RegisterStoreProps): JSX.Element =>
+export const RegisterStore: ElementType = memo(({ data: { socialReason, fantasyName }, onChange }: RegisterStoreProps): JSX.Element =>
     <>
         <div className="mb-3">
             <InputLabel
                 size="lg"
                 type="text"
-                id="social_reason"
+                id="socialReason"
                 onChange={onChange}
                 label="Nome da loja"
                 placeholder="Razão social"
-                value={social_reason ?? ''}
-                error={social_reason === ''}
+                value={socialReason ?? ''}
+                error={socialReason === ''}
             />
         </div>
         <div className="mb-3">
             <InputLabel
                 size="lg"
                 type="text"
-                id="fantasy_name"
+                id="fantasyName"
                 onChange={onChange}
-                value={fantasy_name ?? ''}
-                error={fantasy_name === ''}
+                value={fantasyName ?? ''}
+                error={fantasyName === ''}
                 placeholder="Exemplo.: Yako Lanches"
                 label="Como as pessoas costumam chamar sua loja?"
             />

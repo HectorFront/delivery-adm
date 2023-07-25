@@ -3,7 +3,8 @@ import * as S from '../styles';
 /** @name Images */
 import LogoSmall from 'assets/logos/small.svg';
 /** @name Dependencies */
-import {memo, useCallback, useReducer} from 'react';
+import {memo, useCallback, useReducer, useState} from 'react';
+import Bootstrap from 'bootstrap/dist/js/bootstrap.min';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 /** @name Internal */
 import {TabStep} from './components';
@@ -13,13 +14,23 @@ import {RegisterStore, ManagerStore, InfoStore, PlanPrices, CreateLogin} from '.
 /** @name External */
 import Colors from 'layout/vars/colors';
 import {Render, Button, MaterialIcon} from "components";
+import {ModelStoreRegister} from "./model";
+
+type TAddress = {
+    cep: string | null,
+    name: string | null,
+    city: string | null,
+    state: string | null,
+    publicPlace: string | null,
+    number: string | null,
+    complement: string | null,
+    district: string | null
+}
 
 interface IState {
     stepCurrent: number | null,
     progressBar: number | null,
-    cep: string | null,
-    cnpj: string | null,
-    city: string | null,
+    document: string | null,
     email: string | null,
     login: string | null,
     social: {
@@ -29,13 +40,13 @@ interface IState {
         facebook: string | null,
         linkedin: string | null
     },
-    address: string | null,
+    address: TAddress[],
     password: string | null,
+    contactTelephone: string | null,
     telephone: string | null,
-    cellphone: string | null,
-    contact_email: string | null,
-    fantasy_name: string | null,
-    social_reason: string | null
+    contactEmail: string | null,
+    fantasyName: string | null,
+    socialReason: string | null
 }
 
 interface ChildComponentProps extends RouteComponentProps<any> {}
@@ -43,12 +54,21 @@ interface ChildComponentProps extends RouteComponentProps<any> {}
 /** @name Constants */
 const STEPS: number = 5;
 const PROGRESS_BY_STAGE: number = 100 / STEPS;
+const INITIAL_ADDRESS: TAddress = {
+    name: null,
+    city: null,
+    cep: null,
+    state: null,
+    publicPlace: 'Sim',
+    number: null,
+    complement: null,
+    district: null
+};
+
 const INITIAL_STATE: IState = {
     stepCurrent: 1,
     progressBar: PROGRESS_BY_STAGE,
-    cep: null,
-    cnpj: null,
-    city: null,
+    document: null,
     email: null,
     login: null,
     social: {
@@ -58,13 +78,13 @@ const INITIAL_STATE: IState = {
         facebook: null,
         linkedin: null
     },
-    address: null,
+    address: [INITIAL_ADDRESS],
     password: null,
+    contactTelephone: null,
     telephone: null,
-    cellphone: null,
-    contact_email: null,
-    fantasy_name: null,
-    social_reason: null
+    contactEmail: null,
+    fantasyName: null,
+    socialReason: null
 };
 
 const StoreRegister = memo((props: ChildComponentProps) => {
@@ -72,9 +92,10 @@ const StoreRegister = memo((props: ChildComponentProps) => {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
     const {
-        stepCurrent, progressBar, social_reason, fantasy_name, cnpj, email, contact_email,
-        telephone, cellphone, social: { linkedin, twitter, instagram, facebook, tiktok }, cep, city, address, login, password
+        stepCurrent, progressBar, socialReason, fantasyName, document: documentUser, email, contactEmail,
+        contactTelephone, telephone, social: { linkedin, twitter, instagram, facebook, tiktok }, address, login, password
     }: IState = state;
+    const [boostrapCarousel, setBoostrapCarousel] = useState(null);
 
     /**
      *
@@ -100,8 +121,41 @@ const StoreRegister = memo((props: ChildComponentProps) => {
     /**
      *
      */
+    const addAddress = () => {
+        const addressList = structuredClone(address);
+        addressList.push(INITIAL_ADDRESS);
+        handleKeyState(dispatch, 'address', addressList);
+    };
+
+    const resetCarousel = carousel => {
+        const carouselInstance = Bootstrap.Carousel.getInstance(carousel);
+        if (carouselInstance) carouselInstance.dispose();
+    };
+
+    const deleteAddress = (index: number) => {
+        boostrapCarousel.to(index - 1);
+        let addressList = structuredClone(address);
+        addressList.splice(index, 1);
+        handleKeyState(dispatch, 'address', addressList);
+    };
+
+    const onChangeAddress = ({ target: { id: key, value, dataset } }: { target: HTMLInputElement | HTMLSelectElement }) => {
+        let addressList = structuredClone(address);
+        addressList[dataset['index']][key] = value;
+        handleKeyState(dispatch, 'address', addressList);
+    };
+
+    const submitRegister = async () => {
+        const response = await ModelStoreRegister.registerCompany(state);
+        console.log(response);
+    };
+
+    /**
+     *
+     */
     const nextStep = useCallback(() => {
-        handleKeyState(dispatch, 'stepCurrent', stepCurrent + 1);
+        const next = stepCurrent + 1;
+        handleKeyState(dispatch, 'stepCurrent', next === 4 ? 5 : next);
         handleKeyState(dispatch, 'progressBar', progressBar + PROGRESS_BY_STAGE);
     },[state.stepCurrent, state.progressBar]);
 
@@ -112,7 +166,8 @@ const StoreRegister = memo((props: ChildComponentProps) => {
         if(stepCurrent <= 1) {
             return props.history.goBack();
         } else {
-            handleKeyState(dispatch, 'stepCurrent', stepCurrent - 1);
+            const back = stepCurrent - 1;
+            handleKeyState(dispatch, 'stepCurrent', back === 4 ? 3 : back);
             handleKeyState(dispatch, 'progressBar', progressBar - PROGRESS_BY_STAGE);
         }
     },[state.stepCurrent, state.progressBar]);
@@ -159,19 +214,25 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                         <Render has={isVisibleStep(1)}>
                             <RegisterStore
                                 onChange={onChangeInputRegister}
-                                data={{ social_reason, fantasy_name }}
+                                data={{ socialReason, fantasyName }}
                             />
                         </Render>
                         <Render has={isVisibleStep(2)}>
                             <ManagerStore
                                 onChange={onChangeInputRegister}
-                                data={{ cnpj, email, contact_email, telephone, cellphone }}
+                                data={{ document: documentUser, email, contactEmail, contactTelephone, telephone }}
                             />
                         </Render>
                         <Render has={isVisibleStep(3)}>
                             <InfoStore
+                                addAddress={addAddress}
+                                resetCarousel={resetCarousel}
+                                deleteAddress={deleteAddress}
                                 onChange={onChangeInputRegister}
-                                data={{ linkedin, twitter, tiktok, instagram, facebook, cep, city, address }}
+                                onChangeAddress={onChangeAddress}
+                                boostrapCarousel={boostrapCarousel}
+                                setBoostrapCarousel={setBoostrapCarousel}
+                                data={{ linkedin, twitter, tiktok, instagram, facebook, address }}
                             />
                         </Render>
                         <Render has={isVisibleStep(4)}>
@@ -183,7 +244,7 @@ const StoreRegister = memo((props: ChildComponentProps) => {
                                 onChange={onChangeInputRegister}
                             />
                         </Render>
-                        <Button fullWidth secondary onClick={concludedRegister ? () => {} : nextStep}>
+                        <Button fullWidth secondary onClick={concludedRegister ? submitRegister : nextStep}>
                             {concludedRegister ? 'Concluir' : 'Continuar'}
                         </Button>
                     </fieldset>
@@ -191,10 +252,6 @@ const StoreRegister = memo((props: ChildComponentProps) => {
             </S.ContainerForm>
         </>
     )
-}, (prevProps, nextProps) => {
-    if(JSON.stringify(prevProps) === JSON.stringify(nextProps)) {
-        return true;
-    }
 });
 
 export default withRouter(StoreRegister);

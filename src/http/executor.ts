@@ -1,13 +1,5 @@
 import { AsyncStorage } from "utils";
 
-interface RequestProps {
-    url: string,
-    body?: object,
-    method: string,
-    headers: Headers,
-    externalOrigin?: string
-}
-
 const getResults = (response, statusOk) => {
     return response.text().then(value => {
         try {
@@ -28,12 +20,10 @@ const getResults = (response, statusOk) => {
  * @returns {Promise<any>}
  * @constructor
  */
-export const ExecutorRequest = (Request: RequestProps) => {
+export const ExecutorRequest = (Request) => {
     const token: string = AsyncStorage.get(process.env.REACT_APP_USER_TOKEN_STORAGE);
     if(!Request.externalOrigin) {
         token && Request.headers.append('authorization', token);
-        Request.headers.append('client_id', process.env.REACT_APP_CLIENT_ID);
-        Request.headers.append('client_secret', process.env.REACT_APP_CLIENT_SECRET);
     }
     let options: RequestInit;
     if(Request.method.includes('GET')) {
@@ -44,7 +34,7 @@ export const ExecutorRequest = (Request: RequestProps) => {
         options = {
             method: Request.method,
             headers: Request.headers,
-            body: JSON.stringify(Request.body)
+            body: Request.body
         };
     }
     return new Promise(async (resolve, reject) => {

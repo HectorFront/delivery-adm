@@ -5,28 +5,28 @@ import {Row, Col, InputLabel} from "components";
 
 interface ManagerStoreProps {
     data: {
-        cnpj?: string | null,
+        document?: string | null,
         email?: string | null,
-        contact_email?: string | null,
-        telephone?: string | null,
-        cellphone?: string | null
+        contactEmail?: string | null,
+        contactTelephone?: string | null,
+        telephone?: string | null
     },
     onChange: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
-export const ManagerStore:ElementType = memo(({ data: { cnpj, email, contact_email, telephone, cellphone }, onChange }: ManagerStoreProps): JSX.Element =>
+export const ManagerStore:ElementType = memo(({ data: { document, email, contactEmail, contactTelephone, telephone }, onChange }: ManagerStoreProps): JSX.Element =>
     <Row>
         <Col>
             <div className="mb-3">
                 <InputLabel
-                    id="cnpj"
+                    id="document"
                     size="lg"
                     type="text"
-                    label="CNPJ"
-                    value={cnpj ?? ''}
-                    error={cnpj === ''}
                     onChange={onChange}
-                    placeholder="99.999.999/9999-99"
+                    value={document ?? ''}
+                    label="Documento CNPJ"
+                    error={document === ''}
+                    placeholder="Somente números"
                 />
             </div>
         </Col>
@@ -49,12 +49,26 @@ export const ManagerStore:ElementType = memo(({ data: { cnpj, email, contact_ema
                 <InputLabel
                     size="lg"
                     type="email"
-                    id="contact_email"
+                    id="contactEmail"
                     onChange={onChange}
                     label="E-mail de contato"
-                    value={contact_email ?? ''}
-                    error={contact_email === ''}
+                    value={contactEmail ?? ''}
+                    error={contactEmail === ''}
                     placeholder="sualoja@gmail.com"
+                />
+            </div>
+        </Col>
+        <Col cols="12 12 6 6 6">
+            <div className="mb-3">
+                <InputLabel
+                    size="lg"
+                    type="text"
+                    id="contactTelephone"
+                    onChange={onChange}
+                    value={contactTelephone ?? ''}
+                    label="Telefone da loja"
+                    error={contactTelephone === ''}
+                    placeholder="(DDD) 9999-9999"
                 />
             </div>
         </Col>
@@ -66,23 +80,9 @@ export const ManagerStore:ElementType = memo(({ data: { cnpj, email, contact_ema
                     id="telephone"
                     onChange={onChange}
                     value={telephone ?? ''}
-                    label="Telefone da loja"
                     error={telephone === ''}
-                    placeholder="(DDD) 9999-9999"
-                />
-            </div>
-        </Col>
-        <Col cols="12 12 6 6 6">
-            <div className="mb-3">
-                <InputLabel
-                    size="lg"
-                    type="text"
-                    id="cellphone"
-                    onChange={onChange}
-                    value={cellphone ?? ''}
-                    error={cellphone === ''}
-                    placeholder="(DDD) 99999-9999"
                     label="Telefone celular"
+                    placeholder="(DDD) 99999-9999"
                 />
             </div>
         </Col>
